@@ -12,6 +12,9 @@
 <body>
 <script src="src/controllers/new_fingerprint.js"></script>
 
+
+<h1>hello world</h1>
+
 </body>
 
 </html>
