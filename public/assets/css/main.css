@@ -1,0 +1,359 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a, a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+header {
+    width: 100%;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    -webkit-box-shadow: -1px 18px 18px -4px rgba(0,0,0,0.57);
+    box-shadow: -1px 18px 18px -4px rgba(0,0,0,0.57);
+    z-index: 2;
+}
+
+.useractive {
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+}
+
+.burgermenu { 
+    margin-left: 10px;
+    width: 15%; 
+}
+.topsearchbar{
+    width: 80%;
+}
+.topsearchbar input[type="text"]{
+    height: 30px;
+    width: 40%;
+    border: none;
+    border-radius: 7px;
+    padding: 8px;
+}
+
+.imguser { padding: 10px; }
+
+.imguser img {
+    border-radius: 60%;
+    width: 3em;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    transition: width 0.3s ease;
+    padding: 25px;
+}
+
+.lftmenu {
+    
+    left: 0;
+    width: 15%;
+    height: 91.15vh;
+    background-color: red;
+    color: white;
+    transition: width 0.3s ease;
+}
+
+.lftmenu.collapsed {
+    width: 3.3%;
+}
+.lftmenu.collapsed .txt{ display: none;}
+.main.expanded {
+    width: 96.7%;
+}
+
+.lftmenusection ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+.lftmenusection .mainobjectmenu{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.lftmenusection .mainobjectmenu li, ul{
+    font-weight: 400;
+    min-height: 50px;
+}
+.objectsformom{
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .5em;
+
+}
+.submenu li{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .5em;
+}
+.lftmenusection li a{font-size: 15px;}
+.lftmenusection li:not(.column):hover {
+    background-color: rgb(160, 13, 13);
+} 
+
+.submenu {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.submenu.show {
+    height: auto; /* Permite que el submenú se ajuste a su contenido */
+    opacity: 1;
+}
+.bottomoption{width: 100%;}
+.column{display: flex; flex-direction: column;}
+.column .mainobjectmenu:hover{
+    background-color: rgb(160, 13, 13);
+}
+
+#dropdownmenu{list-style: none;}
+
+.dropdown-content {
+    margin-top: calc(3vh);
+    display: none;
+    position: absolute;
+    background-color: red;
+    right: 0;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+.dropdown-content li {
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.dropdown-content li a {
+    color: white;
+}
+
+.dropdown-content li:hover {
+    background-color: rgb(160, 13, 13);
+}
+
+/* Mostrar dropdown */
+.dropdown-content.show {
+    display: block;
+}
+.mindata_userrole{
+    padding: 5px;
+    font-size: 14px;
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+}
+.mindata_username{
+    margin-top: 10px;
+}
+.infoinmain_topp{
+    margin-bottom: 5px;
+}
+main{
+    font-family:Arial, Helvetica, sans-serif;
+}
+.mains{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.off{
+    display: none;
+}
+.on{
+    display: block;
+}
+footer{
+    margin-bottom: -4px;
+    padding: 20px;
+    text-align: center;
+    background-color: red;
+    color: white;
+}
+.structure{
+    
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: 90vh;
+    justify-content: flex-start;
+}
+
+/* CSS PARA STUDENT_REGISTER.PHP */
+
+.container_register {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: auto;
+}
+
+.container_register div {
+    flex: 0 0 48%;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="email"], input[type="date"], input[type="number"] ,select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.full-width {
+    flex: 0 0 100%;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.full{
+    width: 100%
+}
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para la notificación */
+.notification {
+    display: none; /* Inicialmente oculto */
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+}
+.notification.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.notification.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+#filters{
+    display: flex;
+    flex-flow: row;
+    gap: .5em;
+    justify-content: center;
+    align-items: center;
+}
+/* Estilos generales para el icono */
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle.active .arrow-icon {
+    transform: rotate(-90deg);
+}
+#burgerIcon, #closeIcon {
+    transition: opacity 0.3s ease;
+}
+
+#burgerIcon.hidden, #closeIcon.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.optionbtn{
+    padding: 5px;  
+    border-radius: 25px;
+    transition: .9 ease-in-out;
+}
+.editbtn{
+    background-color: #155724;
+}
+.deletebtn{
+    background-color: #721c24;
+}
+.optionbtn:hover{
+    border-radius: 5px;
+    transition: .9 ease-in-out;
+}
+.optionsforlist{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .2em;
+}
+
+.modal {
+    display: none; /* Oculto por defecto */
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5); 
+    overflow: hidden;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 50%; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
