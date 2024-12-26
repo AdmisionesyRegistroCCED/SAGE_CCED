@@ -7,7 +7,6 @@ if (!isset($_SESSION['userdata?'])) {
 $correo = $_SESSION['userdata?'];
 require_once "../config/db.php";
 // Conexión a la base de datos
-$conn = new mysqli($host, $user, $pass, $db);
 try {
     $stmt = $pdo->prepare("SELECT u.usuarios_id, u.usuarios_nombre, u.usuarios_correo, r.roles_nombre
                             FROM usuarios u
@@ -43,6 +42,12 @@ if ($conn->connect_error) {
 <head>
     <title>SAGE - Consulta de estudiantes</title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Datables links -->
+    <!-- <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/r-3.0.3/datatables.min.css" rel="stylesheet"> -->
+
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
+
+
     <style>
         table {
             width: 100%;
@@ -69,18 +74,17 @@ if ($conn->connect_error) {
     <main>
         <?php require_once "../src/models/leftmenu.php" ?>
         <div class="structure">
-            <div id="main" class="main on">
+            <div id="tabla" class="main on">
                 <h1 class="mindata_username">Consulta de estudiantes</h1>
                 <!-- <p class="infoinmain_topp">Esta es tu página de inicio</p> -->
                 <hr><br>
-                <div id="filters">
+                <!-- <div id="filters">
                     <label for="document-type">Tipo de documento:</label>
                     <select id="document-type">
                         <option value="">Todos</option>
                         <option value="ti">Tarjeta de identidad</option>
                         <option value="cc">Cedula de ciudadania</option>
                         <option value="ce">Cedula de extranjeria</option>
-                        <!-- Agrega más tipos de documentos según tu base de datos -->
                     </select>
 
                     <label for="status">Estado:</label>
@@ -91,24 +95,20 @@ if ($conn->connect_error) {
                     </select>
 
                     <button class="submit-btn" id="filter-button">Filtrar</button>
-                </div>
-                <table>
+                </div> -->
+                <table id="myTable" class="">
                     <thead>
                         <tr>
-                            <th>Tipo de documento</th>
+                            <th>Documento</th>
                             <th>Numero de documento</th>
                             <th>Nombres</th>
                             <th>Apellidos</th>
-                            <th>Fecha de nacimiento</th>
-                            <th>Genero</th>
-                            <th>Numero de telefono</th>
-                            <th>Correo electronico</th>
-                            <th>Estado</th>
-                            <th>Opciones</th>
+                            <th>Fecha de matricula</th>
+                            <th>Programa</th>
                         </tr>
                     </thead>
-                    <tbody id="student-table-body">
-                        <!-- La tabla se llenará aquí con AJAX -->
+                    <tbody id="">
+                    <!-- información render desde ajax -->
                     </tbody>
                 </table>
             </div>
@@ -174,9 +174,21 @@ if ($conn->connect_error) {
                 </div>
             </div>
     </main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <!-- <script src="assets/js/datatable.js"></script> -->
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script> -->
+
+    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
+
+
+
+    
     <script src="assets/js/main.js"></script>
-    <script>
+    <script src="assets/js/datatable.js"></script>
+    <!-- <script>
     // Función para cargar estudiantes a través de AJAX usando jQuery
     function fetchStudents(filters = {}) {
         $.ajax({
@@ -210,7 +222,7 @@ if ($conn->connect_error) {
             fetchStudents(filters); // Cargar estudiantes con filtros
         });
     });
-</script>
-    
+</script> -->
+        
 </body>
 </html>

@@ -16,7 +16,7 @@ try {
     $stmt->execute();
 
     // Obtener los datos del usuario
-    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+    $usuario = $stmt->fetch(mode: PDO::FETCH_ASSOC);
 
     if ($usuario) {
         $userID = $usuario['usuarios_id'];

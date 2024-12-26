@@ -13,6 +13,33 @@ document.getElementById('dropdownToggle').addEventListener('click', function() {
 
 
 $(document).ready(function() {
+    
+    let tabla = $('#myTable').DataTable({
+        "autoWidth":true,
+        // "data": null,
+        "responsive": true,
+        "processing": true,
+        "serverSide": false,
+        "ajax":{
+            "type":"POST",
+            "url": "../src/controllers/fetch_students.php",
+            "datatype":'json',
+            "dataSrc": "",
+            "cache":false
+        },
+        "columns":[
+            {"data":"estudiantes_no_documento"},
+            {"data":"estudiantes_tipo_documento"},
+            {"data":"estudiantes_nombre"},
+            {"data":"estudiantes_apellidos"},
+            {"data":"estudiantes_correo"},
+            {"data":"estudiantes_estado"},
+            {data: null, "defaultContent":"<button type='button' class='editar btn btn-warning' data-toggle='modadata-target='#edicion' id='{'data' : 'estudiantes_no_documento '}'>Editar</button>"},
+            {data: null, "defaultContent":"<button type='button' class='eliminar btn btn-danger' data-toggl'modal' data-target= '#modalEliminar'>Eliminar</button>"}
+            ],
+                         
+    });
+
     $(document).on('click', '.editbtn', function(e) {
         e.preventDefault();
 
