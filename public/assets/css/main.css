@@ -43,6 +43,11 @@ header {
     padding: 8px;
 }
 
+/* prueba datatable */
+.colbas{
+    display: none;
+}
+
 .imguser { padding: 10px; }
 
 .imguser img {

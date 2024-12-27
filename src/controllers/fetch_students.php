@@ -30,7 +30,8 @@ if ($conn->connect_error) {
 
 // Inicializa la consulta base
 
-$sql = "SELECT estudiantes_no_documento,estudiantes_tipo_documento ,estudiantes_nombre,estudiantes_apellidos,estudiantes_correo, estudiantes_estado FROM estudiantes"; // 'WHERE 1=1' permite agregar condiciones fácilmente
+//$sql = "SELECT estudiantes_no_documento,estudiantes_tipo_documento ,estudiantes_nombre,estudiantes_apellidos,estudiantes_correo, estudiantes_estado FROM estudiantes"; // 'WHERE 1=1' permite agregar condiciones fácilmente
+$sql = "SELECT * FROM estudiantes"; // 'WHERE 1=1' permite agregar condiciones fácilmente
 
 
 
@@ -44,61 +45,36 @@ if ($result->num_rows > 0) {
         $estudiantes_tipo_documento = $data['estudiantes_tipo_documento']; // estudiantes_tipo_documento
         $estudiantes_nombre = $data['estudiantes_nombre']; // estudiantes_nombre
         $estudiantes_apellidos = $data['estudiantes_apellidos']; // estudiantes_apellido
+        $estudiantes_fecha_nacimiento = $data['estudiantes_fecha_nacimiento']; // estudiantes_apellido
+        $estudiantes_genero = $data['estudiantes_genero']; // estudiantes_apellido
+        $estudiantes_telefono = $data['estudiantes_genero']; // estudiantes_apellido
         $estudiantes_correo = $data['estudiantes_correo']; // estudiantes_correo
         $estudiantes_estado = $data['estudiantes_estado']; // estudiantes_estado
 
 
             
-        $subData[]  = array("estudiantes_no_documento"=>$estudiantes_no_documento,
+        $subData[]  = array(
+        "estudiantes_no_documento"=>$estudiantes_no_documento,
         "estudiantes_tipo_documento" => $estudiantes_tipo_documento,
         "estudiantes_nombre" => $estudiantes_nombre,
         "estudiantes_apellidos" => $estudiantes_apellidos,
+        "estudiantes_fecha_nacimiento" => $estudiantes_fecha_nacimiento,
+        "estudiantes_genero" => $estudiantes_genero,
+        "estudiantes_telefono" => $estudiantes_telefono,
         "estudiantes_correo" => $estudiantes_correo,
-        "estudiantes_estado" => $estudiantes_estado    );
+        "estudiantes_estado" => $estudiantes_estado,
+        );
 
         
 
     }
 
     echo json_encode($subData);
-
-    // echo json_encode(array(
-    //     "draw" => 1,
-    //     "recordsTotal" => count($data),
-    //     "recordsFiltered" => count($data),
-    //     "data" => $subData
-    //   ));
-
-
-    // Salida de datos de cada fila
-    // while ($row = $result->fetch_assoc()) {
-    //     $output .= "<tr>
-    //                     <td>" . $row['estudiantes_tipo_documento'] . "</td>
-    //                     <td>" . $row["estudiantes_no_documento"] . "</td>
-    //                     <td>" . $row["estudiantes_nombre"] . "</td>
-    //                     <td>" . $row["estudiantes_apellidos"] . "</td>
-    //                     <td>" . $row["estudiantes_fecha_nacimiento"] . "</td>
-    //                     <td>" . $row["estudiantes_genero"] . "</td>
-    //                     <td>" . $row["estudiantes_telefono"] . "</td>
-    //                     <td>" . $row["estudiantes_correo"] . "</td>
-    //                     <td>" . $row["estudiantes_estado"] . "</td>
-    //                     <td class='optionsforlist'><a class='optionbtn editbtn' href='#edit_student'id=". $row["estudiantes_no_documento"]. "'>Editar</a>
-    //                         <a class='optionbtn deletebtn' href='#'>Eliminar</a>
-    //                     </td>
-    //                 </tr>";
-    // }
-
-
 } else {
     $output .= "<tr><td colspan='9'>No se encontraron estudiantes.</td></tr>";
 }
 
 $conn->close(); // Cerrar la conexión
 
-// // Agregar filtros a la consulta
-// if (!empty($_GET['document_type'])) {
-//     $document_type = $conn->real_escape_string($_GET['document_type']);
-//     $sql .= " AND estudiantes_tipo_documento = '$document_type'";
-// }
 ?>
 
