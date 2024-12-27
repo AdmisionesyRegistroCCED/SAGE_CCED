@@ -33,7 +33,7 @@
                     echo  '<li><a href="#">Administrar cuentas</a></li>';
                 }
             ?>
-            <li><a href="#">Cerrar sesión</a></li>
+            <li><a href="../src/controllers/closessesion.php">Cerrar sesión</a></li>
         </ul>
     </div>
 </div>
