@@ -8,7 +8,7 @@ $correo = $_SESSION['userdata?'];
 require_once "../config/db.php";
 // Conexión a la base de datos
 try {
-    $stmt = $pdo->prepare("SELECT  u.usuarios_id ,u.usuarios_correo , u.usuarios_nombre, r.roles_nombre
+    $stmt = $pdo->prepare("SELECT  u.usuarios_id ,u.usuarios_correo , u.usuarios_nombre, r.roles_nombre, r.roles_id
                             FROM usuarios u
                             JOIN roles r ON u.usuarios_rol_id  = r.roles_id
                             WHERE u.usuarios_correo = :email");
@@ -23,6 +23,7 @@ try {
         $username = $usuario['usuarios_nombre'];
         $useremail = $usuario['usuarios_correo'];
         $userRole = $usuario['roles_nombre'];
+        $codeRole = $usuario['roles_id'];
     } else {
         // Manejar caso donde no se encuentra el usuario
         echo "Usuario no encontrado.";
@@ -44,7 +45,33 @@ try {
         <?php require_once "../src/models/header.php" ?>
     </header>
     <main>
-        <?php require_once "../src/models/leftmenu.php" ?>
+    <?php 
+
+switch ($codeRole) {
+    case '1': #supadmin
+        require_once "../src/models/leftmenu.php";
+        break;
+    case '2': #admin
+        # code...
+        break;
+    case '3': #academico
+        require_once "../src/models/leftmenu3.php";
+        break;
+    case '4': #comercial
+        # code...
+        break;
+    case '5': #docente
+        # code...
+        break;
+    case '6': #estudiante
+        # code...
+        break;
+    default:
+        # code...
+        break;
+}
+
+?>
             <div class="structure">
                 <div id="main" class="main on">
                 <?php if (isset($_SESSION['message'])): ?>
@@ -56,7 +83,14 @@ try {
                         ?>
                     </div>
                 <?php endif; ?>
-                <h1 class="mindata_username">Registro de estudiante</h1>
+                <div class="headerdataform">
+                    <h1 class="mindata_username">Registro de estudiante</h1>
+                    <form action="../src/controllers/uploadcsv.php" method="post" enctype="multipart/form-data">
+                        <label for="file">Cargar archivo</label>
+                        <input type="file" name="file" id="file">
+                        <input type="submit" value="Subir">
+                    </form>
+                </div>
                 <!-- <p class="infoinmain_topp">Esta es tu página de inicio</p> -->
                 <hr><br>
                 <form action="../src/controllers/sql_register_student.php" method="post">
