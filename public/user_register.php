@@ -1,16 +1,16 @@
 <?php
 session_start();
 if (!isset($_SESSION['userdata?'])) {
-    header("location: ../src/views/login.php");
+    header("Location: ../src/views/login.php");
     exit();
 }
 $correo = $_SESSION['userdata?'];
 require_once "../config/db.php";
 // Conexión a la base de datos
 try {
-    $stmt = $pdo->prepare("SELECT u.usuarios_id, u.usuarios_nombre, u.usuarios_correo, r.roles_nombre, r.roles_id, r.roles_codigo_permisos
+    $stmt = $pdo->prepare("SELECT  u.usuarios_id ,u.usuarios_correo , u.usuarios_nombre, r.roles_nombre, r.roles_id
                             FROM usuarios u
-                            JOIN roles r ON u.usuarios_rol_id = r.roles_id
+                            JOIN roles r ON u.usuarios_rol_id  = r.roles_id
                             WHERE u.usuarios_correo = :email");
     $stmt->bindParam(':email', $correo);
     $stmt->execute();
@@ -24,21 +24,20 @@ try {
         $useremail = $usuario['usuarios_correo'];
         $userRole = $usuario['roles_nombre'];
         $codeRole = $usuario['roles_id'];
-        $binperms = $usuario['roles_codigo_permisos'];
-
     } else {
         // Manejar caso donde no se encuentra el usuario
         echo "Usuario no encontrado.";
         exit();
     }
+
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-if(substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2){
+if(substr($binperms, 2, 1)>0){
 ?>
 <html>
 <head>
-    <title>SAGE - Registro de estudiantes</title>
+    <title>SAGE - Registro de usuarios</title>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -61,63 +60,37 @@ if(substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2){
                     </div>
                 <?php endif; ?>
                 <div class="headerdataform">
-                    <h1 class="mindata_username">Registro de estudiante</h1>
-                    <form action="../src/controllers/uploadcsv.php" method="post" enctype="multipart/form-data">
-                        <label for="file">Cargar archivo</label>
-                        <input type="file" name="file" id="file" accept=".csv">
-                        <input type="submit" value="Subir">
-                    </form>
+                    <h1 class="mindata_username">Registro de usuarios</h1>
                 </div>
                 <!-- <p class="infoinmain_topp">Esta es tu página de inicio</p> -->
                 <hr><br>
-                <form action="../src/controllers/sql_register_student.php" method="post">
+                <form action="../src/controllers/sql_register_user.php" method="post">
                 <div class="container_register">
                     <div>
-                        <label for="fname">Nombres</label>
-                        <input type="text" id="fname" name="fname" required>
-                    </div>
-                    <div>
-                        <label for="lname">Apellidos</label>
-                        <input type="text" id="lname" name="lname" required>
-                    </div>
-                    <div>
-                        <label for="dni_type">Tipo de documento</label>
-                        <select name="dni_type" id="dni_type" required>
-                            <option value="none">Seleccione una opción</option>
-                            <option value="ti">Tarjeta de identidad</option>
-                            <option value="cc">Cedula de ciudadania</option>
-                            <option value="ce">Cedula de extranjeria</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="dni">Numero de documento</label>
-                        <input type="number" id="dni" name="dni" required>
-                    </div>
-                    <div>
-                        <label for="dob">Fecha de nacimiento</label>
-                        <input type="date" id="dob" name="dob" required>
-                    </div>
-                    <div>
-                        <label for="gender">Genero</label>
-                        <select id="gender" name="gender" required>
-                            <option value="none">Seleccione una opción</option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Femenino">Femenino</option>                        
-                        </select>
-                    </div>
-                    <div>
-                        <label for="phone">Numero de telefono</label>
-                        <input type="text" id="phone" name="phone" required>
+                        <label for="fname">Nombre de usuario</label>
+                        <input type="text" id="fname" name="username" required>
                     </div>
                     <div>
                         <label for="email">Correo electronico</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div>
-                        <label for="status">Estado</label>
-                        <select name="status" id="status" required>
-                            <option value="activo">Activo</option>
-                            <option value="inactivo">Inactivo</option>
+                        <label for="dni">Contraseña</label>
+                        <input type="text" id="dni" name="pass" required>
+                    </div>
+                    <div>
+                        <label for="dni_type">Tipo de usuario</label>
+                        <select name="user_type" id="dni_type" required>
+                            <option value="none">Seleccione una opción</option>
+                            <?php
+                                if($codeRole == 1){
+                                    echo '<option value="2">Administrador ⚠️</option>';
+                                }
+                            ?>
+                            <option value="3">Academico</option>
+                            <option value="4">Comercial</option>
+                            <option value="5">Docente</option>
+                            <option value="6">Estudiante</option>
                         </select>
                     </div>
                     <div class="full-width">
