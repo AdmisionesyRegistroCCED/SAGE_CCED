@@ -24,7 +24,7 @@ try {
         $useremail = $usuario['usuarios_correo'];
         $userRole = $usuario['roles_nombre'];
         $codeRole = $usuario['roles_id'];
-        $binperms = $usuario['roles_codigo_permisos'];
+        $binperms = $usuario['roles_codigo_permisos']; 
     } else {
         // Manejar caso donde no se encuentra el usuario
         echo "Usuario no encontrado.";
