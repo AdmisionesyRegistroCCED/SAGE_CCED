@@ -50,7 +50,6 @@ header {
 .imguser {
     padding: 10px;
 }
-
 .imguser img {
     border-radius: 60%;
     width: 3em;
@@ -60,7 +59,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 1; 
 }
 
 .main {
