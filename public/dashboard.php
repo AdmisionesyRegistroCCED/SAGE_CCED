@@ -8,7 +8,7 @@ $correo = $_SESSION['userdata?'];
 require_once "../config/db.php";
 // Conexión a la base de datos
 try {
-    $stmt = $pdo->prepare("SELECT u.usuarios_id, u.usuarios_nombre, u.usuarios_correo, r.roles_nombre, r.roles_id
+    $stmt = $pdo->prepare("SELECT u.usuarios_id, u.usuarios_nombre, u.usuarios_correo, r.roles_nombre, r.roles_id, r.roles_codigo_permisos
                             FROM usuarios u
                             JOIN roles r ON u.usuarios_rol_id = r.roles_id
                             WHERE u.usuarios_correo = :email");
@@ -24,6 +24,8 @@ try {
         $useremail = $usuario['usuarios_correo'];
         $userRole = $usuario['roles_nombre'];
         $codeRole = $usuario['roles_id'];
+        $binperms = $usuario['roles_codigo_permisos'];
+
     } else {
         // Manejar caso donde no se encuentra el usuario
         echo "Usuario no encontrado.";
@@ -32,7 +34,6 @@ try {
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-
 ?>
 <html>
 
@@ -47,31 +48,7 @@ try {
     </header>
     <main>
         <?php
-
-        switch ($codeRole) {
-            case '1': #supadmin
                 require_once "../src/models/leftmenu.php";
-                break;
-            case '2': #admin
-                # code...
-                break;
-            case '3': #academico
-                require_once "../src/models/leftmenu3.php";
-                break;
-            case '4': #comercial
-                # code...
-                break;
-            case '5': #docente
-                # code...
-                break;
-            case '6': #estudiante
-                # code...
-                break;
-            default:
-                # code...
-                break;
-        }
-
         ?>
         <div id="format" class="format">
         <div class="structure">
@@ -91,7 +68,7 @@ try {
                         <div class="box">
                             <div class="title">Estudiantes activos</div>
                             <div id="contador1" class="boxdata">0</div>
-                            <div class="submsg"></div>
+                            <div class="submsg"><?php echo substr($binperms, 9, 1) ?></div>
                         </div>
                         <div class="box">
                             <div class="title">Estudiantes inactivos</div>
@@ -197,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
             labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
             datasets: [{
                 label: 'Visitas al Sitio',
-                data: [150, 300, 450, 600],
+                data: [150, 30, 450, 1200],
                 borderColor: 'rgba(255, 99, 132, 1)',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 tension: 0.4

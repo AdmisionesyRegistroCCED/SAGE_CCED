@@ -75,7 +75,7 @@ switch ($codeRole) {
         require_once "../src/models/leftmenu.php";
         break;
     case '2': #admin
-        # code...
+        require_once "../src/models/leftmenu2.php";
         break;
     case '3': #academico
         require_once "../src/models/leftmenu3.php";

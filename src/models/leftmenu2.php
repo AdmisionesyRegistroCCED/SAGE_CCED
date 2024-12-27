@@ -13,10 +13,6 @@
                         <div class="txt">Dashboard</div>
                     </a>
                 </li>
-                <?php 
-                    if(substr($binperms, 2, 1) == 1 || substr($binperms, 2, 1) == 2){
-                        
-                ?>
                 <li class="column">
                     <div class="mainobjectmenu">
                         <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
@@ -31,9 +27,6 @@
                     </div>
                     <div class="submenu">
                         <ul>
-                            <?php
-                                if(substr($binperms, 2, 1) == 2){                            
-                            ?>
                             <li>
                                 <a href="user_register.php" class="objectsformom">
                                     <div class="icon">
@@ -46,9 +39,6 @@
                                     <div class="txt">Registrar usuario</div>
                                 </a>
                             </li>
-                            <?php
-                            }
-                            ?>
                             <li>
                                 <a href="consult_students.php" class="objectsformom">
                                     <div class="icon">
@@ -64,11 +54,6 @@
                         </ul>
                     </div>
                 </li>
-                <?php
-                    } 
-                    if(substr($binperms, 1, 1) == 1 || substr($binperms, 1, 1) == 2){
-                        
-                ?>
                 <li class="column">
                     <div class="mainobjectmenu">
                         <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
@@ -83,9 +68,6 @@
                     </div>
                     <div class="submenu">
                         <ul>
-                            <?php 
-                                if(substr($binperms, 1, 1) == 2){
-                            ?>
                             <li>
                                 <a href="../src/views/calendar.php" class="objectsformom">
                                     <div class="icon">
@@ -97,9 +79,6 @@
                                     <div class="txt">Registrar roles</div>
                                 </a>
                             </li>
-                            <?php 
-                                }
-                            ?>
                             <li>
                                 <a href="consult_students.php" class="objectsformom">
                                     <div class="icon">
@@ -110,103 +89,6 @@
                                         </svg>
                                     </div>
                                     <div class="txt">Consultar roles</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <?php 
-                    }
-                    // if(substr($binperms, 2, 1) == 1 || substr($binperms, 2, 1) == 2){
-                        
-                ?>
-                <li class="column">
-                    <div class="mainobjectmenu">
-                        <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25" height="25" class="arrow-icon">
-                                    <path fill="white"
-                                        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                                </svg>
-                            </div>
-                            <div class="txt">Estudiantes</div>
-                        </a>
-                    </div>
-                    <div class="submenu">
-                        <ul>
-                            <li>
-                                <a href="student_register.php" class="objectsformom">
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25"
-                                            height="25">
-                                            <path fill="white"
-                                                d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
-                                        </svg>
-                                    </div>
-                                    <div class="txt">Registrar estudiante</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="consult_students.php" class="objectsformom">
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="22"
-                                            height="22">
-                                            <path fill="white"
-                                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-                                        </svg>
-                                    </div>
-                                    <div class="txt">Consultar estudiantes</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="consult_students.php" class="objectsformom">
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25" height="25">
-                                            <path fill="white"
-                                            d="M96 0C43 0 0 43 0 96L0 416c0 53 43 96 96 96l448 0c53 0 96-43 96-96l0-320c0-53-43-96-96-96L96 0zM64 96c0-17.7 14.3-32 32-32l448 0c17.7 0 32 14.3 32 32l0 320c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32L64 96zm159.8 80a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM96 309.3c0 14.7 11.9 26.7 26.7 26.7l56.1 0c8-34.1 32.8-61.7 65.2-73.6c-7.5-4.1-16.2-6.4-25.3-6.4l-69.3 0C119.9 256 96 279.9 96 309.3zM461.2 336l56.1 0c14.7 0 26.7-11.9 26.7-26.7c0-29.5-23.9-53.3-53.3-53.3l-69.3 0c-9.2 0-17.8 2.3-25.3 6.4c32.4 11.9 57.2 39.5 65.2 73.6zM372 289c-3.9-.7-7.9-1-12-1l-80 0c-4.1 0-8.1 .3-12 1c-26 4.4-47.3 22.7-55.9 47c-2.7 7.5-4.1 15.6-4.1 24c0 13.3 10.7 24 24 24l176 0c13.3 0 24-10.7 24-24c0-8.4-1.4-16.5-4.1-24c-8.6-24.3-29.9-42.6-55.9-47zM512 176a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM320 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="txt">Registrar grupo de estudiantes</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="column">
-                    <div class="mainobjectmenu">
-                        <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
-                            <div class="menu_toggle">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25" height="25" class="arrow-icon">
-                                    <path fill="white"
-                                        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                                </svg>
-                            </div>
-                            <div class="txt">Docentes</div>
-                        </a>
-                    </div>
-                    <div class="submenu">
-                        <ul>
-                            <li>
-                                <a href="../src/views/calendar.php" class="objectsformom">
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="25" height="25">
-                                            <path fill="white"
-                                                d="M96 128a128 128 0 1 0 256 0A128 128 0 1 0 96 128zm94.5 200.2l18.6 31L175.8 483.1l-36-146.9c-2-8.1-9.8-13.4-17.9-11.3C51.9 342.4 0 405.8 0 481.3c0 17 13.8 30.7 30.7 30.7l131.7 0c0 0 0 0 .1 0l5.5 0 112 0 5.5 0c0 0 0 0 .1 0l131.7 0c17 0 30.7-13.8 30.7-30.7c0-75.5-51.9-138.9-121.9-156.4c-8.1-2-15.9 3.3-17.9 11.3l-36 146.9L238.9 359.2l18.6-31c6.4-10.7-1.3-24.2-13.7-24.2L224 304l-19.7 0c-12.4 0-20.1 13.6-13.7 24.2z" />
-                                        </svg>
-                                    </div>
-                                    <div class="txt">Registrar docente</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="consult_students.php" class="objectsformom">
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="22"
-                                            height="22">
-                                            <path fill="white"
-                                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-                                        </svg>
-                                    </div>
-                                    <div class="txt">Consultar docente</div>
                                 </a>
                             </li>
                         </ul>
