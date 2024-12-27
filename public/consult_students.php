@@ -8,7 +8,7 @@ $correo = $_SESSION['userdata?'];
 require_once "../config/db.php";
 // Conexión a la base de datos
 try {
-    $stmt = $pdo->prepare("SELECT u.usuarios_id, u.usuarios_nombre, u.usuarios_correo, r.roles_nombre, r.roles_id
+    $stmt = $pdo->prepare("SELECT u.usuarios_id, u.usuarios_nombre, u.usuarios_correo, r.roles_nombre, r.roles_id, r.roles_codigo_permisos
                             FROM usuarios u
                             JOIN roles r ON u.usuarios_rol_id  = r.roles_id
                             WHERE u.usuarios_correo = :email");
@@ -24,6 +24,7 @@ try {
         $useremail = $usuario['usuarios_correo'];
         $userRole = $usuario['roles_nombre'];
         $codeRole = $usuario['roles_id'];
+        $binperms = $usuario['roles_codigo_permisos']; 
     } else {
         // Manejar caso donde no se encuentra el usuario
         echo "Usuario no encontrado.";
