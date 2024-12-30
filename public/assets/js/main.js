@@ -52,11 +52,9 @@ $(document).ready(function() {
             // }
             ],
     
-                         
     });
     //Ocultar columnas
     tabla.columns(6).visible(false);
-  
 
 
 
