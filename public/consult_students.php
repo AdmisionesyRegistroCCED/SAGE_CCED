@@ -73,8 +73,7 @@ switch ($codeRole) {
                         <tr>
                             <th>Documento</th>
                             <th>Numero de documento</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
+                            <th>Nombre completo</th>
                             <th>Teléfono</th>
                             <th>Correo</th>
                             <th>Genero</th>
