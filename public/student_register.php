@@ -1,38 +1,6 @@
-<?php
-session_start();
-if (!isset($_SESSION['userdata?'])) {
-    header("Location: ../src/views/login.php");
-    exit();
-}
-$correo = $_SESSION['userdata?'];
-require_once "../config/db.php";
-// Conexión a la base de datos
-try {
-    $stmt = $pdo->prepare("SELECT  u.usuarios_id ,u.usuarios_correo , u.usuarios_nombre, r.roles_nombre
-                            FROM usuarios u
-                            JOIN roles r ON u.usuarios_rol_id  = r.roles_id
-                            WHERE u.usuarios_correo = :email");
-    $stmt->bindParam(':email', $correo);
-    $stmt->execute();
-
-    // Obtener los datos del usuario
-    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($usuario) {
-        $userID = $usuario['usuarios_id'];
-        $username = $usuario['usuarios_nombre'];
-        $useremail = $usuario['usuarios_correo'];
-        $userRole = $usuario['roles_nombre'];
-    } else {
-        // Manejar caso donde no se encuentra el usuario
-        echo "Usuario no encontrado.";
-        exit();
-    }
-
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-
+<?php 
+    require "../src/controllers/session_start.php";
+if(substr($binperms, 9, 1) == 2){
 ?>
 <html>
 <head>
@@ -44,7 +12,9 @@ try {
         <?php require_once "../src/models/header.php" ?>
     </header>
     <main>
-        <?php require_once "../src/models/leftmenu.php" ?>
+    <?php 
+        require_once "../src/models/leftmenu.php";
+    ?>
             <div class="structure">
                 <div id="main" class="main on">
                 <?php if (isset($_SESSION['message'])): ?>
@@ -56,7 +26,14 @@ try {
                         ?>
                     </div>
                 <?php endif; ?>
-                <h1 class="mindata_username">Registro de estudiante</h1>
+                <div class="headerdataform">
+                    <h1 class="mindata_username">Registro de estudiante</h1>
+                    <form action="../src/controllers/uploadcsv.php" method="post" enctype="multipart/form-data">
+                        <label for="file">Cargar archivo</label>
+                        <input type="file" name="file" id="file" accept=".csv">
+                        <input type="submit" value="Subir">
+                    </form>
+                </div>
                 <!-- <p class="infoinmain_topp">Esta es tu página de inicio</p> -->
                 <hr><br>
                 <form action="../src/controllers/sql_register_student.php" method="post">
@@ -127,7 +104,7 @@ try {
                     };
                 </script>
             </div>
-            <footer>
+            <footer class=".footer">
                 <?php require_once "../src/models/footer.php" ?>
             </footer>
         </div>
@@ -135,3 +112,8 @@ try {
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+<?php
+}else{
+    header("location: dashboard.php");
+}
+?>
