@@ -29,10 +29,10 @@ if ($conn->connect_error) {
 }
 
 // Inicializa la consulta base
-
-//$sql = "SELECT estudiantes_no_documento,estudiantes_tipo_documento ,estudiantes_nombre,estudiantes_apellidos,estudiantes_correo, estudiantes_estado FROM estudiantes"; // 'WHERE 1=1' permite agregar condiciones fácilmente
-$sql = "SELECT * FROM estudiantes"; // 'WHERE 1=1' permite agregar condiciones fácilmente
-
+$sql = "SELECT 
+tpd.tipo_documento_sigla AS 'sigla', 
+est.* FROM estudiantes est 
+INNER JOIN tipo_documento tpd ON tpd.tipo_documento_id = est.estudiantes_tipo_documento";
 
 
 $result = $conn->query($sql);
@@ -41,6 +41,7 @@ $subData = array();
 //$data= array();
 if ($result->num_rows > 0) {
     while ($data = $result -> fetch_assoc()) {
+        $estudiantes_sigla = $data['sigla'];
         $estudiantes_no_documento = $data['estudiantes_no_documento']; // estudiantes_no_documento 
         $estudiantes_tipo_documento = $data['estudiantes_tipo_documento']; // estudiantes_tipo_documento
         $estudiantes_nombre = $data['estudiantes_nombre']; // estudiantes_nombre
@@ -50,10 +51,11 @@ if ($result->num_rows > 0) {
         $estudiantes_telefono = $data['estudiantes_genero']; // estudiantes_apellido
         $estudiantes_correo = $data['estudiantes_correo']; // estudiantes_correo
         $estudiantes_estado = $data['estudiantes_estado']; // estudiantes_estado
-
+        
 
             
         $subData[]  = array(
+        "sigla" => $estudiantes_sigla,
         "estudiantes_no_documento"=>$estudiantes_no_documento,
         "estudiantes_tipo_documento" => $estudiantes_tipo_documento,
         "estudiantes_nombre" => $estudiantes_nombre,

@@ -43,10 +43,10 @@ switch ($codeRole) {
         require_once "../src/models/leftmenu.php";
         break;
     case '2': #admin
-        require_once "../src/models/leftmenu2.php";
+        require_once "../src/models/leftmenu.php";
         break;
     case '3': #academico
-        require_once "../src/models/leftmenu3.php";
+        require_once "../src/models/leftmenu.php";
         break;
     case '4': #comercial
         # code...
@@ -71,12 +71,15 @@ switch ($codeRole) {
                 <table id="myTable" class="">
                     <thead>
                         <tr>
-                            <th>Documento</th>
+                            <th>sigla</th>
                             <th>Numero de documento</th>
+                            <th>tipo Documento</th>
+                            <!-- Cubre campo nombre y apellido -->
                             <th>Nombre completo</th>
+                            <th>Fecha nacimiento</th>
+                            <th>Genero</th>
                             <th>Teléfono</th>
                             <th>Correo</th>
-                            <th>Genero</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
@@ -97,24 +100,26 @@ switch ($codeRole) {
                     <h2>Editar Estudiante</h2>
                     <form id="edit-form">
                     <div>
-                        <label for="fname">Tipo de documento</label>
+                        <!-- <label for="fname">Tipo de documento</label>
                         <input type="text" id="estudiantes_tipo_documento" name="fname" required>
+                     -->
+                        <label for="estudiantes_tipo_documento">Tipo de documento</label>
+                        <select name="estudiantes_tipo_documento" id="estudiantes_tipo_documento" required>
+                            <option value="ti">Tarjeta de identidad</option>
+                            <option value="cc">Cedula de ciudadania</option>
+                            <option value="ce">Cedula de extranjeria</option>
+                        </select>
+                    
+                    
                     </div>
                     <div>
                         <label for="lname">Nro documento</label>
                         <input type="text" id="estudiantes_no_documento" name="lname" required>
                     </div>
-                    <!-- <div>
-                        <label for="dni_type">Tipo de documento</label>
-                        <select name="dni_type" id="dni_type" required>
-                            <option value="ti">Tarjeta de identidad</option>
-                            <option value="cc">Cedula de ciudadania</option>
-                            <option value="ce">Cedula de extranjeria</option>
-                        </select>
-                    </div> -->
+                    
                     <div>
                         <label for="dni">Nombre</label>
-                        <input type="text" id="estudiantes_nombre" name="dni" required>
+                        <input type="text" id="estudiantes_nombre" name="estudiantes_nombre" required>
                     </div>
                     <div>
                         <label for="apellido">Apellidos</label>
@@ -137,10 +142,11 @@ switch ($codeRole) {
                         </select>
                     </div>
                     <div>            
-                        <label for="status">Estado</label>
-                        <select name="status" id="estado" required>
+                        <label for="estudiantes_estado">Estado</label>
+                        <select name="estudiantes_estado" id="estudiantes_estado" required>
                             <option value="activo">Activo</option>
                             <option value="inactivo">Inactivo</option>
+                            <option value="egresado">Egresado</option>
                         </select>
                     </div>
                     <br>
@@ -166,41 +172,6 @@ switch ($codeRole) {
     
     <script src="assets/js/main.js"></script>
     <script src="assets/js/datatable.js"></script>
-    <!-- <script>
-    // Función para cargar estudiantes a través de AJAX usando jQuery
-    function fetchStudents(filters = {}) {
-        $.ajax({
-            url: "../src/controllers/fetch_students.php",
-            type: "GET",
-            data: filters, // Enviar los filtros como parámetros
-            success: function(response) {
-                $("#student-table-body").html(response); // Llenar el tbody con la respuesta
-            },
-            error: function(xhr, status, error) {
-                console.error("Error en la carga de estudiantes: ", xhr.responseText); // Ver errores en la consola
-            }
-        });
-    }
-
-    // Cargar estudiantes cuando la página esté lista
-    $(document).ready(function() {
-        fetchStudents(); // Cargar todos los estudiantes al inicio
-
-        // Evento de clic para el botón de filtro
-        $("#filter-button").click(function() {
-            const documentType = $("#document-type").val();
-            const status = $("#status").val();
-
-            // Crear un objeto de filtros
-            const filters = {
-                document_type: documentType,
-                status: status
-            };
-
-            fetchStudents(filters); // Cargar estudiantes con filtros
-        });
-    });
-</script> -->
         
 </body>
 </html>

@@ -17,69 +17,242 @@ document.getElementById('dropdownToggle').addEventListener('click', function() {
 
 
 $(document).ready(function() {
+
+    
     let tabla = $('#myTable').DataTable({
-        
         "autoWidth":true,
-        // "data": null,
+        //data: null,
         "responsive": true,
         "processing": true,
         "serverSide": false,
         "language":{
-            "url": '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+            "url":"assets/js/es-ES.json"
         },
+        // Idioma español
+        // language: {
+        //     "aria": {
+        //       "sortAscending": "Activar para ordenar la columna de manera ascendente",
+        //       "sortDescending": "Activar para ordenar la columna de manera descendente"
+        //     },
+        //     "autoFill": {
+        //       "cancel": "Cancelar",
+        //       "fill": "Rellene todas las celdas con <i>%d&lt;\\\/i&gt;<\/i>",
+        //       "fillHorizontal": "Rellenar celdas horizontalmente",
+        //       "fillVertical": "Rellenar celdas verticalmentemente"
+        //     },
+        //     "buttons": {
+        //       "collection": "Colección",
+        //       "colvis": "Visibilidad",
+        //       "colvisRestore": "Restaurar visibilidad",
+        //       "copy": "Copiar",
+        //       "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
+        //       "copySuccess": {
+        //         "1": "Copiada 1 fila al portapapeles",
+        //         "_": "Copiadas %d fila al portapapeles"
+        //       },
+        //       "copyTitle": "Copiar al portapapeles",
+        //       "csv": "CSV",
+        //       "excel": "Excel",
+        //       "pageLength": {
+        //         "-1": "Mostrar todas las filas",
+        //         "1": "Mostrar 1 fila",
+        //         "_": "Mostrar %d filas"
+        //       },
+        //       "pdf": "PDF",
+        //       "print": "Imprimir"
+        //     },
+        //     "decimal": ",",
+        //     "emptyTable": "No se encontraron resultados",
+        //     "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        //     "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        //     "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        //     "infoThousands": ",",
+        //     "lengthMenu": "Mostrar _MENU_ registros",
+        //     "loadingRecords": "Cargando...",
+        //     "paginate": {
+        //       "first": "Primero",
+        //       "last": "Último",
+        //       "next": "Siguiente",
+        //       "previous": "Anterior"
+        //     },
+        //     "processing": "Procesando...",
+        //     "search": "Buscar:",
+        //     "searchBuilder": {
+        //       "add": "Añadir condición",
+        //       "button": {
+        //         "0": "Constructor de búsqueda",
+        //         "_": "Constructor de búsqueda (%d)"
+        //       },
+        //       "clearAll": "Borrar todo",
+        //       "condition": "Condición",
+        //       "data": "Data",
+        //       "deleteTitle": "Eliminar regla de filtrado",
+        //       "leftTitle": "Criterios anulados",
+        //       "logicAnd": "Y",
+        //       "logicOr": "O",
+        //       "rightTitle": "Criterios de sangría",
+        //       "title": {
+        //         "0": "Constructor de búsqueda",
+        //         "_": "Constructor de búsqueda (%d)"
+        //       },
+        //       "value": "Valor"
+        //     },
+        //     "searchPanes": {
+        //       "clearMessage": "Borrar todo",
+        //       "collapse": {
+        //         "0": "Paneles de búsqueda",
+        //         "_": "Paneles de búsqueda (%d)"
+        //       },
+        //       "count": "{total}",
+        //       "countFiltered": "{shown} ({total}",
+        //       "emptyPanes": "Sin paneles de búsqueda",
+        //       "loadMessage": "Cargando paneles de búsqueda",
+        //       "title": "Filtros Activos - %d"
+        //     },
+        //     "select": {
+        //       "1": "%d fila seleccionada",
+        //       "_": "%d filas seleccionadas",
+        //       "cells": {
+        //         "1": "1 celda seleccionada",
+        //         "_": "$d celdas seleccionadas"
+        //       },
+        //       "columns": {
+        //         "1": "1 columna seleccionada",
+        //         "_": "%d columnas seleccionadas"
+        //       }
+        //     },
+        //     "thousands": ",",
+        //     "zeroRecords": "No se encontraron resultados",
+        //     "datetime": {
+        //       "previous": "Anterior",
+        //       "next": "Proximo",
+        //       "hours": "Horas",
+        //       "minutes": "Minutos",
+        //       "seconds": "Segundos",
+        //       "unknown": "-",
+        //       "amPm": [
+        //         "am",
+        //         "pm"
+        //       ]
+        //     },
+        //     "editor": {
+        //       "close": "Cerrar",
+        //       "create": {
+        //         "button": "Nuevo",
+        //         "title": "Crear Nuevo Registro",
+        //         "submit": "Crear"
+        //       },
+        //       "edit": {
+        //         "button": "Editar",
+        //         "title": "Editar Registro",
+        //         "submit": "Actualizar"
+        //       },
+        //       "remove": {
+        //         "button": "Eliminar",
+        //         "title": "Eliminar Registro",
+        //         "submit": "Eliminar",
+        //         "confirm": {
+        //           "_": "¿Está seguro que desea eliminar %d filas?",
+        //           "1": "¿Está seguro que desea eliminar 1 fila?"
+        //         }
+        //       },
+        //       "error": {
+        //         "system": "Ha ocurrido un error en el sistema (<a target=\"\\\" rel=\"\\ nofollow\" href=\"\\\">Más información&lt;\\\\\\\/a&gt;).&lt;\\\/a&gt;<\/a>"
+        //       },
+        //       "multi": {
+        //         "title": "Múltiples Valores",
+        //         "info": "Los elementos seleccionados contienen diferentes valores para este registro. Para editar y establecer todos los elementos de este registro con el mismo valor, hacer click o tap aquí, de lo contrario conservarán sus valores individuales.",
+        //         "restore": "Deshacer Cambios",
+        //         "noMulti": "Este registro puede ser editado individualmente, pero no como parte de un grupo."
+        //       }
+        //     }
+        //   } ,
+        "columns":[
+            {"data":"sigla"},
+            {"data":"estudiantes_no_documento"},
+            {"data":"estudiantes_tipo_documento"},
+            {"data":null,
+                "render": (data) => data.estudiantes_nombre + " " + data.estudiantes_apellidos
+            },
+            {"data":"estudiantes_fecha_nacimiento",
+                sortable: false
+
+            },
+            {"data":"estudiantes_telefono",
+                sortable: false
+
+            },
+            {"data":"estudiantes_correo",
+                sortable: false
+            },
+            {"data":"estudiantes_genero",
+                sortable: false},
+            {"data":"estudiantes_estado"},
+            {
+                "defaultContent":"<div class='text-center'><div class='btn-group' role='group' aria-label='Button group'><button id='btnEditar' class='btn btn-primary editbtn' type='button' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'><path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/><path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg>Editar</button><button id='btnEliminar' class='btn btn-info eliminarbtn' type='button' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'><path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg>Eliminar</button></div></div>",
+                //Quito las flechas de busqueda
+                sortable: false
+            }
+            ],
         "ajax":{
             "type":"POST",
             "url": "../src/controllers/fetch_students.php",
             "datatype":'array',
             "dataSrc": "",
-            "cache":false,
+            "cache":false
             // "success":function(response){
             //     console.log(response);
             // }
         },
-        "columns":[
-            {"data":"estudiantes_tipo_documento"},
-            {"data":"estudiantes_no_documento"},
-            // Concatenar 2 columnas en una sola
-            {"data":null,
-                "render": (data) => data.estudiantes_nombre + " " + data.estudiantes_apellidos
-            },
-            {"data":"estudiantes_telefono"},
-            {"data":"estudiantes_correo"},
-            {"data":"estudiantes_genero"},
-            {"data":"estudiantes_estado"},
-            {
-                "defaultContent":"<div class='text-center'><div class='btn-group' role='group' aria-label='Button group'><button id='btnEditar' class='btn btn-primary editbtn' type='button' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'><path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/><path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg>Editar</button><button id='btnEliminar' class='btn btn-info eliminarbtn' type='button' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'><path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg>Eliminar</button></div></div>"
-            }
-            ],
+
+        
+
+ 
     
     });
+
+    //Agregar clase a fila
+    tabla.rows().every(function (){
+        $(this.node()).addClass('.fila');
+    });
+
     //Ocultar columnas
+    tabla.columns(2).visible(false);
+    tabla.columns(4).visible(false); // Fecha de nacimiento
+    tabla.columns(5).visible(false);
     tabla.columns(6).visible(false);
+
+    
+    
 
     $(document).on('click', '.editbtn', function(e) {
 
         // Obtener los datos del estudiante
-        const estudiantes_tipo_documento = $(this).closest('tr').find('td:nth-child(1)').text();
-        const estudiantes_no_documento = $(this).closest('tr').find('td:nth-child(2)').text();
-        const estudiantes_nombre = $(this).closest('tr').find('td:nth-child(3)').text();
-        const estudiantes_apellidos = $(this).closest('tr').find('td:nth-child(4)').text();
-        const estudiantes_fecha_nacimiento = $(this).closest('tr').find('td:nth-child(7)').text();
-        const estudiantes_correo = $(this).closest('tr').find('td:nth-child(6)').text();
-        const estudiantes_estado = $(this).closest('tr').find('td:nth-child(7)').text();
+        // const estudiantes_sigla = $(this).closest('tr').find('td:nth-child(1)').text();
+        // const estudiantes_no_documento = $(this).closest('tr').find('td:nth-child(2)').text();
+        // const estudiantes_nombre = $(this).closest('tr').find('td:nth-child(4)').text();
+        // const estudiantes_tipo_documento = $(this).closest('tr').find('td:nth-child(3)').text();
+        // const estudiantes_apellidos = $(this).closest('tr').find('td:nth-child(5)').text();
+        // const estudiantes_fecha_nacimiento = $(this).closest('tr').find('td:nth-child(6)').text();
+        // const estudiantes_correo = $(this).closest('tr').find('td:nth-child(7)').text();
+        // const estudiantes_estado = $(this).closest('tr').find('td:nth-child(8)').text();
+        
+
+        let boton = $(this).closest('tr');
+
+        //Obtener datos de la fila seleccionada.
+        let rowData = tabla.row(boton).data();
+
         
 
         // Llenar el formulario del modal
-        $('#estudiantes_tipo_documento').val(estudiantes_tipo_documento);
-        $('#estudiantes_no_documento').val(estudiantes_no_documento);
-        $('#estudiantes_nombre').val(estudiantes_nombre);
-        $('#estudiantes_apellidos').val(estudiantes_apellidos);
-        $('#estudiantes_correo').val(estudiantes_correo);
-        $('#estudiantes_estado').val(estudiantes_estado);
-        $('#estado :selected').val(estado).change();
-        console.log('Valor del dropdown de estado:', $('#estado :selected').val());
+        $('#estudiantes_tipo_documento').val(rowData.sigla);
+        $('#estudiantes_no_documento').val(rowData.estudiantes_no_documento);
+        $('#estudiantes_nombre').val(rowData.estudiantes_nombre);
+        $('#estudiantes_apellidos').val(rowData.estudiantes_apellidos);
+        $('#estudiantes_correo').val(rowData.estudiantes_correo);
+        $('#estudiantes_estado').val(rowData.estudiantes_estado);
 
-        console.log({estudiantes_tipo_documento,estudiantes_no_documento,estudiantes_nombre,estudiantes_apellidos,estudiantes_correo,estudiantes_estado,estudiantes_fecha_nacimiento});
         
         // Muestra el modal
         $('#edit-modal').css('display', 'flex');
