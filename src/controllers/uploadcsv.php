@@ -33,7 +33,7 @@ try {
             $stmt = $pdo->prepare($sql);
 
             // Leer y procesar cada fila del archivo
-            while (($row = fgetcsv($handle, 2000, ';')) !== FALSE) {
+            while (($row = fgetcsv($handle, 1000, ';')) !== FALSE) {
                 // Eliminar las columnas vacías al final de la fila
                 $row = array_filter($row, function($value) {
                     return !is_null($value) && $value !== '';

@@ -1,39 +1,6 @@
-<?php
-session_start();
-if (!isset($_SESSION['userdata?'])) {
-    header("Location: ../src/views/login.php");
-    exit();
-}
-$correo = $_SESSION['userdata?'];
-require_once "../config/db.php";
-// Conexión a la base de datos
-try {
-    $stmt = $pdo->prepare("SELECT  u.usuarios_id ,u.usuarios_correo , u.usuarios_nombre, r.roles_nombre, r.roles_id
-                            FROM usuarios u
-                            JOIN roles r ON u.usuarios_rol_id  = r.roles_id
-                            WHERE u.usuarios_correo = :email");
-    $stmt->bindParam(':email', $correo);
-    $stmt->execute();
-
-    // Obtener los datos del usuario
-    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($usuario) {
-        $userID = $usuario['usuarios_id'];
-        $username = $usuario['usuarios_nombre'];
-        $useremail = $usuario['usuarios_correo'];
-        $userRole = $usuario['roles_nombre'];
-        $codeRole = $usuario['roles_id'];
-    } else {
-        // Manejar caso donde no se encuentra el usuario
-        echo "Usuario no encontrado.";
-        exit();
-    }
-
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-if(substr($binperms, 2, 1)>0){
+<?php 
+    require "../src/controllers/session_start.php";
+    if(substr($binperms, 2, 1) == 2){
 ?>
 <html>
 <head>

@@ -13,59 +13,7 @@
                         <div class="txt">Dashboard</div>
                     </a>
                 </li>
-                <?php 
-                    if(substr($binperms, 2, 1) == 1 || substr($binperms, 2, 1) == 2){
-                        
-                ?>
-                <li class="column">
-                    <div class="mainobjectmenu">
-                        <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25" height="25" class="arrow-icon">
-                                    <path fill="white"
-                                        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                                </svg>
-                            </div>
-                            <div class="txt">Usuarios</div>
-                        </a>
-                    </div>
-                    <div class="submenu">
-                        <ul>
-                            <?php
-                                if(substr($binperms, 2, 1) == 2){                            
-                            ?>
-                            <li>
-                                <a href="user_register.php" class="objectsformom">
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25"
-                                            height="25">
-                                            <path fill="white"
-                                                d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
-                                        </svg>
-                                    </div>
-                                    <div class="txt">Registrar usuario</div>
-                                </a>
-                            </li>
-                            <?php
-                            }
-                            ?>
-                            <li>
-                                <a href="consult_students.php" class="objectsformom">
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="22"
-                                            height="22">
-                                            <path fill="white"
-                                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-                                        </svg>
-                                    </div>
-                                    <div class="txt">Consultar usuarios</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
                 <?php
-                    } 
                     if(substr($binperms, 1, 1) == 1 || substr($binperms, 1, 1) == 2){
                         
                 ?>
@@ -117,7 +65,59 @@
                 </li>
                 <?php 
                     }
-                    // if(substr($binperms, 2, 1) == 1 || substr($binperms, 2, 1) == 2){
+                    if(substr($binperms, 2, 1) == 1 || substr($binperms, 2, 1) == 2){
+                        
+                ?>
+                <li class="column">
+                    <div class="mainobjectmenu">
+                        <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25" height="25" class="arrow-icon">
+                                    <path fill="white"
+                                        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                                </svg>
+                            </div>
+                            <div class="txt">Usuarios</div>
+                        </a>
+                    </div>
+                    <div class="submenu">
+                        <ul>
+                            <?php
+                                if(substr($binperms, 2, 1) == 2){                            
+                            ?>
+                            <li>
+                                <a href="user_register.php" class="objectsformom">
+                                    <div class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25"
+                                            height="25">
+                                            <path fill="white"
+                                                d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+                                        </svg>
+                                    </div>
+                                    <div class="txt">Registrar usuario</div>
+                                </a>
+                            </li>
+                            <?php
+                            }
+                            ?>
+                            <li>
+                                <a href="consult_students.php" class="objectsformom">
+                                    <div class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="22"
+                                            height="22">
+                                            <path fill="white"
+                                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                                        </svg>
+                                    </div>
+                                    <div class="txt">Consultar usuarios</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <?php 
+                    }
+                    if(substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2){
                         
                 ?>
                 <li class="column">
@@ -134,6 +134,9 @@
                     </div>
                     <div class="submenu">
                         <ul>
+                            <?php 
+                                if(substr($binperms, 9, 1) == 2){
+                            ?>
                             <li>
                                 <a href="student_register.php" class="objectsformom">
                                     <div class="icon">
@@ -146,6 +149,9 @@
                                     <div class="txt">Registrar estudiante</div>
                                 </a>
                             </li>
+                            <?php
+                            }
+                            ?>
                             <li>
                                 <a href="consult_students.php" class="objectsformom">
                                     <div class="icon">
@@ -158,6 +164,9 @@
                                     <div class="txt">Consultar estudiantes</div>
                                 </a>
                             </li>
+                            <?php 
+                                if(substr($binperms, 9, 1) == 2){
+                            ?>
                             <li>
                                 <a href="consult_students.php" class="objectsformom">
                                     <div class="icon">
@@ -169,9 +178,17 @@
                                     <div class="txt">Registrar grupo de estudiantes</div>
                                 </a>
                             </li>
+                            <?php
+                            }
+                            ?>
                         </ul>
                     </div>
                 </li>
+                <?php 
+                    }
+                    if(substr($binperms, 7, 1) == 1 || substr($binperms, 7, 1) == 2){
+                        
+                ?>
                 <li class="column">
                     <div class="mainobjectmenu">
                         <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
@@ -186,6 +203,9 @@
                     </div>
                     <div class="submenu">
                         <ul>
+                            <?php 
+                                if(substr($binperms, 7, 1) == 2){
+                            ?>
                             <li>
                                 <a href="../src/views/calendar.php" class="objectsformom">
                                     <div class="icon">
@@ -197,6 +217,9 @@
                                     <div class="txt">Registrar docente</div>
                                 </a>
                             </li>
+                            <?php
+                            }
+                            ?>
                             <li>
                                 <a href="consult_students.php" class="objectsformom">
                                     <div class="icon">
@@ -212,6 +235,11 @@
                         </ul>
                     </div>
                 </li>
+                <?php 
+                    }
+                    if(substr($binperms, 5, 1) == 1 || substr($binperms, 5, 1) == 2){
+                        
+                ?>
                 <li class="column">
                     <div class="mainobjectmenu">
                         <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
@@ -226,6 +254,9 @@
                     </div>
                     <div class="submenu">
                         <ul>
+                            <?php 
+                                if(substr($binperms, 5, 1) == 2){
+                            ?>
                             <li>
                                 <a href="../src/views/calendar.php" class="objectsformom">
                                     <div class="icon">
@@ -237,6 +268,9 @@
                                     <div class="txt">Registrar aulas</div>
                                 </a>
                             </li>
+                            <?php
+                            }
+                            ?>
                             <li>
                                 <a href="../src/views/calendar.php" class="objectsformom">
                                     <div class="icon">
@@ -245,12 +279,17 @@
                                                 d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z" />
                                         </svg>
                                     </div>
-                                    <div class="txt">Editar aulas</div>
+                                    <div class="txt">Ver aulas</div>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
+                <?php 
+                    }
+                    if(substr($binperms, 6, 1) == 1 || substr($binperms, 6, 1) == 2){
+                        
+                ?>
                 <li class="column">
                     <div class="mainobjectmenu">
                         <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
@@ -265,6 +304,9 @@
                     </div>
                     <div class="submenu">
                         <ul>
+                            <?php
+                            if(substr($binperms, 6, 1) == 2){
+                            ?>
                             <li>
                                 <a href="../src/views/calendar.php" class="objectsformom">
                                     <div class="icon">
@@ -276,6 +318,9 @@
                                     <div class="txt">Registrar franjas</div>
                                 </a>
                             </li>
+                            <?php
+                            }
+                            ?>
                             <li>
                                 <a href="../src/views/calendar.php" class="objectsformom">
                                     <div class="icon">
@@ -290,6 +335,11 @@
                         </ul>
                     </div>
                 </li>
+                <?php 
+                    }
+                    if(substr($binperms, 3, 1) == 1 || substr($binperms, 3, 1) == 2){
+                        
+                ?>
                 <li class="column">
                     <div class="mainobjectmenu">
                         <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
@@ -329,6 +379,11 @@
                         </ul>
                     </div>
                 </li>
+                <?php 
+                    }
+                    if(substr($binperms, 8, 1) == 1 || substr($binperms, 8, 1) == 2){
+                        
+                ?>
                 <li class="column">
                     <div class="mainobjectmenu">
                         <a href="#" class="objectsformom menu-toggle" data-toggle="submenu">
@@ -358,6 +413,9 @@
                         </ul>
                     </div>
                 </li>
+                <?php
+                }
+                ?>
             </ul>
         </div>
         <div class="mainobjectmenu">
