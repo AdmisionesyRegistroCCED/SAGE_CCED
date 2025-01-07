@@ -71,14 +71,14 @@ switch ($codeRole) {
                 <table id="myTable" class="">
                     <thead>
                         <tr>
-                            <th>Tipo Documento</th>
-                            <th>Nro Documento</th>
+                            <th>Sigla</th>
+                            <th># Documento</th>
                             <th>Tipo Documento Id</th>
                             <!-- Cubre campo nombre y apellido -->
                             <th>Nombre Completo</th>
-                            <th>Fecha nacimiento</th>
+                            <th>Correo</th>
                             <th>Genero</th>
-                            <th>telefono</th>
+                            <th>fecha matricula</th>
                             <th>Correo</th>
                             <th>Dirección</th>
                             <th>Acción</th>

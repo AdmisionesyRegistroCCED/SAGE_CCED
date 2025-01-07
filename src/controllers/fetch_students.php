@@ -29,10 +29,20 @@ if ($conn->connect_error) {
 }
 
 // Inicializa la consulta base
+// $sql = "SELECT 
+// tpd.tipo_documento_sigla AS 'sigla', 
+// est.* FROM estudiantes est 
+// INNER JOIN tipo_documento tpd ON tpd.tipo_documento_id = est.estudiantes_tipo_documento";
+
+
+
 $sql = "SELECT 
 tpd.tipo_documento_sigla AS 'sigla', 
 est.* FROM estudiantes est 
 INNER JOIN tipo_documento tpd ON tpd.tipo_documento_id = est.estudiantes_tipo_documento";
+
+
+$sql = "SELECT tpd.tipo_documento_sigla AS 'sigla', est.estudiantes_no_documento AS 'Nro documento', est.estudiantes_nombre AS 'Nombres', est.estudiantes_apellidos AS 'Apellidos', est.estudiantes_telefono AS 'Teléfono', est.estudiantes_direccion AS 'Dirección', est.estudiantes_fecha_nacimiento AS 'Fecha Nacimiento', est.estudiantes_genero AS 'Genero', est.estudiantes_estado AS 'Estado', est.estudiantes_observaciones AS 'Observaciones' FROM estudiantes est INNER JOIN tipo_documento tpd ON tpd.tipo_documento_id = est.estudiantes_tipo_documento";
 
 
 $result = $conn->query($sql);
@@ -55,7 +65,7 @@ if ($result->num_rows > 0) {
 
             
         $subData[]  = array(
-        "sigla" => $estudiantes_sigla,
+        "estudiantes_sigla" => $estudiantes_sigla,
         "estudiantes_no_documento"=>$estudiantes_no_documento,
         "estudiantes_tipo_documento" => $estudiantes_tipo_documento,
         "estudiantes_nombre" => $estudiantes_nombre,

@@ -28,147 +28,8 @@ $(document).ready(function() {
         "language":{
             "url":"assets/js/es-ES.json"
         },
-        // Idioma español
-        // language: {
-        //     "aria": {
-        //       "sortAscending": "Activar para ordenar la columna de manera ascendente",
-        //       "sortDescending": "Activar para ordenar la columna de manera descendente"
-        //     },
-        //     "autoFill": {
-        //       "cancel": "Cancelar",
-        //       "fill": "Rellene todas las celdas con <i>%d&lt;\\\/i&gt;<\/i>",
-        //       "fillHorizontal": "Rellenar celdas horizontalmente",
-        //       "fillVertical": "Rellenar celdas verticalmentemente"
-        //     },
-        //     "buttons": {
-        //       "collection": "Colección",
-        //       "colvis": "Visibilidad",
-        //       "colvisRestore": "Restaurar visibilidad",
-        //       "copy": "Copiar",
-        //       "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
-        //       "copySuccess": {
-        //         "1": "Copiada 1 fila al portapapeles",
-        //         "_": "Copiadas %d fila al portapapeles"
-        //       },
-        //       "copyTitle": "Copiar al portapapeles",
-        //       "csv": "CSV",
-        //       "excel": "Excel",
-        //       "pageLength": {
-        //         "-1": "Mostrar todas las filas",
-        //         "1": "Mostrar 1 fila",
-        //         "_": "Mostrar %d filas"
-        //       },
-        //       "pdf": "PDF",
-        //       "print": "Imprimir"
-        //     },
-        //     "decimal": ",",
-        //     "emptyTable": "No se encontraron resultados",
-        //     "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-        //     "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-        //     "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-        //     "infoThousands": ",",
-        //     "lengthMenu": "Mostrar _MENU_ registros",
-        //     "loadingRecords": "Cargando...",
-        //     "paginate": {
-        //       "first": "Primero",
-        //       "last": "Último",
-        //       "next": "Siguiente",
-        //       "previous": "Anterior"
-        //     },
-        //     "processing": "Procesando...",
-        //     "search": "Buscar:",
-        //     "searchBuilder": {
-        //       "add": "Añadir condición",
-        //       "button": {
-        //         "0": "Constructor de búsqueda",
-        //         "_": "Constructor de búsqueda (%d)"
-        //       },
-        //       "clearAll": "Borrar todo",
-        //       "condition": "Condición",
-        //       "data": "Data",
-        //       "deleteTitle": "Eliminar regla de filtrado",
-        //       "leftTitle": "Criterios anulados",
-        //       "logicAnd": "Y",
-        //       "logicOr": "O",
-        //       "rightTitle": "Criterios de sangría",
-        //       "title": {
-        //         "0": "Constructor de búsqueda",
-        //         "_": "Constructor de búsqueda (%d)"
-        //       },
-        //       "value": "Valor"
-        //     },
-        //     "searchPanes": {
-        //       "clearMessage": "Borrar todo",
-        //       "collapse": {
-        //         "0": "Paneles de búsqueda",
-        //         "_": "Paneles de búsqueda (%d)"
-        //       },
-        //       "count": "{total}",
-        //       "countFiltered": "{shown} ({total}",
-        //       "emptyPanes": "Sin paneles de búsqueda",
-        //       "loadMessage": "Cargando paneles de búsqueda",
-        //       "title": "Filtros Activos - %d"
-        //     },
-        //     "select": {
-        //       "1": "%d fila seleccionada",
-        //       "_": "%d filas seleccionadas",
-        //       "cells": {
-        //         "1": "1 celda seleccionada",
-        //         "_": "$d celdas seleccionadas"
-        //       },
-        //       "columns": {
-        //         "1": "1 columna seleccionada",
-        //         "_": "%d columnas seleccionadas"
-        //       }
-        //     },
-        //     "thousands": ",",
-        //     "zeroRecords": "No se encontraron resultados",
-        //     "datetime": {
-        //       "previous": "Anterior",
-        //       "next": "Proximo",
-        //       "hours": "Horas",
-        //       "minutes": "Minutos",
-        //       "seconds": "Segundos",
-        //       "unknown": "-",
-        //       "amPm": [
-        //         "am",
-        //         "pm"
-        //       ]
-        //     },
-        //     "editor": {
-        //       "close": "Cerrar",
-        //       "create": {
-        //         "button": "Nuevo",
-        //         "title": "Crear Nuevo Registro",
-        //         "submit": "Crear"
-        //       },
-        //       "edit": {
-        //         "button": "Editar",
-        //         "title": "Editar Registro",
-        //         "submit": "Actualizar"
-        //       },
-        //       "remove": {
-        //         "button": "Eliminar",
-        //         "title": "Eliminar Registro",
-        //         "submit": "Eliminar",
-        //         "confirm": {
-        //           "_": "¿Está seguro que desea eliminar %d filas?",
-        //           "1": "¿Está seguro que desea eliminar 1 fila?"
-        //         }
-        //       },
-        //       "error": {
-        //         "system": "Ha ocurrido un error en el sistema (<a target=\"\\\" rel=\"\\ nofollow\" href=\"\\\">Más información&lt;\\\\\\\/a&gt;).&lt;\\\/a&gt;<\/a>"
-        //       },
-        //       "multi": {
-        //         "title": "Múltiples Valores",
-        //         "info": "Los elementos seleccionados contienen diferentes valores para este registro. Para editar y establecer todos los elementos de este registro con el mismo valor, hacer click o tap aquí, de lo contrario conservarán sus valores individuales.",
-        //         "restore": "Deshacer Cambios",
-        //         "noMulti": "Este registro puede ser editado individualmente, pero no como parte de un grupo."
-        //       }
-        //     }
-        //   } ,
         "columns":[
-            {"data":"sigla"},
+            {"data":"estudiantes_sigla"},
             {"data":"estudiantes_no_documento"},
             {"data":"estudiantes_tipo_documento"},
             {"data":null,
@@ -217,13 +78,16 @@ $(document).ready(function() {
     });
 
     //Ocultar 
+    tabla.columns(0).visible(true); // Sigla
     tabla.columns(1).visible(true); //Numero de documento
-    tabla.columns(2).visible(true); // Tipo documento
+    tabla.columns(2).visible(false); // Tipo documento
     tabla.columns(3).visible(true); // Nombres completos
-    tabla.columns(4).visible(true); // Correo
+    tabla.columns(4).visible(false); // Correo
     tabla.columns(5).visible(false); // genero
     tabla.columns(6).visible(false); // Fecha de matricula
-    tabla.columns(0).visible(true)
+    tabla.columns(7).visible(false); // Estado
+    tabla.columns(8).visible(true); // 
+
 
     
     
@@ -236,7 +100,7 @@ $(document).ready(function() {
         let rowData = tabla.row(boton).data();
         
         // Llenar el formulario del modal
-        $('#estudiantes_tipo_documento').val(rowData.sigla);
+        $('#estudiantes_tipo_documento').val(rowData.estudiantes_sigla);
         $('#estudiantes_no_documento').val(rowData.estudiantes_no_documento);
         $('#estudiantes_nombre').val(rowData.estudiantes_nombre);
         $('#estudiantes_apellidos').val(rowData.estudiantes_apellidos);
