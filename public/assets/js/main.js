@@ -174,7 +174,7 @@ $(document).ready(function() {
             {"data":null,
                 "render": (data) => data.estudiantes_nombre + " " + data.estudiantes_apellidos
             },
-            {"data":"estudiantes_fecha_nacimiento",
+            {"data":"estudiantes_correo",
                 sortable: false
 
             },
@@ -182,7 +182,7 @@ $(document).ready(function() {
                 sortable: false
 
             },
-            {"data":"estudiantes_correo",
+            {"data":"estudiantes_fecha_nacimiento",
                 sortable: false
             },
             {"data":"estudiantes_genero",
@@ -216,43 +216,36 @@ $(document).ready(function() {
         $(this.node()).addClass('.fila');
     });
 
-    //Ocultar columnas
-    tabla.columns(2).visible(false);
-    tabla.columns(4).visible(false); // Fecha de nacimiento
-    tabla.columns(5).visible(false);
-    tabla.columns(6).visible(false);
+    //Ocultar 
+    tabla.columns(1).visible(true); //Numero de documento
+    tabla.columns(2).visible(true); // Tipo documento
+    tabla.columns(3).visible(true); // Nombres completos
+    tabla.columns(4).visible(true); // Correo
+    tabla.columns(5).visible(false); // genero
+    tabla.columns(6).visible(false); // Fecha de matricula
+    tabla.columns(0).visible(true)
 
     
     
 
     $(document).on('click', '.editbtn', function(e) {
 
-        // Obtener los datos del estudiante
-        // const estudiantes_sigla = $(this).closest('tr').find('td:nth-child(1)').text();
-        // const estudiantes_no_documento = $(this).closest('tr').find('td:nth-child(2)').text();
-        // const estudiantes_nombre = $(this).closest('tr').find('td:nth-child(4)').text();
-        // const estudiantes_tipo_documento = $(this).closest('tr').find('td:nth-child(3)').text();
-        // const estudiantes_apellidos = $(this).closest('tr').find('td:nth-child(5)').text();
-        // const estudiantes_fecha_nacimiento = $(this).closest('tr').find('td:nth-child(6)').text();
-        // const estudiantes_correo = $(this).closest('tr').find('td:nth-child(7)').text();
-        // const estudiantes_estado = $(this).closest('tr').find('td:nth-child(8)').text();
-        
-
         let boton = $(this).closest('tr');
 
         //Obtener datos de la fila seleccionada.
         let rowData = tabla.row(boton).data();
-
         
-
         // Llenar el formulario del modal
         $('#estudiantes_tipo_documento').val(rowData.sigla);
         $('#estudiantes_no_documento').val(rowData.estudiantes_no_documento);
         $('#estudiantes_nombre').val(rowData.estudiantes_nombre);
         $('#estudiantes_apellidos').val(rowData.estudiantes_apellidos);
+        $('#estudiantes_fecha_nacimiento').val(rowData.estudiantes_fecha_nacimiento);
         $('#estudiantes_correo').val(rowData.estudiantes_correo);
+        $('#estudiantes_genero').val(rowData.estudiantes_genero);
         $('#estudiantes_estado').val(rowData.estudiantes_estado);
 
+        console.log({rowData});
         
         // Muestra el modal
         $('#edit-modal').css('display', 'flex');

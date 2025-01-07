@@ -71,17 +71,17 @@ switch ($codeRole) {
                 <table id="myTable" class="">
                     <thead>
                         <tr>
-                            <th>sigla</th>
-                            <th>Numero de documento</th>
-                            <th>tipo Documento</th>
+                            <th>Tipo Documento</th>
+                            <th>Nro Documento</th>
+                            <th>Tipo Documento Id</th>
                             <!-- Cubre campo nombre y apellido -->
-                            <th>Nombre completo</th>
+                            <th>Nombre Completo</th>
                             <th>Fecha nacimiento</th>
                             <th>Genero</th>
-                            <th>Teléfono</th>
+                            <th>telefono</th>
                             <th>Correo</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
+                            <th>Dirección</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody id="">
@@ -126,8 +126,8 @@ switch ($codeRole) {
                             <input type="text" name="estudiantes_apellidos" id="estudiantes_apellidos">
                     </div>
                     <div>
-                        <label for="dob">Fecha de matricula</label>
-                        <input type="date" id="dob" name="dob" required>
+                        <label for="estudiantes_fecha_nacimiento">Fecha de nacimiento</label>
+                        <input type="date" id="estudiantes_fecha_nacimiento" name="estudiantes_fecha_nacimiento" required>
                     </div>
                     
                     <div>
@@ -135,8 +135,9 @@ switch ($codeRole) {
                         <input type="email" id="estudiantes_correo" name="phone" required>
                     </div>
                     <div>
-                        <label for="gender">Genero</label>
-                        <select id="gender" name="gender" required>
+                        <label for="estudiantes_genero">Genero</label>
+                        <select id="estudiantes_genero" name="estudiantes_genero" required>
+                            <option value="Nulo">Nulo</option>                        
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>                        
                         </select>
@@ -144,9 +145,9 @@ switch ($codeRole) {
                     <div>            
                         <label for="estudiantes_estado">Estado</label>
                         <select name="estudiantes_estado" id="estudiantes_estado" required>
-                            <option value="activo">Activo</option>
-                            <option value="inactivo">Inactivo</option>
-                            <option value="egresado">Egresado</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                            <option value="Egresado">Egresado</option>
                         </select>
                     </div>
                     <br>
