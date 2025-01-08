@@ -55,9 +55,11 @@ $(document).ready(function() {
                 "dataSrc": "",
                 "cache": false,
                 // "success":function(response){
-                //     console.log("hello world".response);
+                //     console.log(response);
                 // }
+                
             },
+            
     });
 
     $(document).on('click', '.editbtn', function(e) {
@@ -81,8 +83,6 @@ $(document).ready(function() {
         $('#estudiantes_telefono').val(rowData.telefono);
         $('#estudiantes_estado').val(rowData.estado);
         $('#estudiantes_observaciones').val(rowData.observaciones);
-
-
         
         // Muestra el modal
         $('#edit-modal').css('display', 'flex');
@@ -138,26 +138,90 @@ $(document).ready(function() {
         $('#edit-modal').css('display', 'none');
     });
 
-    $(document).on('click','.eliminarbtn', function (e) {
-        confirm("¿Esta seguro que desea Inhabilitar este registro?");
+    //Inhabilitar estudiante
+    $(document).on('click','#btnEliminar', function (f) {
+        
+        f.preventDefault();
+        f.stopPropagation();
+
+        let fila = $(this);
+        let inhabilitarAlert = confirm("¿Esta seguro que desea Inhabilitar este registro?");
+
+        if (inhabilitarAlert) {
+            $.ajax({
+                url: '../src/controllers/delete_students.php',  
+                type: 'POST',                 
+                data: {
+                    estudiantes_estado: estudiantes_estado,
+                    estudiantes_no_documento: estudiantes_no_documento
+                },                  
+                dataType: 'json', 
+                cache:false,           
+                success: function(data) { 
+                    tabla.row(fila.parents("tr")).remove().draw();
+                },
+                error: function(xhr, status, error) {  
+                    callback(error, null);           
+                }
+            });
+        }
+
+
+        
+       
+    })
+
+    //Registrar estudiante
+    $('#formRegistrarEstudiante').submit(function(e){
         e.preventDefault();
-        e.stopPropagation();
+
+        let estudiantes_nombre = $('#estudiantes_nombre').val();
+        let estudiantes_apellidos = $('#estudiantes_apellidos').val();
+        let estudiante_tipo_documento = $('#estudiante_tipo_documento').val();
+        let estudiantes_no_documento = $('#estudiantes_no_documento').val();
+        let estudiantes_fecha_nacimiento = $('#estudiantes_fecha_nacimiento').val();
+        let estudiantes_correo = $('#estudiantes_correo').val();
+        let estudiantes_estado = $('#estudiantes_estado').val();
+        let estudiantes_genero = $('#estudiantes_genero').val();
+        let estudiantes_telefono = $('#estudiantes_telefono').val();
+
+
+
+        // {estudiantes_nombre,
+        //     estudiantes_apellidos,
+        //     estudiante_tipo_documento,
+        //     estudiantes_no_documento,
+        //     estudiantes_fecha_nacimiento,
+        //     estudiantes_correo,
+        //     estudiantes_estado,
+        //     estudiantes_genero}
+
 
         $.ajax({
-            "url":"../src/controllers/delete_students.php",
-            "type":"POST",
-            "datatype": 'array',
-            "dataSrc": "",
-            "cache": false,
-            "data":{
+            url:"",
+            type:"POST",
+            data:{
+                estudiantes_nombre:estudiantes_nombre,
+                estudiantes_apellidos:estudiantes_apellidos,
+                estudiante_tipo_documento:estudiante_tipo_documento,
+                estudiantes_no_documento:estudiantes_no_documento,
+                estudiantes_fecha_nacimiento:estudiantes_fecha_nacimiento,
+                estudiantes_correo:estudiantes_correo,
                 estudiantes_estado:estudiantes_estado,
-                estudiantes_no_documento:estudiantes_no_documento
+                estudiantes_genero:estudiantes_genero,
+                estudiantes_telefono: estudiantes_telefono
             },
-            "success":function(response){
-                alert("Registro eliminado correctamente");
-                tabla.ajax.reload();
+            datatype:"json",
+            cache:false,
+            success:function (data,success){
+                if(data){
+                    console.log("Registro exitoso"+success);
+                }
             }
+
         });
-    })
+
+    });
+
 
 });

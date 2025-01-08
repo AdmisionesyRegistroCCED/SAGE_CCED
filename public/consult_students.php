@@ -169,7 +169,6 @@ switch ($codeRole) {
 
     <!-- <script src="assets/js/datatable.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <!-- <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script> -->
 
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
 

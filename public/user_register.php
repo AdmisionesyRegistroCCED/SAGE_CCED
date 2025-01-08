@@ -31,7 +31,7 @@
                 </div>
                 <!-- <p class="infoinmain_topp">Esta es tu página de inicio</p> -->
                 <hr><br>
-                <form action="../src/controllers/sql_register_user.php" method="post">
+                <form action="../src/controllers/sql_register_user.php" method="post" id="formRegistrarEstudiante">
                 <div class="container_register">
                     <div>
                         <label for="fname">Nombre de usuario</label>

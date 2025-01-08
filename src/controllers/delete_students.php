@@ -15,6 +15,9 @@ if($conn->connect_error){
 }
 
 $estudiantes_estado = $_POST['estudiantes_estado'];
+if($estudiantes_estado){
+    $estudiantes_estado = "Inhabilitado";
+}
 $estudiantes_no_documento = $_POST['estudiantes_no_documento'];
 
 $sql = "UPDATE estudiantes SET estado='$estudiantes_estado' WHERE estudiantes_no_documento = '$estudiantes_no_documento";
