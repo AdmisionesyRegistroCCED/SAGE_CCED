@@ -28,43 +28,36 @@ $(document).ready(function() {
         "language":{
             "url":"assets/js/es-ES.json"
         },
-        "columns":[
-            {"data":"estudiantes_sigla"},
-            {"data":"estudiantes_no_documento"},
-            {"data":"estudiantes_tipo_documento"},
-            {"data":null,
-                "render": (data) => data.estudiantes_nombre + " " + data.estudiantes_apellidos
-            },
-            {"data":"estudiantes_correo",
-                sortable: false
-
-            },
-            {"data":"estudiantes_telefono",
-                sortable: false
-
-            },
-            {"data":"estudiantes_fecha_nacimiento",
-                sortable: false
-            },
-            {"data":"estudiantes_genero",
-                sortable: false},
-            {"data":"estudiantes_estado"},
+        "columns": [
+            { "data": "sigla" },
+            { "data": "nroDocumento" },
             {
-                "defaultContent":"<div class='text-center'><div class='btn-group' role='group' aria-label='Button group'><button id='btnEditar' class='btn btn-primary editbtn' type='button' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'><path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/><path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg>Editar</button><button id='btnEliminar' class='btn btn-info eliminarbtn' type='button' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'><path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg>Eliminar</button></div></div>",
+                "render": (data) => data.nombre + " " + data.apellido,
+                "data": null
+            },
+            {
+                "data": "telefono",
+                sortable: false
+            },
+            {
+                "data": "estado"
+            },
+            {
+                "defaultContent": "<div class='text-center'><div class='btn-group' role='group' aria-label='Button group'><button id='btnEditar' class='btn btn-primary editbtn' type='button' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'><path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/><path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg></button><button id='btnEliminar' class='btn btn-info eliminarbtn' type='button' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'><path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></button></div></div>",
                 //Quito las flechas de busqueda
                 sortable: false
             }
-            ],
-        "ajax":{
-            "type":"POST",
-            "url": "../src/controllers/fetch_students.php",
-            "datatype":'array',
-            "dataSrc": "",
-            "cache":false
-            // "success":function(response){
-            //     console.log(response);
-            // }
-        },
+        ],
+            "ajax": {
+                "type": "POST",
+                "url": "../src/controllers/fetch_students.php",
+                "datatype": 'array',
+                "dataSrc": "",
+                "cache": false
+                // "success":function(response){
+                //     console.log(response);
+                // }
+            },
 
         
 
@@ -78,15 +71,15 @@ $(document).ready(function() {
     });
 
     //Ocultar 
-    tabla.columns(0).visible(true); // Sigla
-    tabla.columns(1).visible(true); //Numero de documento
-    tabla.columns(2).visible(false); // Tipo documento
-    tabla.columns(3).visible(true); // Nombres completos
-    tabla.columns(4).visible(false); // Correo
-    tabla.columns(5).visible(false); // genero
-    tabla.columns(6).visible(false); // Fecha de matricula
-    tabla.columns(7).visible(false); // Estado
-    tabla.columns(8).visible(true); // 
+    //tabla.columns(0).visible(true); // Sigla
+    //tabla.columns(1).visible(true); //Numero de documento
+    //tabla.columns(2).visible(false); // Tipo documento
+    //tabla.columns(3).visible(true); // Nombres completos
+    //tabla.columns(4).visible(false); // Correo
+    //tabla.columns(5).visible(false); // genero
+    //tabla.columns(6).visible(false); // Fecha de matricula
+    //tabla.columns(7).visible(false); // Estado
+    //tabla.columns(8).visible(true); // 
 
 
     
@@ -100,16 +93,19 @@ $(document).ready(function() {
         let rowData = tabla.row(boton).data();
         
         // Llenar el formulario del modal
-        $('#estudiantes_tipo_documento').val(rowData.estudiantes_sigla);
-        $('#estudiantes_no_documento').val(rowData.estudiantes_no_documento);
-        $('#estudiantes_nombre').val(rowData.estudiantes_nombre);
-        $('#estudiantes_apellidos').val(rowData.estudiantes_apellidos);
-        $('#estudiantes_fecha_nacimiento').val(rowData.estudiantes_fecha_nacimiento);
-        $('#estudiantes_correo').val(rowData.estudiantes_correo);
-        $('#estudiantes_genero').val(rowData.estudiantes_genero);
-        $('#estudiantes_estado').val(rowData.estudiantes_estado);
+        $('#estudiantes_tipo_documento').val(rowData.sigla);
+        $('#estudiantes_no_documento').val(rowData.nroDocumento);
+        $('#estudiantes_nombre').val(rowData.nombre);
+        $('#estudiantes_apellidos').val(rowData.apellido);
+        $('#estudiantes_fecha_nacimiento').val(rowData.fechaNacimiento);
+        $('#estudiantes_correo').val(rowData.correo);
+        $('#estudiantes_genero').val(rowData.genero);
+        $('#estudiantes_estado').val(rowData.estado);
+        $('#estudiantes_observaciones').val(rowData.observaciones);
 
-        console.log({rowData});
+
+
+        console.log({ rowData });
         
         // Muestra el modal
         $('#edit-modal').css('display', 'flex');
