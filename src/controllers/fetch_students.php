@@ -8,19 +8,10 @@ $correo = $_SESSION['userdata?'];
 
 require_once "../../config/db.php";
 
-//Columnas tabla estudiantes
-
-
-
 // Verificar conexión
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-//$sql = "SELECT 
-//tpd.tipo_documento_sigla AS 'sigla', 
-//est.* FROM estudiantes est 
-//INNER JOIN tipo_documento tpd ON tpd.tipo_documento_id = est.//estudiantes_tipo_documento";
 
 
 $sql = "SELECT tpd.tipo_documento_sigla AS 'sigla',
@@ -77,10 +68,6 @@ if ($result->num_rows > 0) {
 
     echo json_encode($subData);
 } 
-
-//else {
-    //$output .= "<tr><td colspan='9'>No se encontraron estudiantes.</td></tr>";
-//}
 
 $conn->close(); // Cerrar la conexión
 

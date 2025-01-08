@@ -24,7 +24,7 @@ $(document).ready(function() {
         //data: null,
         "responsive": true,
         "processing": true,
-        "serverSide": false,
+        "serverSide": true,
         "language":{
             "url":"assets/js/es-ES.json"
         },
@@ -53,26 +53,17 @@ $(document).ready(function() {
                 "url": "../src/controllers/fetch_students.php",
                 "datatype": 'array',
                 "dataSrc": "",
-                "cache": false
+                "cache": false,
                 // "success":function(response){
-                //     console.log(response);
+                //     console.log("hello world".response);
                 // }
             },
-
-        
-
- 
-    
     });
-
-    //Agregar clase a fila
-    tabla.rows().every(function (){
-        $(this.node()).addClass('.fila');
-    });
-    
-    
 
     $(document).on('click', '.editbtn', function(e) {
+
+        e.preventDefault();
+        e.stopPropagation();
 
         let boton = $(this).closest('tr');
 
@@ -87,67 +78,52 @@ $(document).ready(function() {
         $('#estudiantes_fecha_nacimiento').val(rowData.fechaNacimiento);
         $('#estudiantes_correo').val(rowData.correo);
         $('#estudiantes_genero').val(rowData.genero);
+        $('#estudiantes_telefono').val(rowData.telefono);
         $('#estudiantes_estado').val(rowData.estado);
         $('#estudiantes_observaciones').val(rowData.observaciones);
 
 
-
-        console.log({ rowData });
         
         // Muestra el modal
         $('#edit-modal').css('display', 'flex');
     });
 
-     // Cierra el modal al hacer clic en "x"
-    $('.close').click(function() {
-        $('#edit-modal').css('display', 'none');
-    });
-
-    // Cierra el modal si se hace clic fuera de él
-    $(window).click(function(event) {
-        if ($(event.target).is('#edit-modal')) {
-            $('#edit-modal').css('display', 'none');
-        }
-    });
-
-    $(document).on('click','.eliminarbtn', function (e) {
-        console.log('botón de eliminar');
-        e.preventDefault();
-    })
-
-    // Manejo del envío del formulario
+    
+    // Actualizar datos
     $('#edit-form').submit(function(e) {
         e.preventDefault();
 
         // Captura de datos
-        const typedni = $('#dni_type').val();
-        const dni = $('#dni').val();
-        const firstName = $('#fname').val();
-        const lastName = $('#lname').val();
-        const dob = $('#dob').val();
-        const gender = $('#gender').val();
-        const phone = $('#phone').val();
-        const email = $('#email').val();
-        const status = $('#status').val();
+        const estudiantes_tipo_documento = $('#estudiantes_tipo_documento').val();
+        const estudiantes_no_documento = $('#estudiantes_no_documento').val();
+        const estudiantes_nombre = $('#estudiantes_nombre').val();
+        const estudiantes_apellidos = $('#estudiantes_apellidos').val();
+        const estudiantes_fecha_nacimiento = $('#estudiantes_fecha_nacimiento').val();
+        const estudiantes_telefono = $('#estudiantes_telefono').val();
+        const estudiantes_genero = $('#estudiantes_genero').val();
+        const estudiantes_correo = $('#estudiantes_correo').val();
+        const estudiantes_estado = $('#estudiantes_estado').val();
+        const estudiantes_observaciones = $('#estudiantes_observaciones').val();
 
         // Enviar los datos al servidor usando AJAX
         $.ajax({
             url: '../src/controllers/update_students.php', 
             type: 'POST',
             data: {
-                dni_type: typedni,
-                dni: dni,
-                fname: firstName,
-                lname: lastName,
-                dob: dob,
-                gender: gender,
-                phone: phone,
-                email: email,
-                status: status
+                estudiantes_tipo_documento: estudiantes_tipo_documento,
+                estudiantes_no_documento: estudiantes_no_documento,
+                estudiantes_nombre: estudiantes_nombre,
+                estudiantes_apellidos: estudiantes_apellidos,
+                estudiantes_fecha_nacimiento: estudiantes_fecha_nacimiento,
+                estudiantes_genero: estudiantes_genero,
+                estudiantes_telefono: estudiantes_telefono,
+                estudiantes_correo: estudiantes_correo,
+                estudiantes_estado: estudiantes_estado,
+                estudiantes_observaciones:estudiantes_observaciones
             },
             success: function(response) {
-                alert(response); // Muestra un mensaje de éxito
-                fetchStudents(); // Actualiza la tabla
+                alert("Registro actualizado correctamente."); // Muestra un mensaje de éxito
+                tabla.ajax.reload(); // Actualiza la tabla
                 $('#edit-modal').css('display', 'none'); // Cierra el modal
             },
             error: function(xhr, status, error) {
@@ -156,4 +132,32 @@ $(document).ready(function() {
             }
         });
     });
+
+    // Cierra el modal al hacer clic en "x"
+    $('.close').click(function() {
+        $('#edit-modal').css('display', 'none');
+    });
+
+    $(document).on('click','.eliminarbtn', function (e) {
+        confirm("¿Esta seguro que desea Inhabilitar este registro?");
+        e.preventDefault();
+        e.stopPropagation();
+
+        $.ajax({
+            "url":"../src/controllers/delete_students.php",
+            "type":"POST",
+            "datatype": 'array',
+            "dataSrc": "",
+            "cache": false,
+            "data":{
+                estudiantes_estado:estudiantes_estado,
+                estudiantes_no_documento:estudiantes_no_documento
+            },
+            "success":function(response){
+                alert("Registro eliminado correctamente");
+                tabla.ajax.reload();
+            }
+        });
+    })
+
 });

@@ -127,8 +127,12 @@ switch ($codeRole) {
                     </div>
 
                     <div>
-                        <label for="phone">Correo electronico</label>
-                        <input type="email" id="estudiantes_correo" name="phone" required>
+                        <label for="estudiantes_correo">Correo electronico</label>
+                        <input type="email" id="estudiantes_correo" name="estudiantes_correo" required>
+                    </div>
+                    <div>
+                        <label for="">Teléfono</label>
+                        <input type="number" name="estudiantes_telefono" id="estudiantes_telefono">
                     </div>
                     <div>
                         <label for="estudiantes_genero">Genero</label>
