@@ -69,19 +69,6 @@ $(document).ready(function() {
     tabla.rows().every(function (){
         $(this.node()).addClass('.fila');
     });
-
-    //Ocultar 
-    //tabla.columns(0).visible(true); // Sigla
-    //tabla.columns(1).visible(true); //Numero de documento
-    //tabla.columns(2).visible(false); // Tipo documento
-    //tabla.columns(3).visible(true); // Nombres completos
-    //tabla.columns(4).visible(false); // Correo
-    //tabla.columns(5).visible(false); // genero
-    //tabla.columns(6).visible(false); // Fecha de matricula
-    //tabla.columns(7).visible(false); // Estado
-    //tabla.columns(8).visible(true); // 
-
-
     
     
 
