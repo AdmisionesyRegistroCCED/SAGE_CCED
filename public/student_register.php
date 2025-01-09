@@ -36,21 +36,20 @@
                         <input type="submit" value="Subir">
                     </form> -->
                 </div>
-                <!-- <p class="infoinmain_topp">Esta es tu página de inicio</p> -->
                 <hr><br>
-                <form action="../src/controllers/sql_register_student.php" method="post">
+                <form action="" method="post" id="formRegistrarEstudiante">
                 <div class="container_register">
                     <div>
-                        <label for="fname">Nombres</label>
-                        <input type="text" id="fname" name="fname" required>
+                        <label for="estudiantes_nombre">Nombres</label>
+                        <input type="text" id="estudiantes_nombre" name="fname" required>
                     </div>
                     <div>
                         <label for="lname">Apellidos</label>
-                        <input type="text" id="lname" name="lname" required>
+                        <input type="text" id="estudiantes_apellidos" name="lname" required>
                     </div>
                     <div>
-                        <label for="dni_type">Tipo de documento</label>
-                        <select name="dni_type" id="dni_type" required>
+                        <label for="estudiantes_tipo_documento">Tipo de documento</label>
+                        <select name="dni_type" id="estudiante_tipo_documento" required>
                             <option value="none">Seleccione una opción</option>
                             <option value="ti">Tarjeta de identidad</option>
                             <option value="cc">Cedula de ciudadania</option>
@@ -58,38 +57,43 @@
                         </select>
                     </div>
                     <div>
-                        <label for="dni">Numero de documento</label>
-                        <input type="number" id="dni" name="dni" required>
+                        <label for="estudiantes_no_documento">Numero de documento</label>
+                        <input type="number" id="estudiantes_no_documento" name="dni" required>
+                    </div>
+                    <div> 
+                        <label for="estudiantes_fecha_nacimiento">Fecha de nacimiento</label>
+                        <input type="date" id="estudiantes_fecha_nacimiento" name="fecha_nacimiento" required>
                     </div>
                     <div>
-                        <label for="dob">Fecha de nacimiento</label>
-                        <input type="date" id="dob" name="dob" required>
-                    </div>
-                    <div>
-                        <label for="gender">Genero</label>
-                        <select id="gender" name="gender" required>
-                            <option value="none">Seleccione una opción</option>
+                        <label for="estudiantes_genero">Genero</label>
+                        <select id="estudiantes_genero" name="gender" required>
+                            <option value="Nulo">Seleccione una opción</option>
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>                        
                         </select>
                     </div>
                     <div>
-                        <label for="phone">Numero de telefono</label>
-                        <input type="text" id="phone" name="phone" required>
+                        <label for="estudiantes_telefono">Numero de telefono</label>
+                        <input type="text" id="estudiantes_telefono" name="phone" required>
                     </div>
                     <div>
-                        <label for="email">Correo electronico</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="estudiantes_correo">Correo electronico</label>
+                        <input type="email" id="estudiantes_correo" name="email" required>
                     </div>
                     <div>
-                        <label for="status">Estado</label>
-                        <select name="status" id="status" required>
+                        <label for="estudiantes_estado">Estado</label>
+                        <select name="status" id="estudiantes_estado" required>
                             <option value="activo">Activo</option>
                             <option value="inactivo">Inactivo</option>
+                            <option value="Egresado">Egresado</option>
                         </select>
                     </div>
+                    <div>
+                        <label for="estudiantes_telefono">Teléfono</label>
+                        <input type="number" name="" id="estudiantes_telefono" min="0" required>
+                    </div>
                     <div class="full-width">
-                        <button type="submit" class="submit-btn">Registrar</button>
+                        <button type="submit" class="submit-btn" id="btnRegistrar">Registrar</button>
                     </div>
                 </div>
             </form>
@@ -111,6 +115,9 @@
             </footer>
         </div>
     </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
 </body>
 </html>
 <div id="previewModal" style="display: none;">

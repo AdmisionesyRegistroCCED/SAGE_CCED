@@ -36,7 +36,7 @@ if(substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2){
         <?php require_once "../src/models/header.php" ?>
     </header>
     <main>
-    <?php 
+   <?php 
 
 require_once "../src/models/leftmenu.php";
 
@@ -49,12 +49,11 @@ require_once "../src/models/leftmenu.php";
                 <table id="myTable" class="">
                     <thead>
                         <tr>
+                            <th>Tipo documento</th>
                             <th>Documento</th>
-                            <th>Numero de documento</th>
+                            <!-- Cubre campo nombre y apellido -->
                             <th>Nombre completo</th>
                             <th>Teléfono</th>
-                            <th>Correo</th>
-                            <th>Genero</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
@@ -75,51 +74,64 @@ require_once "../src/models/leftmenu.php";
                     <h2>Editar Estudiante</h2>
                     <form id="edit-form">
                     <div>
-                        <label for="fname">Tipo de documento</label>
+                        <!-- <label for="fname">Tipo de documento</label>
                         <input type="text" id="estudiantes_tipo_documento" name="fname" required>
+                     -->
+                        <label for="estudiantes_tipo_documento">Tipo de documento</label>
+                        <select name="estudiantes_tipo_documento" id="estudiantes_tipo_documento" required>
+                            <option value="ti">Tarjeta de identidad</option>
+                            <option value="cc">Cedula de ciudadania</option>
+                            <option value="ce">Cedula de extranjeria</option>
+                        </select>
+
+
                     </div>
                     <div>
                         <label for="lname">Nro documento</label>
                         <input type="text" id="estudiantes_no_documento" name="lname" required>
                     </div>
-                    <!-- <div>
-                        <label for="dni_type">Tipo de documento</label>
-                        <select name="dni_type" id="dni_type" required>
-                            <option value="ti">Tarjeta de identidad</option>
-                            <option value="cc">Cedula de ciudadania</option>
-                            <option value="ce">Cedula de extranjeria</option>
-                        </select>
-                    </div> -->
+
                     <div>
                         <label for="dni">Nombre</label>
-                        <input type="text" id="estudiantes_nombre" name="dni" required>
+                        <input type="text" id="estudiantes_nombre" name="estudiantes_nombre" required>
                     </div>
                     <div>
                         <label for="apellido">Apellidos</label>
                             <input type="text" name="estudiantes_apellidos" id="estudiantes_apellidos">
                     </div>
                     <div>
-                        <label for="dob">Fecha de matricula</label>
-                        <input type="date" id="dob" name="dob" required>
+                        <label for="estudiantes_fecha_nacimiento">Fecha de nacimiento</label>
+                        <input type="date" id="estudiantes_fecha_nacimiento" name="estudiantes_fecha_nacimiento" required>
                     </div>
-                    
+
                     <div>
-                        <label for="phone">Correo electronico</label>
-                        <input type="email" id="estudiantes_correo" name="phone" required>
+                        <label for="estudiantes_correo">Correo electronico</label>
+                        <input type="email" id="estudiantes_correo" name="estudiantes_correo" required>
                     </div>
                     <div>
-                        <label for="gender">Genero</label>
-                        <select id="gender" name="gender" required>
+                        <label for="">Teléfono</label>
+                        <input type="number" name="estudiantes_telefono" id="estudiantes_telefono">
+                    </div>
+                    <div>
+                        <label for="estudiantes_genero">Genero</label>
+                        <select id="estudiantes_genero" name="estudiantes_genero" required>
+                            <option value="Nulo">Nulo</option>
                             <option value="Masculino">Masculino</option>
-                            <option value="Femenino">Femenino</option>                        
+                            <option value="Femenino">Femenino</option>
                         </select>
                     </div>
-                    <div>            
-                        <label for="status">Estado</label>
-                        <select name="status" id="estado" required>
-                            <option value="activo">Activo</option>
-                            <option value="inactivo">Inactivo</option>
+                    <div>
+                        <label for="estudiantes_estado">Estado</label>
+                        <select name="estudiantes_estado" id="estudiantes_estado" required>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                            <option value="Egresado">Egresado</option>
                         </select>
+                    </div>
+
+                    <div class="">
+                        <label for="observaciones">Observaciones:</label>
+                        <textarea name="" id="estudiantes_observaciones" rows="10" cols="50"></textarea>
                     </div>
                     <br>
                     <div>
@@ -135,7 +147,6 @@ require_once "../src/models/leftmenu.php";
 
     <!-- <script src="assets/js/datatable.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <!-- <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script> -->
 
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
 
@@ -144,41 +155,6 @@ require_once "../src/models/leftmenu.php";
     
     <script src="assets/js/main.js"></script>
     <script src="assets/js/datatable.js"></script>
-    <!-- <script>
-    // Función para cargar estudiantes a través de AJAX usando jQuery
-    function fetchStudents(filters = {}) {
-        $.ajax({
-            url: "../src/controllers/fetch_students.php",
-            type: "GET",
-            data: filters, // Enviar los filtros como parámetros
-            success: function(response) {
-                $("#student-table-body").html(response); // Llenar el tbody con la respuesta
-            },
-            error: function(xhr, status, error) {
-                console.error("Error en la carga de estudiantes: ", xhr.responseText); // Ver errores en la consola
-            }
-        });
-    }
-
-    // Cargar estudiantes cuando la página esté lista
-    $(document).ready(function() {
-        fetchStudents(); // Cargar todos los estudiantes al inicio
-
-        // Evento de clic para el botón de filtro
-        $("#filter-button").click(function() {
-            const documentType = $("#document-type").val();
-            const status = $("#status").val();
-
-            // Crear un objeto de filtros
-            const filters = {
-                document_type: documentType,
-                status: status
-            };
-
-            fetchStudents(filters); // Cargar estudiantes con filtros
-        });
-    });
-</script> -->
         
 </body>
 </html>
