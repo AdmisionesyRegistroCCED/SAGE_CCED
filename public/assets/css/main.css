@@ -555,3 +555,16 @@ body {
     align-items: center;
     justify-content: center;
 }
+.auploadcsv{
+    text-decoration: none;
+    background-color: #07aa53;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all ease-in-out .5s;
+}
+.auploadcsv:hover{
+    background-color: #0e872a;
+    border-radius: 10px;
+    transition: all ease-in-out .5s;
+}
