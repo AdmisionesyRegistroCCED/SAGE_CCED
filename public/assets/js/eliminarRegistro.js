@@ -2,8 +2,27 @@ $(document).ready(function (){
     
     var tabla = $('#tabla_estudiantes').DataTable();
 
+    async function eliminarRegistro(estudiantes_no_documento) {
+        const response = await $.ajax({
+            url: '../src/controllers/delete_students.php',  
+            type:'POST',
+            data:{
+                estudiantes_no_documento:estudiantes_no_documento
+            },
+            dataType: 'json'
+        });
+
+        if (response) {
+            alert("exitoso");
+            return true;
+        }else{
+            alert("Fallo");
+            return false;
+        }
+    }
+
 //Inhabilitar estudiante
-$(document).on('click','#btnEliminar', function (f) {
+$('#myTable').on('click','#btnEliminar', async function (f) {
         
     f.preventDefault();
     // f.stopPropagation();
@@ -15,34 +34,38 @@ $(document).on('click','#btnEliminar', function (f) {
     
     console.log(fila);
     console.log({borrarDato});
-    let inhabilitarAlert = confirm("¿Esta seguro que desea Inhabilitar este registro?");
-    if (inhabilitarAlert) {
-        $.ajax({
-            url: '../src/controllers/delete_students.php',  
-            type: 'POST',                 
-            data: {
-                estudiantes_estado: estudiantes_estado,
-                estudiantes_no_documento: estudiantes_no_documento
-            },                  
-            dataType: 'json', 
-            cache:false,           
-            success: function(response) { 
-                console.log(response);
-                var data = JSON.parse(response);
-                if(data.success){
-                    
-                tabla.row(fila.parents("tr")).remove().draw();
-                //tabla.row(row).remove().draw();
+    if (confirm("¿Esta seguro que desea Inhabilitar este registro?")) {
+        const exito = await eliminarRegistro(estudiantes_no_documento);
 
-                console.log(data);
-                }else{
-                    alert("error");
-                }
-            },
-            error: function(xhr, status, error) {  
-                callback(error, null);           
-            }
-        });
+        if(exito){
+            tabla.row(fila).remove().draw();
+        }
+        // $.ajax({
+        //     url: '../src/controllers/delete_students.php',  
+        //     type: 'POST',                 
+        //     data: {
+        //         estudiantes_estado: estudiantes_estado,
+        //         estudiantes_no_documento: estudiantes_no_documento
+        //     },                  
+        //     dataType: 'json', 
+        //     cache:false,           
+        //     success: function(response) { 
+        //         console.log(response);
+        //         var data = JSON.parse(response);
+        //         if(data.success){
+                    
+        //         tabla.row(fila.parents("tr")).remove().draw();
+        //         //tabla.row(row).remove().draw();
+
+        //         console.log(data);
+        //         }else{
+        //             alert("error");
+        //         }
+        //     },
+        //     error: function(xhr, status, error) {  
+        //         callback(error, null);           
+        //     }
+        // });
 
     }
 
