@@ -36,31 +36,9 @@ if(substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2){
         <?php require_once "../src/models/header.php" ?>
     </header>
     <main>
-    <?php 
+   <?php 
 
-switch ($codeRole) {
-    case '1': #supadmin
-        require_once "../src/models/leftmenu.php";
-        break;
-    case '2': #admin
-        require_once "../src/models/leftmenu.php";
-        break;
-    case '3': #academico
-        require_once "../src/models/leftmenu.php";
-        break;
-    case '4': #comercial
-        # code...
-        break;
-    case '5': #docente
-        # code...
-        break;
-    case '6': #estudiante
-        # code...
-        break;
-    default:
-        # code...
-        break;
-}
+require_once "../src/models/leftmenu.php";
 
 ?>
         <div class="structure">
