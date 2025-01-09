@@ -25,6 +25,42 @@
                 } else {
                     echo  '<span class="mindata_userrole">' . ucfirst($userRole) . '</span>';
                 }
+                
+                //SQL para datos del dashboard
+
+                $activos = 0;
+                $inactivos = 0;
+                $egresados = 0;
+                $interesados = 0;
+                $no_interesados = 0;
+                
+                $sql = "
+                    SELECT 
+                        SUM(CASE WHEN estudiantes_estado = 'Activo' THEN 1 ELSE 0 END) AS activos,
+                        SUM(CASE WHEN estudiantes_estado = 'Inactivo' THEN 1 ELSE 0 END) AS inactivos,
+                        SUM(CASE WHEN estudiantes_estado = 'Egresado' THEN 1 ELSE 0 END) AS egresados,
+                        SUM(CASE WHEN estudiantes_estado = 'Interesado' THEN 1 ELSE 0 END) AS interesados,
+                        SUM(CASE WHEN estudiantes_estado = 'No Interesado' THEN 1 ELSE 0 END) AS no_interesados
+                    FROM estudiantes
+                ";
+                $result = mysqli_query($conn, $sql);
+                
+                if ($result) {
+                    $row = mysqli_fetch_assoc($result);
+                
+                    $activos = $row['activos'] ?? 0;
+                    $inactivos = $row['inactivos'] ?? 0;
+                    $egresados = $row['egresados'] ?? 0;
+                    $interesados = $row['interesados'] ?? 0;
+                    $no_interesados = $row['no_interesados'] ?? 0;
+                } else {
+                    echo "Error en la consulta: " . mysqli_error($conn);
+                }
+                
+                
+
+
+
                 ?>
                 <h1 class="mindata_username">Bienvenid@, <?php echo $username; ?>!</h1>
                 <p class="infoinmain_topp">Esta es tu página de inicio</p>
@@ -34,7 +70,7 @@
                         <div class="box">
                             <div class="title">Estudiantes activos</div>
                             <div id="contador1" class="boxdata">0</div>
-                            <div class="submsg"><?php echo substr($binperms, 9, 1) ?></div>
+                            <div class="submsg"></div>
                         </div>
                         <div class="box">
                             <div class="title">Estudiantes inactivos</div>
@@ -57,31 +93,33 @@
                             <div class="submsg"></div>
                         </div>
                     </div>
-                    <div class="dashboard">
+                    <!-- div class="dashboard">
                         <canvas id="chartBar"></canvas>
                         <canvas id="chartLine"></canvas>
                         <canvas id="chartPie"></canvas>
-                    </div>
-                </div>
-                <div id="footer" class="footer">
-                <?php require_once "../src/models/footer.php" ?>
-                </div>
+                    </div> -->
+                </div> 
+                <!-- <div id="footer" class="footer">
+                <?php // require_once "../src/models/footer.php" ?>
+                </div> -->
             </div>
             
         </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="assets/js/main.js"></script>
 
 </body>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const contadores = [
-        { id: "contador1", final: 100 },
-        { id: "contador2", final: 725 },
-        { id: "contador3", final: 75 },
-        { id: "contador4", final: 405 },
-        { id: "contador5", final: 320 },
+        { id: "contador1", final: <?php echo $activos?> },
+        { id: "contador2", final: <?php echo $inactivos?> },
+        { id: "contador3", final: <?php echo $egresados?> },
+        { id: "contador4", final: <?php echo $interesados?> },
+        { id: "contador5", final: <?php echo $no_interesados?> },
     ];
     
     const duracion = 1500;
@@ -188,6 +226,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </html>

@@ -167,7 +167,7 @@
                             <?php 
                                 if(substr($binperms, 9, 1) == 2){
                             ?>
-                            <li>
+                            <!-- <li>
                                 <a href="consult_students.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25" height="25">
@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="txt">Registrar grupo de estudiantes</div>
                                 </a>
-                            </li>
+                            </li> -->
                             <?php
                             }
                             ?>
