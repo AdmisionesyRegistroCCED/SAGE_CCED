@@ -1,6 +1,6 @@
 <?php 
     require "../src/controllers/session_start.php";
-if(substr($binperms, 9, 1) == 2){
+    if(substr($binperms, 9, 1) == 2){
 ?>
 <html>
 <head>
@@ -29,7 +29,7 @@ if(substr($binperms, 9, 1) == 2){
                 <?php endif; ?>
                 <div class="headerdataform">
                     <h1 class="mindata_username">Registro de estudiante</h1>
-                    <a href="../src/controllers/uploadcsv.php" style="color: red;">Cargar Csv</a>
+                    <a class="auploadcsv" href="../src/controllers/uploadcsv.php">Cargar Csv</a>
                     <!-- <form id="uploadForm" action="../src/controllers/uploadcsv.php" method="post" enctype="multipart/form-data">
                         <label for="file">Cargar archivo</label>
                         <input type="file" name="file" id="file" accept=".csv">

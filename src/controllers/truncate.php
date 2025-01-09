@@ -7,11 +7,11 @@ if (isset($_POST['fileName'])) {
     // Verifica si el archivo existe
     if (file_exists($filePath)) {
         // Elimina el archivo
-        // if (unlink($filePath)) {
-        //     echo 'Archivo eliminado exitosamente.';
-        // } else {
-        //     echo 'Error al eliminar el archivo.';
-        // }
+        if (unlink($filePath)) {
+            echo 'Archivo eliminado exitosamente.';
+        } else {
+            echo 'Error al eliminar el archivo.';
+        }
     } else {
         echo 'El archivo no existe.';
     }

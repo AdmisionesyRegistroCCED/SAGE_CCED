@@ -10,11 +10,53 @@ body {
     background-color: #f4f4f4;
 }
 
+header {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor principal que usa flexbox */
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+.sec1 {
+    display: flex;
+    align-items: center;
+}
+
+.sec2 {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.backbtn {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+}
+.backbtn{
+    text-decoration: none !important;
+    color: white;
+    font-size: 50px;
+    transition: .3s ease-in-out;
+}
+.backbtn:hover{
+    color: gray;
+    transition: .3s ease-in-out;
+}
 /* Wrapper para la estructura de la página */
 .wrapper {
     display: flex;
+    width: 100%;
 }
-
+.main{
+    width: 100%;
+}
 /* Menú lateral */
 .sidebar {
     width: 250px;
@@ -53,14 +95,6 @@ body {
 .main-content {
     flex: 1;
     padding: 20px;
-}
-
-header {
-    background-color: red;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    margin-bottom: 20px;
 }
 
 .table-container {
@@ -116,7 +150,7 @@ button:hover {
 }
 
 .duplicate {
-    background-color: #f8d7da;
+    background-color: rgb(227, 227, 145);
 }
 
 .floating-button {
