@@ -108,31 +108,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-    if (isset($_POST['delete_no_documento'])) { 
-        header('Content-Type: application/json');
-        $deleteId = $_POST['delete_no_documento'];
-    
+    if (isset($_POST['delete_no_documento'])) {
+        $deleteId = $_POST['delete_no_documento']; // Usar 'delete_no_documento'
+
         if (file_exists($jsonFile)) {
             $data = json_decode(file_get_contents($jsonFile), true);
-    
-            // Filtrar los datos eliminando el registro con NoDocumento que coincida
-            $data = array_filter($data, fn($row) => $row['NoDocumento'] != $deleteId);
-    
-            // Guardar los cambios en el archivo JSON
-            if (file_put_contents($jsonFile, json_encode($data, JSON_PRETTY_PRINT))) {
-                ob_clean();
-                echo json_encode(['success' => true]); // Respuesta de éxito
-            } else {
-                echo json_encode(['error' => 'No se pudo guardar el archivo JSON']);
-            }
-        } else {
-            echo json_encode(['error' => 'Archivo JSON no encontrado']);
-        }
-    } else {
-        echo json_encode(['error' => 'No se proporcionó el NoDocumento']);
-    }
-    
+            $data = array_filter($data, fn($row) => $row['NoDocumento'] != $deleteId); // Filtrar usando 'NoDocumento'
 
+            file_put_contents($jsonFile, json_encode($data, JSON_PRETTY_PRINT));
+        }
+    }
 
 
     if (isset($_POST['edit_no_documento'])) { // Cambiar clave para coincidir con JS
@@ -324,17 +309,12 @@ if (!empty($data)) {
 
             // Contador de duplicados en el CSV
             $csvDuplicateCount = 0;
-            if (is_array($data) && !empty($data)) {
-                foreach ($data as $row) {
-                    if (count(array_keys($ids, $row['NoDocumento'])) > 1) { // Usamos NoDocumento en lugar de ID
-                        $csvDuplicateCount++;
-                    }
+
+            foreach ($data as $row) {
+                if (count(array_keys($ids, $row['NoDocumento'])) > 1) {
+                    $csvDuplicateCount++;
                 }
-            } else {
-                // echo "No hay datos disponibles para procesar.";
             }
-
-
             // Contador de duplicados en la Base de Datos
             $dbDuplicateCount = count($commonIds);
             // Número de registros por página, con un valor predeterminado de 10
@@ -568,6 +548,19 @@ if (!empty($data)) {
                 const noDocumento = row.data('no-documento'); // Asegúrate de que `data-no-documento` esté en el HTML
                 const field = $(this).data('field'); // Asegúrate de que `data-field` esté configurado
                 const newValue = $(this).text().trim();
+                const currentNoDocumento = row.find('td[data-field="NoDocumento"]').text(); // Obtén el NoDocumento actual
+                // Obtener el NoDocumento actualizado desde la fila
+                const newNoDocumento = row.find('td[data-field="NoDocumento"]').text().trim();
+                // Verificar si no ha habido un cambio en el NoDocumento
+                if (noDocumento === newValue || currentNoDocumento === newValue || noDocumento == newNoDocumento) {
+                    return; // Si no ha cambiado, salimos de la función
+                }
+
+
+                
+
+                // Verificar duplicados antes de enviar
+                checkDuplicates(row, newNoDocumento);
 
                 // Validar que no estén vacíos antes de enviar
                 if (!noDocumento || !field) {
@@ -586,8 +579,8 @@ if (!empty($data)) {
                             const res = JSON.parse(response); // Analizar respuesta del servidor
                             if (res.success) {
                                 console.log('Campo actualizado correctamente');
-                                // Verificar si el NoDocumento actualizado es un duplicado
-                                checkDuplicates(row, newValue); // Verifica duplicados
+                                // Verificar duplicados después de la actualización
+                                checkDuplicates(row, newNoDocumento); // Verifica duplicados con el nuevo valor
                             } else {
                                 alert('Error: ' + (res.error || 'Actualización fallida'));
                             }
@@ -599,6 +592,7 @@ if (!empty($data)) {
                         alert('Error al actualizar el campo');
                     });
             });
+
 
 
             function checkDuplicates(row, newNoDocumento) {
@@ -627,19 +621,19 @@ if (!empty($data)) {
             }
 
             // Llamar a esta función en el evento apropiado (cuando cambien las celdas editables)
-            $('#data-table').on('input', 'td[contenteditable="true"]', function() {
-                const row = $(this).closest('tr'); // Obtén la fila del cambio
-                const newNoDocumento = row.find('td[data-field="NoDocumento"]').text(); // Obtén el NoDocumento de la fila
-                checkDuplicates(row, newNoDocumento); // Llama a la función para actualizar clases
-            });
+            // $('#data-table').on('input', 'td[contenteditable="true"]', function() {
+            //     const row = $(this).closest('tr'); // Obtén la fila del cambio
+            //     const newNoDocumento = row.find('td[data-field="NoDocumento"]').text(); // Obtén el NoDocumento de la fila
+            //     checkDuplicates(row, newNoDocumento); // Llama a la función para actualizar clases
+            // });
 
 
+            // Eliminar una fila
             $('button[type="submit"].delete-btn').on('click', function(e) {
                 e.preventDefault(); // Prevenir el envío del formulario
 
-                const row = $(this).closest('tr'); // Obtener la fila correspondiente
-                const noDocumento = row.data('no-documento'); // Identificador del documento
-
+                const row = $(this).closest('tr');
+                const noDocumento = row.data('no-documento'); // Usar 'no-documento'
                 if (!noDocumento) {
                     alert('Error: NoDocumento no definido.');
                     return;
@@ -649,36 +643,18 @@ if (!empty($data)) {
                 if (!confirm('¿Estás seguro de que deseas eliminar este registro?')) {
                     return;
                 }
-
                 $.post('uploadcsv.php', {
-                        delete_no_documento: noDocumento // Enviar el identificador al servidor
+                        delete_no_documento: noDocumento // Enviar la clave 'delete_no_documento'
                     })
                     .done(function(response) {
-                        console.log('Respuesta del servidor:', response); // Verificar qué se recibe
-
-                        try {
-                            const res = JSON.parse(response); // Analizar la respuesta del servidor
-                            if (res.success) {
-                                // Eliminar la fila de la tabla en tiempo real
-                                row.fadeOut(300, function() {
-                                    $(this).remove(); // Eliminar completamente después de la animación
-                                });
-                                alert('Registro eliminado correctamente');
-                            } else {
-                                alert('Error: ' + (res.error || 'No se pudo eliminar el registro'));
-                            }
-                        } catch (e) {
-                            alert('Error al procesar la respuesta del servidor: ' + e.message);
-                            console.error('Respuesta del servidor no válida:', response);
-                        }
+                        row.fadeOut(300, function() {
+                            $(this).remove(); // Eliminar completamente después de la animación
+                        });
                     })
                     .fail(function() {
-                        alert('Error al intentar eliminar el registro');
+                        alert('Error al eliminar el registro');
                     });
-
             });
-
-
         });
 
         function uploadToDatabase() {

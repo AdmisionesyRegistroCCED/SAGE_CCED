@@ -1,6 +1,6 @@
 {
     "1": {
-        "NoDocumento": "100619843431",
+        "NoDocumento": "1006198434",
         "TipoDocumento": "1",
         "Nombre": "Danilo Mauricioo",
         "Apellidos": "Daniel Mauricio",
@@ -16,7 +16,7 @@
         "DobleTitulacionID": "2"
     },
     "2": {
-        "NoDocumento": "1006198434",
+        "NoDocumento": "10061984341",
         "TipoDocumento": "1",
         "Nombre": "Hugo Armando",
         "Apellidos": "Alzate Gomez",
@@ -32,7 +32,7 @@
         "DobleTitulacionID": "3"
     },
     "3": {
-        "NoDocumento": "1006198442",
+        "NoDocumento": "10061984431",
         "TipoDocumento": "1",
         "Nombre": "Dolly",
         "Apellidos": "Bedoya",
@@ -48,7 +48,7 @@
         "DobleTitulacionID": "4"
     },
     "4": {
-        "NoDocumento": "1130610031",
+        "NoDocumento": "1000000781",
         "TipoDocumento": "1",
         "Nombre": "Alan",
         "Apellidos": "Echeverry Gomez",
@@ -64,7 +64,7 @@
         "DobleTitulacionID": "5"
     },
     "5": {
-        "NoDocumento": "1143877249",
+        "NoDocumento": "114387724",
         "TipoDocumento": "1",
         "Nombre": "Luana Milagros",
         "Apellidos": "Epia Sanchez",
