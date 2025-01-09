@@ -24,7 +24,7 @@ $(document).ready(function() {
         //data: null,
         "responsive": true,
         "processing": true,
-        "serverSide": true,
+        "serverSide": false,
         "language":{
             "url":"assets/js/es-ES.json"
         },
@@ -55,7 +55,7 @@ $(document).ready(function() {
                 "dataSrc": "",
                 "cache": false,
                 // "success":function(response){
-                //     console.log(response);
+                //     return console.log(response);
                 // }
                 
             },
