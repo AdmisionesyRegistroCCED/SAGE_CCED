@@ -34,7 +34,7 @@
                         <div class="box">
                             <div class="title">Estudiantes activos</div>
                             <div id="contador1" class="boxdata">0</div>
-                            <div class="submsg"><?php echo substr($binperms, 9, 1) ?></div>
+                            <div class="submsg"></div>
                         </div>
                         <div class="box">
                             <div class="title">Estudiantes inactivos</div>
@@ -63,14 +63,16 @@
                         <canvas id="chartPie"></canvas>
                     </div>
                 </div>
-                <div id="footer" class="footer">
-                <?php require_once "../src/models/footer.php" ?>
-                </div>
+                <!-- <div id="footer" class="footer">
+                <?php // require_once "../src/models/footer.php" ?>
+                </div> -->
             </div>
             
         </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="assets/js/main.js"></script>
 
 </body>
@@ -188,6 +190,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </html>
