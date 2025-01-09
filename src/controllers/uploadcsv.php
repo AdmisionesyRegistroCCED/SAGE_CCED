@@ -108,27 +108,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-    if (isset($_POST['delete_no_documento'])) { // Cambiar clave para coincidir con JS
+    if (isset($_POST['delete_no_documento'])) { 
+        header('Content-Type: application/json');
         $deleteId = $_POST['delete_no_documento'];
-
+    
         if (file_exists($jsonFile)) {
             $data = json_decode(file_get_contents($jsonFile), true);
-
+    
             // Filtrar los datos eliminando el registro con NoDocumento que coincida
             $data = array_filter($data, fn($row) => $row['NoDocumento'] != $deleteId);
-
+    
             // Guardar los cambios en el archivo JSON
             if (file_put_contents($jsonFile, json_encode($data, JSON_PRETTY_PRINT))) {
+                ob_clean();
                 echo json_encode(['success' => true]); // Respuesta de éxito
             } else {
-                // echo json_encode(['error' => 'No se pudo guardar el archivo JSON']);
+                echo json_encode(['error' => 'No se pudo guardar el archivo JSON']);
             }
         } else {
-            // echo json_encode(['error' => 'Archivo JSON no encontrado']);
+            echo json_encode(['error' => 'Archivo JSON no encontrado']);
         }
     } else {
-        // echo json_encode(['error' => 'No se proporcionó el NoDocumento']);
+        echo json_encode(['error' => 'No se proporcionó el NoDocumento']);
     }
+    
+
 
 
     if (isset($_POST['edit_no_documento'])) { // Cambiar clave para coincidir con JS
@@ -633,8 +637,8 @@ if (!empty($data)) {
             $('button[type="submit"].delete-btn').on('click', function(e) {
                 e.preventDefault(); // Prevenir el envío del formulario
 
-                const row = $(this).closest('tr');
-                const noDocumento = row.data('no-documento');
+                const row = $(this).closest('tr'); // Obtener la fila correspondiente
+                const noDocumento = row.data('no-documento'); // Identificador del documento
 
                 if (!noDocumento) {
                     alert('Error: NoDocumento no definido.');
@@ -647,25 +651,33 @@ if (!empty($data)) {
                 }
 
                 $.post('uploadcsv.php', {
-                        delete_no_documento: noDocumento // Clave consistente con PHP
+                        delete_no_documento: noDocumento // Enviar el identificador al servidor
                     })
                     .done(function(response) {
+                        console.log('Respuesta del servidor:', response); // Verificar qué se recibe
+
                         try {
-                            const res = JSON.parse(response); // Analizar respuesta del servidor
+                            const res = JSON.parse(response); // Analizar la respuesta del servidor
                             if (res.success) {
-                                row.remove(); // Eliminar la fila de la tabla
+                                // Eliminar la fila de la tabla en tiempo real
+                                row.fadeOut(300, function() {
+                                    $(this).remove(); // Eliminar completamente después de la animación
+                                });
                                 alert('Registro eliminado correctamente');
                             } else {
                                 alert('Error: ' + (res.error || 'No se pudo eliminar el registro'));
                             }
                         } catch (e) {
-                            // alert('Error al procesar la respuesta del servidor');
+                            alert('Error al procesar la respuesta del servidor: ' + e.message);
+                            console.error('Respuesta del servidor no válida:', response);
                         }
                     })
                     .fail(function() {
                         alert('Error al intentar eliminar el registro');
                     });
+
             });
+
 
         });
 
