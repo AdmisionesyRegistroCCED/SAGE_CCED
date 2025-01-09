@@ -152,7 +152,7 @@ switch ($codeRole) {
                     </div>
 
                     <div class="">
-                        <label for="observaciones">Observaciones:</label>
+                        <label for="estudiantes_observaciones">Observaciones:</label>
                         <textarea name="" id="estudiantes_observaciones" rows="10" cols="50"></textarea>
                     </div>
                     <br>
