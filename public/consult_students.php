@@ -128,7 +128,6 @@ require_once "../src/models/leftmenu.php";
                             <option value="Egresado">Egresado</option>
                         </select>
                     </div>
-
                     <div class="">
                         <label for="estudiantes_observaciones">Observaciones:</label>
                         <textarea name="" id="estudiantes_observaciones" rows="10" cols="50"></textarea>
@@ -154,7 +153,7 @@ require_once "../src/models/leftmenu.php";
 
     
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/datatable.js"></script>
+    <script src="assets/js/eliminarRegistro.js"></script>
         
 </body>
 </html>
