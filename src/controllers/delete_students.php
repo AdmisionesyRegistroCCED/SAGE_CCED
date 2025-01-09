@@ -20,10 +20,13 @@ if($estudiantes_estado){
 }
 $estudiantes_no_documento = $_POST['estudiantes_no_documento'];
 
-$sql = "UPDATE estudiantes SET estado='$estudiantes_estado' WHERE estudiantes_no_documento = '$estudiantes_no_documento";
+$sql = "UPDATE estudiantes SET estudiantes_estado='$estudiantes_estado' WHERE estudiantes_no_documento = '$estudiantes_no_documento";
 
 if ($conn->query($sql)==TRUE) {
     echo json_encode($sql);
+
+    
+    
 }else{
     echo "Error al cambiar estado: " . $conn->error;
 }

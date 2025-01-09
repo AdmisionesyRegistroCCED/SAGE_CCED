@@ -302,7 +302,22 @@ select {
 }
 
 .full-width {
-    flex: 0 0 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#estudiantes_observaciones{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 15em;
+    margin-bottom: 1em;
+}
+
+textarea{
+    padding: .5em;
 }
 
 .submit-btn {
@@ -568,4 +583,10 @@ body {
     background-color: #0e872a;
     border-radius: 10px;
     transition: all ease-in-out .5s;
+}
+
+/* student_register.php */
+#observaciones{
+    border: 10px solid black;
+    width: 100%;
 }
