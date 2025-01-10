@@ -143,7 +143,10 @@ require_once "../src/models/leftmenu.php";
     </main>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
+    
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/eliminarRegistro.js"></script>
+        
     <!-- <script src="assets/js/datatable.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
@@ -152,9 +155,6 @@ require_once "../src/models/leftmenu.php";
 
 
     
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/eliminarRegistro.js"></script>
-        
 </body>
 </html>
 <?php

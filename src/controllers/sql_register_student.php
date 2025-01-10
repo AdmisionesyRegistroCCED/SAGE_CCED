@@ -8,7 +8,6 @@ if ($conn->connect_error) {
 }
 
 
-
     $valorTipo;
     $estudiantes_no_documento = $_POST['estudiantes_no_documento'];
     $estudiantes_tipo_documento = $_POST['estudiantes_tipo_documento'];
@@ -19,6 +18,7 @@ if ($conn->connect_error) {
     $estudiantes_telefono = $_POST['estudiantes_telefono'];
     $estudiantes_correo = $_POST['estudiantes_correo'];
     $estudiantes_estado = $_POST['estudiantes_estado'];
+    $estudiantes_observaciones = $_POST['estudiantes_observaciones'];
 
     if($estudiantes_tipo_documento == "cc"){
         $valorTipo = 1;
@@ -26,6 +26,8 @@ if ($conn->connect_error) {
         $valorTipo = 2;
     }elseif($estudiantes_tipo_documento == "ce"){
         $valorTipo = 3;
+    }else{
+        $valorTipo = NULL;
     }
 
     $sql = "INSERT INTO estudiantes 
@@ -54,12 +56,12 @@ if ($conn->connect_error) {
     //     exit();
     // }
 
-    $result = $conn -> prepare($sql);
+    $registrarEstudiante = $conn -> prepare($sql);
 //    $select = "SELECT * FROM estudiantes WHERE estudiantes_no_documento = '$estudiantes_no_documento'";
+$registrarEstudiante->execute();
+    if($registrarEstudiante){
 
-    if($result->execute()){
-
-        $data = ["estudiantes_no_documento" => $estudiantes_no_documento, "estudiantes_nombre" => $estudiantes_nombre ];
+        $data = ["estudiantes_no_documento" => $estudiantes_no_documento, "estudiantes_nombre" => $estudiantes_nombre,"estudiantes_tipo_documento" => $estudiantes_tipo_documento ];
         //echo $result;
         echo json_encode($data);
     

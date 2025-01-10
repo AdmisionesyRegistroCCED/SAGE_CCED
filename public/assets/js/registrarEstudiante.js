@@ -33,7 +33,7 @@ $(document).ready(function () {
         cache:false,
         success:function (data){
             if(data){
-                alert("Registro exitoso: " + estudiantes_apellidos);
+                alert("Registro exitoso: " + {data});
 
             }
         },

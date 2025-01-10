@@ -17,7 +17,7 @@ document.getElementById('dropdownToggle').addEventListener('click', function() {
 
 $(document).ready(function() {
 
-    var tabla = $('#myTable').DataTable({
+    let tabla = $('#myTable').DataTable({
         "autoWidth":true,
         //data: null,
         "responsive": true,
@@ -60,80 +60,81 @@ $(document).ready(function() {
             
     });
 
-    
-});
 
-    // $(document).on('click', '.editbtn', function(e) {
+    $(document).on('click', '.editbtn', function(e) {
 
-    //     e.preventDefault();
-    //     e.stopPropagation();
+        e.preventDefault();
+        e.stopPropagation();
 
-    //     let boton = $(this).closest('tr');
+        let boton = $(this).closest('tr');
 
-    //     //Obtener datos de la fila seleccionada.
-    //     let rowData = tabla.row(boton).data();
+        //Obtener datos de la fila seleccionada.
+        let rowData = tabla.row(boton).data();
         
-    //     // Llenar el formulario del modal
-    //     $('#estudiantes_tipo_documento').val(rowData.sigla);
-    //     $('#estudiantes_no_documento').val(rowData.nroDocumento);
-    //     $('#estudiantes_nombre').val(rowData.nombre);
-    //     $('#estudiantes_apellidos').val(rowData.apellido);
-    //     $('#estudiantes_fecha_nacimiento').val(rowData.fechaNacimiento);
-    //     $('#estudiantes_correo').val(rowData.correo);
-    //     $('#estudiantes_genero').val(rowData.genero);
-    //     $('#estudiantes_telefono').val(rowData.telefono);
-    //     $('#estudiantes_estado').val(rowData.estado);
-    //     $('#estudiantes_observaciones').val(rowData.observaciones);
+        // Llenar el formulario del modal
+        $('#estudiantes_tipo_documento').val(rowData.sigla);
+        $('#estudiantes_no_documento').val(rowData.nroDocumento);
+        $('#estudiantes_nombre').val(rowData.nombre);
+        $('#estudiantes_apellidos').val(rowData.apellido);
+        $('#estudiantes_fecha_nacimiento').val(rowData.fechaNacimiento);
+        $('#estudiantes_correo').val(rowData.correo);
+        $('#estudiantes_genero').val(rowData.genero);
+        $('#estudiantes_telefono').val(rowData.telefono);
+        $('#estudiantes_estado').val(rowData.estado);
+        $('#estudiantes_observaciones').val(rowData.observaciones);
         
-    //     // Muestra el modal
-    //     $('#edit-modal').css('display', 'flex');
-    // });
+        // Muestra el modal
+        $('#edit-modal').css('display', 'flex');
+    });
 
     
     // Actualizar datos
-    // $('#edit-form').submit(function(e) {
-    //     e.preventDefault();
+        
+    $('#edit-form').submit(function(e) {
+        e.preventDefault();
 
-    //     // Captura de datos
-    //     const estudiantes_tipo_documento = $('#estudiantes_tipo_documento').val();
-    //     const estudiantes_no_documento = $('#estudiantes_no_documento').val();
-    //     const estudiantes_nombre = $('#estudiantes_nombre').val();
-    //     const estudiantes_apellidos = $('#estudiantes_apellidos').val();
-    //     const estudiantes_fecha_nacimiento = $('#estudiantes_fecha_nacimiento').val();
-    //     const estudiantes_telefono = $('#estudiantes_telefono').val();
-    //     const estudiantes_genero = $('#estudiantes_genero').val();
-    //     const estudiantes_correo = $('#estudiantes_correo').val();
-    //     const estudiantes_estado = $('#estudiantes_estado').val();
-    //     const estudiantes_observaciones = $('#estudiantes_observaciones').val();
+        // Captura de datos
+        const estudiantes_tipo_documento = $('#estudiantes_tipo_documento').val();
+        const estudiantes_no_documento = $('#estudiantes_no_documento').val();
+        const estudiantes_nombre = $('#estudiantes_nombre').val();
+        const estudiantes_apellidos = $('#estudiantes_apellidos').val();
+        const estudiantes_fecha_nacimiento = $('#estudiantes_fecha_nacimiento').val();
+        const estudiantes_telefono = $('#estudiantes_telefono').val();
+        const estudiantes_genero = $('#estudiantes_genero').val();
+        const estudiantes_correo = $('#estudiantes_correo').val();
+        const estudiantes_estado = $('#estudiantes_estado').val();
+        const estudiantes_observaciones = $('#estudiantes_observaciones').val();
 
-    //     // Enviar los datos al servidor usando AJAX
-    //     $.ajax({
-    //         url: '../src/controllers/update_students.php', 
-    //         type: 'POST',
-    //         data: {
-    //             estudiantes_tipo_documento: estudiantes_tipo_documento,
-    //             estudiantes_no_documento: estudiantes_no_documento,
-    //             estudiantes_nombre: estudiantes_nombre,
-    //             estudiantes_apellidos: estudiantes_apellidos,
-    //             estudiantes_fecha_nacimiento: estudiantes_fecha_nacimiento,
-    //             estudiantes_genero: estudiantes_genero,
-    //             estudiantes_telefono: estudiantes_telefono,
-    //             estudiantes_correo: estudiantes_correo,
-    //             estudiantes_estado: estudiantes_estado,
-    //             estudiantes_observaciones:estudiantes_observaciones
-    //         },
-    //         success: function(response) {
-    //             alert("Registro actualizado correctamente."); // Muestra un mensaje de éxito
-    //             tabla.ajax.reload(); // Actualiza la tabla
-    //             $('#edit-modal').css('display', 'none'); // Cierra el modal
-    //         },
-    //         error: function(xhr, status, error) {
-    //             console.error("Error en la actualización: ", error);
-    //             alert("Error al actualizar los datos. Intenta de nuevo.");
-    //         }
-    //     });
-    // });
+        // Enviar los datos al servidor usando AJAX
+        $.ajax({
+            url: '../src/controllers/update_students.php', 
+            type: 'POST',
+            data: {
+                estudiantes_tipo_documento: estudiantes_tipo_documento,
+                estudiantes_no_documento: estudiantes_no_documento,
+                estudiantes_nombre: estudiantes_nombre,
+                estudiantes_apellidos: estudiantes_apellidos,
+                estudiantes_fecha_nacimiento: estudiantes_fecha_nacimiento,
+                estudiantes_genero: estudiantes_genero,
+                estudiantes_telefono: estudiantes_telefono,
+                estudiantes_correo: estudiantes_correo,
+                estudiantes_estado: estudiantes_estado,
+                estudiantes_observaciones:estudiantes_observaciones
+            },
+            success: function(response) {
+                alert("Registro actualizado correctamente."); // Muestra un mensaje de éxito
+                tabla.ajax.reload(); // Actualiza la tabla
+                $('#edit-modal').css('display', 'none'); // Cierra el modal
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la actualización: ", error);
+                alert("Error al actualizar los datos. Intenta de nuevo.");
+            }
+        });
+    });
 
+ 
+});
     // Cierra el modal al hacer clic en "x"
     $('.close').click(function() {
         $('#edit-modal').css('display', 'none');

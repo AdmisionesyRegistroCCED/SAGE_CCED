@@ -52,7 +52,7 @@ if (substr($binperms, 9, 1) == 2) {
                             <div>
                                 <label for="estudiantes_tipo_documento">Tipo de documento</label>
                                 <select name="dni_type" id="estudiantes_tipo_documento" required>
-                                    <option value="none">Seleccione una opción</option>
+                                    <option value="--">Seleccione una opción</option>
                                     <option value="ti">Tarjeta de identidad</option>
                                     <option value="cc">Cedula de ciudadania</option>
                                     <option value="ce">Cedula de extranjeria</option>
