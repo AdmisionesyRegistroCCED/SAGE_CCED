@@ -1,6 +1,6 @@
 $(document).ready(function (){
     
-    var tabla = $('#tabla_estudiantes').DataTable();
+    let tabla = $('#tabla_estudiantes').DataTable();
 
     async function eliminarRegistro(estudiantes_no_documento) {
         const response = await $.ajax({

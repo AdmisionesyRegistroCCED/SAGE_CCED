@@ -8,28 +8,9 @@ if(substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2){
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- Datables links -->
     <!-- <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/r-3.0.3/datatables.min.css" rel="stylesheet"> -->
-
     <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
 
 
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -126,6 +107,7 @@ require_once "../src/models/leftmenu.php";
                             <option value="Activo">Activo</option>
                             <option value="Inactivo">Inactivo</option>
                             <option value="Egresado">Egresado</option>
+                            <option value="Inhabilitado">Inhabilitado</option>
                         </select>
                     </div>
                     <div class="">
@@ -141,20 +123,14 @@ require_once "../src/models/leftmenu.php";
                 </div>
             </div>
     </main>
+    
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/eliminarRegistro.js"></script>
-        
-    <!-- <script src="assets/js/datatable.js"></script> -->
+      
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
-
-
-
-    
+    <script src="assets/js/main.js"></script>
+    <!-- <script src="assets/js/eliminarRegistro.js"></script> -->
 </body>
 </html>
 <?php

@@ -106,7 +106,7 @@ if (substr($binperms, 9, 1) == 2) {
                             </div>
                         </div>
                     </form>
-                    <script>
+                    <!-- <script>
                         // Mostrar la notificación si existe
                         window.onload = function() {
                             var notification = document.getElementById("notification");
@@ -117,7 +117,7 @@ if (substr($binperms, 9, 1) == 2) {
                                 }, 5000);
                             }
                         };
-                    </script>
+                    </script> -->
                 </div>
                 <footer class=".footer">
                     <?php require_once "../src/models/footer.php" ?>
