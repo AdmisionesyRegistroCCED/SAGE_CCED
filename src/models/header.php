@@ -27,7 +27,7 @@
             </svg>
         </a>
         <ul id="dropdownMenu" class="dropdown-content">
-            <li><a href="#">Ver mi cuenta</a></li>
+            <!-- <li><a href="#">Ver mi cuenta</a></li> -->
             <?php
                 if($userRole == "administrador"){
                     echo  '<li><a href="#">Administrar cuentas</a></li>';

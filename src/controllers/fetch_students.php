@@ -19,7 +19,6 @@ $sql = "SELECT tpd.tipo_documento_sigla AS 'sigla', est.estudiantes_no_documento
 $result = $conn->query($sql);
 
 $subData = array();
-//$data= array();
 if ($result->num_rows > 0) {
     while ($data = $result -> fetch_assoc()) {
         $estudiantes_sigla = $data['sigla'];
@@ -34,8 +33,6 @@ if ($result->num_rows > 0) {
         $estudiantes_estado = $data['estado'];
         $estudiantes_observaciones = $data['observaciones'];
 
-            
-    
         $subData[]  = array(
             "sigla" => $estudiantes_sigla,
             "nroDocumento"=>$estudiantes_no_documento,
@@ -49,14 +46,14 @@ if ($result->num_rows > 0) {
             "estado" => $estudiantes_estado,
             "observaciones" => $estudiantes_observaciones
             );
-
-        
-
     }
+    echo json_encode(value: $subData);
+}else{
+    $subData = [];
+    echo json_encode(['Error'=>"No hay registros", 'data'=> $subData]);
+}
 
-    echo json_encode($subData);
-} 
-
+$result->close();
 $conn->close(); // Cerrar la conexión
 
 ?>

@@ -32,25 +32,20 @@ if (substr($binperms, 9, 1) == 2) {
                     <div class="headerdataform">
                         <h1 class="mindata_username">Registro de estudiante</h1>
                         <a class="auploadcsv" href="../src/controllers/uploadcsv.php">Cargar Csv</a>
-                        <!-- <form id="uploadForm" action="../src/controllers/uploadcsv.php" method="post" enctype="multipart/form-data">
-                        <label for="file">Cargar archivo</label>
-                        <input type="file" name="file" id="file" accept=".csv">
-                        <input type="submit" value="Subir">
-                    </form> -->
                     </div>
                     <hr><br>
                     <form id="formRegistrarEstudiante">
                         <div class="container_register">
                             <div>
-                                <label for="estudiantes_nombre">Nombres</label>
+                                <label for="estudiantes_nombre">Nombres *</label>
                                 <input type="text" id="estudiantes_nombre" name="fname" required>
                             </div>
                             <div>
-                                <label for="lname">Apellidos</label>
+                                <label for="lname">Apellidos *</label>
                                 <input type="text" id="estudiantes_apellidos" name="lname" required>
                             </div>
                             <div>
-                                <label for="estudiantes_tipo_documento">Tipo de documento</label>
+                                <label for="estudiantes_tipo_documento">Tipo de documento *</label>
                                 <select name="dni_type" id="estudiantes_tipo_documento" required>
                                     <option value="--">Seleccione una opción</option>
                                     <option value="ti">Tarjeta de identidad</option>
@@ -59,7 +54,7 @@ if (substr($binperms, 9, 1) == 2) {
                                 </select>
                             </div>
                             <div>
-                                <label for="estudiantes_no_documento">Numero de documento</label>
+                                <label for="estudiantes_no_documento">Numero de documento *</label>
                                 <input type="number" id="estudiantes_no_documento" name="dni" required>
                             </div>
                             <div>
@@ -75,7 +70,7 @@ if (substr($binperms, 9, 1) == 2) {
                                 </select>
                             </div>
                             <div>
-                                <label for="estudiantes_telefono">Numero de telefono</label>
+                                <label for="estudiantes_telefono">Teléfono (Fijo/Celular)</label>
                                 <input type="text" id="estudiantes_telefono" name="phone" required>
                             </div>
                             <div>
@@ -83,7 +78,7 @@ if (substr($binperms, 9, 1) == 2) {
                                 <input type="text" id="estudiantes_direccion" required>
                             </div>
                             <div>
-                                <label for="estudiantes_correo">Correo electronico</label>
+                                <label for="estudiantes_correo">Correo electronico *</label>
                                 <input type="email" id="estudiantes_correo" name="email" required>
                             </div>
                             <div>
@@ -94,34 +89,17 @@ if (substr($binperms, 9, 1) == 2) {
                                     <option value="Egresado">Egresado</option>
                                 </select>
                             </div>
-                            <div>
-                                <label for="estudiantes_telefono">Teléfono</label>
-                                <input type="number" name="" id="estudiantes_telefono" min="0" required>
-                            </div>
-
                         </div>
-                        <div class="full-witdh">
-                            <div class="container_register">
+                        <div class="full-witdh ">
+                            <div class="container_register no-Flex">
                                 <label for="estudiantes_observaciones">Observaciones:</label>
-                                <textarea name="" id="estudiantes_observaciones" rows="5" cols="50"></textarea>
+                                <textarea name="" id="estudiantes_observaciones" rows="5" cols="50" resize=""></textarea>
                             </div>
                             <div class="container_register">
                                 <button type="submit" class="submit-btn" id="btnRegistrar">Registrar</button>
                             </div>
                         </div>
                     </form>
-                    <!-- <script>
-                        // Mostrar la notificación si existe
-                        window.onload = function() {
-                            var notification = document.getElementById("notification");
-                            if (notification) {
-                                notification.style.display = "block"; // Mostrar la notificación
-                                setTimeout(function() {
-                                    notification.style.display = "none"; // Ocultar después de 5 segundos
-                                }, 5000);
-                            }
-                        };
-                    </script> -->
                 </div>
                 <footer class=".footer">
                     <?php require_once "../src/models/footer.php" ?>
@@ -137,8 +115,7 @@ if (substr($binperms, 9, 1) == 2) {
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="assets/js/registrarEstudiante.js"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-
-
+        <script src="assets/js/toggleMenu.js"></script>
     </body>
 
     </html>

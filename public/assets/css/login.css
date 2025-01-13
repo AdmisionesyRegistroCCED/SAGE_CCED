@@ -71,6 +71,7 @@ a:visited{
     font-weight: 800;
     font-size: 32px;
     color: #181818;
+    font-family: Helvetica;
 }
 .login-container label{
     font-size: 20px;
