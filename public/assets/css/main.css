@@ -438,13 +438,34 @@ textarea{
     z-index: 1000;
 }
 
+/* .inputs{
+    display: flex;
+    flex-direction: row;
+    background-color: yellow;
+    width: 30%;
+    max-width: 50%;
+} */
+
 .modal-content {
     background-color: #fefefe;
-    padding: 20px;
+    padding: 1rem;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 50%;
+    width: inherit;
+    max-width: 70%;
 }
+
+#edit-form{
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 85%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+
 
 .close {
     color: #aaa;

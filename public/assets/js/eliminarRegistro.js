@@ -1,6 +1,6 @@
 $(document).ready(function (){
     
-    var tabla = $('#tabla_estudiantes').DataTable();
+    let tabla = $('#tabla_estudiantes').DataTable();
 
     async function eliminarRegistro(estudiantes_no_documento) {
         const response = await $.ajax({
@@ -28,10 +28,10 @@ $('#myTable').on('click','#btnEliminar', async function (f) {
     // f.stopPropagation();
     
     
+    
     let fila = $(this).closest('tr');
     let borrarDato = tabla.row(fila).data();
 
-    
     console.log(fila);
     console.log({borrarDato});
     if (confirm("¿Esta seguro que desea Inhabilitar este registro?")) {

@@ -14,19 +14,7 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "SELECT tpd.tipo_documento_sigla AS 'sigla',
-est.estudiantes_no_documento AS 'nroDocumento',
-est.estudiantes_nombre AS 'nombre',
-est.estudiantes_apellidos AS 'apellido',
-est.estudiantes_telefono AS 'telefono',
-est.estudiantes_correo AS 'correo',
-est.estudiantes_direccion AS 'direccion',
-est.estudiantes_fecha_nacimiento AS 'fechaNacimiento',
-est.estudiantes_genero AS 'genero',
-est.estudiantes_estado AS 'estado',
-est.estudiantes_observaciones AS 'observaciones'
-FROM estudiantes est
-INNER JOIN tipo_documento tpd ON tpd.tipo_documento_id = est.estudiantes_tipo_documento";
+$sql = "SELECT tpd.tipo_documento_sigla AS 'sigla', est.estudiantes_no_documento AS 'nroDocumento', est.estudiantes_nombre AS 'nombre', est.estudiantes_apellidos AS 'apellido', est.estudiantes_telefono AS 'telefono', est.estudiantes_correo AS 'correo', est.estudiantes_direccion AS 'direccion', est.estudiantes_fecha_nacimiento AS 'fechaNacimiento', est.estudiantes_genero AS 'genero', est.estudiantes_estado AS 'estado', est.estudiantes_observaciones AS 'observaciones' FROM estudiantes est INNER JOIN tipo_documento tpd ON tpd.tipo_documento_id = est.estudiantes_tipo_documento WHERE est.estudiantes_estado = 'Activo' OR est.estudiantes_estado = 'Inactivo' OR est.estudiantes_estado = 'Egresado'";
 
 $result = $conn->query($sql);
 

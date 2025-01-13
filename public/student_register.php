@@ -52,7 +52,7 @@ if (substr($binperms, 9, 1) == 2) {
                             <div>
                                 <label for="estudiantes_tipo_documento">Tipo de documento</label>
                                 <select name="dni_type" id="estudiantes_tipo_documento" required>
-                                    <option value="none">Seleccione una opción</option>
+                                    <option value="--">Seleccione una opción</option>
                                     <option value="ti">Tarjeta de identidad</option>
                                     <option value="cc">Cedula de ciudadania</option>
                                     <option value="ce">Cedula de extranjeria</option>
@@ -77,6 +77,10 @@ if (substr($binperms, 9, 1) == 2) {
                             <div>
                                 <label for="estudiantes_telefono">Numero de telefono</label>
                                 <input type="text" id="estudiantes_telefono" name="phone" required>
+                            </div>
+                            <div>
+                                <label for="estudiantes_direccion">Dirección</label>
+                                <input type="text" id="estudiantes_direccion" required>
                             </div>
                             <div>
                                 <label for="estudiantes_correo">Correo electronico</label>
@@ -106,7 +110,7 @@ if (substr($binperms, 9, 1) == 2) {
                             </div>
                         </div>
                     </form>
-                    <script>
+                    <!-- <script>
                         // Mostrar la notificación si existe
                         window.onload = function() {
                             var notification = document.getElementById("notification");
@@ -117,7 +121,7 @@ if (substr($binperms, 9, 1) == 2) {
                                 }, 5000);
                             }
                         };
-                    </script>
+                    </script> -->
                 </div>
                 <footer class=".footer">
                     <?php require_once "../src/models/footer.php" ?>
