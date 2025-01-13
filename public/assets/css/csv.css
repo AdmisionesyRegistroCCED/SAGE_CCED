@@ -5,13 +5,30 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-red: #FD2D1C;
+    --primary-blue: #156BD1;
+    --focused-red: #ba1304;
+    --focused-blue: #0850a9;
+    --light-red: #ff3f3f;
+    --light-blue: #2c8afe;
+
+    --btn-primary: #156BD1;
+    --btn-danger: #e01b09;
+    --btn-succes: #10e24c;
+    --btn-info: #e8d20a;
+
+    --light: #fff;
+    --dark: #000;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
 
 header {
-    background-color: red;
+    background-color: var(--primary-red);
     color: white;
     padding: 10px;
     margin-bottom: 20px;
@@ -20,9 +37,10 @@ header {
 /* Contenedor principal que usa flexbox */
 .header {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
 }
+
 .sec1 {
     display: flex;
     align-items: center;
@@ -39,24 +57,29 @@ header {
     color: white;
     padding: 5px;
 }
-.backbtn{
+
+.backbtn {
     text-decoration: none !important;
     color: white;
     font-size: 50px;
     transition: .3s ease-in-out;
 }
-.backbtn:hover{
+
+.backbtn:hover {
     color: gray;
     transition: .3s ease-in-out;
 }
+
 /* Wrapper para la estructura de la página */
 .wrapper {
     display: flex;
     width: 100%;
 }
-.main{
+
+.main {
     width: 100%;
 }
+
 /* Menú lateral */
 .sidebar {
     width: 250px;
@@ -146,11 +169,11 @@ button:hover {
 }
 
 .error {
-    background-color: #e4646f;
+    background-color: #ff98a1;
 }
 
 .duplicate {
-    background-color: rgb(227, 227, 145);
+    background-color: rgb(242, 248, 122);
 }
 
 .floating-button {
@@ -158,7 +181,7 @@ button:hover {
     bottom: 20px;
     right: 20px;
     padding: 15px 20px;
-    background-color: green;
+    background-color: var(--btn-succes);
     color: white;
     border: none;
     border-radius: 8px;
@@ -166,6 +189,10 @@ button:hover {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.floating-button:hover {
+    background-color: #08b439;
 }
 
 .floating-button.disabled {
@@ -202,12 +229,15 @@ button:hover {
     font-size: 1.5em;
     cursor: pointer;
 }
+
 .paginacion {
     text-align: center;
 }
-.paginacion a{
+
+.paginacion a {
     text-decoration: none !important;
 }
+
 .paginacion a,
 .paginacion span {
     display: inline-block;
@@ -245,7 +275,8 @@ button:hover {
 .paginacion span {
     color: #ccc;
 }
-.filters{
+
+.filters {
     display: flex;
     flex-direction: row;
     gap: .5em;
@@ -253,7 +284,8 @@ button:hover {
     justify-content: start;
     padding: 10px;
 }
-.datarows{
+
+.datarows {
     display: flex;
     flex-direction: column;
     gap: .5em;
@@ -261,7 +293,8 @@ button:hover {
     justify-content: start;
     padding: 5px;
 }
-.dataup{
+
+.dataup {
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-start;
@@ -269,7 +302,8 @@ button:hover {
     padding: 5px;
     gap: .02em
 }
-.fdata{
+
+.fdata {
     display: flex;
     flex-direction: row;
     padding-bottom: .5em;
@@ -278,13 +312,15 @@ button:hover {
     align-items: baseline;
     justify-content: start;
 }
-.prettierdown{
+
+.prettierdown {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
 }
+
 /* Para forzar que la tabla se ajuste al contenedor */
 #data-table {
     width: 100%;
@@ -303,4 +339,27 @@ button:hover {
 #table-container {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+}
+
+tr:hover {
+    border: 1px solid black;
+    -webkit-box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.75);
+
+
+
+
+}
+
+.delete-btn {
+    background-color: var(--btn-danger);
+    color: white;
+    border-radius: 8px;
+    border: 1px solid var(--focused-red);
+    transition: .3s all ease-in-out;
+}
+
+.delete-btn:hover {
+    background-color: var(--focused-red);
 }
