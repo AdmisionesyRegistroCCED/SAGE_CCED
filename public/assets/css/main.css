@@ -328,12 +328,18 @@ select {
     gap: 15px;
 }
 
+.no-flex{
+    display: block;
+}
+
+
 #estudiantes_observaciones{
     display: flex;
     width: 100%;
     flex-direction: column;
     gap: 15em;
     margin-bottom: 1em;
+    resize: none;
 }
 
 textarea{
