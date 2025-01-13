@@ -31,13 +31,16 @@ if($estudiantes_tipo_documento == "cc"){
     $tipoDocumento = 3;
 }
 
-$sql = "UPDATE estudiantes SET estudiantes_tipo_documento='$tipoDocumento', estudiantes_nombre='$estudiantes_nombre', estudiantes_apellidos='$estudiantes_apellidos', estudiantes_fecha_nacimiento='$estudiantes_fecha_nacimiento', estudiantes_genero='$estudiantes_genero', estudiantes_telefono='$estudiantes_telefono', estudiantes_correo='$estudiantes_correo', estudiantes_estado='$estudiantes_estado' WHERE estudiantes_no_documento='$estudiantes_no_documento'";
+$sql = "UPDATE estudiantes SET estudiantes_tipo_documento='$tipoDocumento', estudiantes_nombre='$estudiantes_nombre', estudiantes_apellidos='$estudiantes_apellidos', estudiantes_fecha_nacimiento='$estudiantes_fecha_nacimiento', estudiantes_genero='$estudiantes_genero', estudiantes_telefono='$estudiantes_telefono', estudiantes_correo='$estudiantes_correo', estudiantes_estado='$estudiantes_estado', estudiantes_observaciones = '$estudiantes_observaciones' WHERE estudiantes_no_documento='$estudiantes_no_documento'";
 
-if ($conn->query($sql) === TRUE) {
-    echo $sql;
-} else {
-    echo "Error al actualizar: " . $conn->error;
+$prepare = $conn->prepare($sql);
+$prepare->execute();
+
+
+if (!$prepare) {
+    echo "Error al actualizar". $conn ->error;
 }
 
+$prepare->close();
 $conn->close();
 ?>

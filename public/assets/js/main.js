@@ -1,9 +1,9 @@
-document.getElementById('menuToggle').addEventListener('click', function() {
+document.getElementById('menuToggle').addEventListener('click', function () {
     var leftMenu = document.getElementById('lftmenu');
     var mainContent = document.querySelector('.main');
     var footer = document.getElementById('footer');
     var formatDiv = document.getElementById('format');
-    
+
     leftMenu.classList.toggle('collapsed');
     mainContent.classList.toggle('expanded');
     footer.classList.toggle('expanded');
@@ -11,22 +11,20 @@ document.getElementById('menuToggle').addEventListener('click', function() {
 });
 
 
-document.getElementById('dropdownToggle').addEventListener('click', function() {
+document.getElementById('dropdownToggle').addEventListener('click', function () {
     document.getElementById('dropdownMenu').classList.toggle('show');
 });
 
+$(document).ready(function () {
 
-$(document).ready(function() {
-
-    
     let tabla = $('#myTable').DataTable({
-        "autoWidth":true,
+        "autoWidth": true,
         //data: null,
         "responsive": true,
         "processing": true,
         "serverSide": false,
-        "language":{
-            "url":"assets/js/es-ES.json"
+        "language": {
+            "url": "assets/js/es-ES.json"
         },
         "columns": [
             { "data": "sigla" },
@@ -48,21 +46,34 @@ $(document).ready(function() {
                 sortable: false
             }
         ],
-            "ajax": {
-                "type": "POST",
-                "url": "../src/controllers/fetch_students.php",
-                "datatype": 'array',
-                "dataSrc": "",
-                "cache": false,
-                // "success":function(response){
-                //     return console.log(response);
-                // }
-                
+        "ajax": {
+            "type": "POST",
+            "url": "../src/controllers/fetch_students.php",
+            "datatype": 'json',
+            "dataSrc": function (subData) {
+                return subData || []; // Asegúrate de que 'data' existe en la respuesta JSON.
+
             },
-            
+            "error": function (xhr, status, error) {
+                console.error("Error en la solicitud AJAX: " + error);
+            },
+            "cache": false,
+            // "success": function(response) {
+            //     console.log(response);
+            //     return true;
+            // },
+            // error: function(xhr, status, error) {
+            //     console.log(error);
+            //     return false;
+            // }
+
+        }
+
     });
 
-    $(document).on('click', '.editbtn', function(e) {
+
+    //Capturar datos
+    $(document).on('click', '.editbtn', function (e) {
 
         e.preventDefault();
         e.stopPropagation();
@@ -71,7 +82,7 @@ $(document).ready(function() {
 
         //Obtener datos de la fila seleccionada.
         let rowData = tabla.row(boton).data();
-        
+
         // Llenar el formulario del modal
         $('#estudiantes_tipo_documento').val(rowData.sigla);
         $('#estudiantes_no_documento').val(rowData.nroDocumento);
@@ -83,14 +94,16 @@ $(document).ready(function() {
         $('#estudiantes_telefono').val(rowData.telefono);
         $('#estudiantes_estado').val(rowData.estado);
         $('#estudiantes_observaciones').val(rowData.observaciones);
-        
+
+        console.log({rowData});
+
         // Muestra el modal
         $('#edit-modal').css('display', 'flex');
     });
 
-    
+
     // Actualizar datos
-    $('#edit-form').submit(function(e) {
+    $('#edit-form').submit(function (e) {
         e.preventDefault();
 
         // Captura de datos
@@ -107,7 +120,7 @@ $(document).ready(function() {
 
         // Enviar los datos al servidor usando AJAX
         $.ajax({
-            url: '../src/controllers/update_students.php', 
+            url: '../src/controllers/update_students.php',
             type: 'POST',
             data: {
                 estudiantes_tipo_documento: estudiantes_tipo_documento,
@@ -119,109 +132,90 @@ $(document).ready(function() {
                 estudiantes_telefono: estudiantes_telefono,
                 estudiantes_correo: estudiantes_correo,
                 estudiantes_estado: estudiantes_estado,
-                estudiantes_observaciones:estudiantes_observaciones
+                estudiantes_observaciones: estudiantes_observaciones
             },
-            success: function(response) {
+            success: function (response) {
                 alert("Registro actualizado correctamente."); // Muestra un mensaje de éxito
                 tabla.ajax.reload(); // Actualiza la tabla
-                $('#edit-modal').css('display', 'none'); // Cierra el modal
+                $('#edit-modal').css('display', 'none'); // Cierra el 
+
+                return true;
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error("Error en la actualización: ", error);
                 alert("Error al actualizar los datos. Intenta de nuevo.");
+                return false;
             }
         });
     });
 
+
+
     // Cierra el modal al hacer clic en "x"
-    $('.close').click(function() {
+    $('.close').click(function () {
         $('#edit-modal').css('display', 'none');
     });
 
-    //Inhabilitar estudiante
-    $(document).on('click','#btnEliminar', function (f) {
+
+    async function eliminarRegistro(estudiantes_no_documento,estudiantes_estado) {
+
+        try {
+            
+            const response = await $.ajax({
+                url: '../src/controllers/delete_students.php',
+                type: 'POST',
+                data: {
+                    estudiantes_no_documento: estudiantes_no_documento,
+                    estudiantes_estado:estudiantes_estado
+                },
+                dataType: 'json'
+            });
+    
+            if (response) {
+                alert("exitoso");
+                tabla.ajax.reload();
+                return true;
+            } else {
+                alert("Fallo");
+                return false;
+            }
+        } catch (error) {
+            alert("Error de la petición");
+            console.log("Error en la petición.",error);
+            return false;
+        }
         
+    }
+
+    //Inhabilitar estudiante
+    $('#myTable').on('click', '#btnEliminar', async function (f) {
+
         f.preventDefault();
         f.stopPropagation();
 
-        let fila = $(this);
-        let inhabilitarAlert = confirm("¿Esta seguro que desea Inhabilitar este registro?");
+        console.log('hello world');
 
-        if (inhabilitarAlert) {
-            $.ajax({
-                url: '../src/controllers/delete_students.php',  
-                type: 'POST',                 
-                data: {
-                    estudiantes_estado: estudiantes_estado,
-                    estudiantes_no_documento: estudiantes_no_documento
-                },                  
-                dataType: 'json', 
-                cache:false,           
-                success: function(data) { 
-                    tabla.row(fila.parents("tr")).remove().draw();
-                },
-                error: function(xhr, status, error) {  
-                    callback(error, null);           
-                }
-            });
-        }
 
+        let fila = $(this).closest('tr');
+        let borrarDato = tabla.row(fila).data();
 
         
-       
-    })
 
-    //Registrar estudiante
-    $('#formRegistrarEstudiante').submit(function(e){
-        e.preventDefault();
-
-        let estudiantes_nombre = $('#estudiantes_nombre').val();
-        let estudiantes_apellidos = $('#estudiantes_apellidos').val();
-        let estudiante_tipo_documento = $('#estudiante_tipo_documento').val();
-        let estudiantes_no_documento = $('#estudiantes_no_documento').val();
-        let estudiantes_fecha_nacimiento = $('#estudiantes_fecha_nacimiento').val();
-        let estudiantes_correo = $('#estudiantes_correo').val();
-        let estudiantes_estado = $('#estudiantes_estado').val();
-        let estudiantes_genero = $('#estudiantes_genero').val();
-        let estudiantes_telefono = $('#estudiantes_telefono').val();
+        let estudiantes_no_documento = borrarDato.nroDocumento;
+        let estudiantes_estado = borrarDato.estado;
+        
+        console.log({estudiantes_estado,estudiantes_no_documento});
 
 
+        if (confirm("¿Esta seguro que desea Inhabilitar este registro?")) {
+            const exito = await eliminarRegistro(estudiantes_no_documento,estudiantes_estado);
+            console.log(exito);
 
-        // {estudiantes_nombre,
-        //     estudiantes_apellidos,
-        //     estudiante_tipo_documento,
-        //     estudiantes_no_documento,
-        //     estudiantes_fecha_nacimiento,
-        //     estudiantes_correo,
-        //     estudiantes_estado,
-        //     estudiantes_genero}
-
-
-        $.ajax({
-            url:"",
-            type:"POST",
-            data:{
-                estudiantes_nombre:estudiantes_nombre,
-                estudiantes_apellidos:estudiantes_apellidos,
-                estudiante_tipo_documento:estudiante_tipo_documento,
-                estudiantes_no_documento:estudiantes_no_documento,
-                estudiantes_fecha_nacimiento:estudiantes_fecha_nacimiento,
-                estudiantes_correo:estudiantes_correo,
-                estudiantes_estado:estudiantes_estado,
-                estudiantes_genero:estudiantes_genero,
-                estudiantes_telefono: estudiantes_telefono
-            },
-            datatype:"json",
-            cache:false,
-            success:function (data,success){
-                if(data){
-                    console.log("Registro exitoso"+success);
-                }
+            if (exito) {
+                tabla.row(fila).remove().draw();
             }
 
-        });
+        }
 
     });
-
-
 });
