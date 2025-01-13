@@ -128,8 +128,6 @@ if (substr($binperms, 9, 1) == 2) {
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-
-
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="assets/js/registrarEstudiante.js"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
@@ -141,6 +139,6 @@ if (substr($binperms, 9, 1) == 2) {
 
 <?php
 } else {
-    header(header: "location: dashboard.php");
+    header("location: dashboard.php");
 }
 ?>
