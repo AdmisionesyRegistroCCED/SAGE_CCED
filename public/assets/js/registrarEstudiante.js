@@ -10,6 +10,7 @@ $(document).ready(function () {
     let estudiantes_fecha_nacimiento = $('#estudiantes_fecha_nacimiento').val();
     let estudiantes_correo = $('#estudiantes_correo').val();
     let estudiantes_estado = $('#estudiantes_estado').val();
+    let estudiantes_direccion = $('#estudiantes_direccion').val();
     let estudiantes_genero = $('#estudiantes_genero').val();
     let estudiantes_telefono = $('#estudiantes_telefono').val();
     let estudiantes_observaciones = $('#estudiantes_observaciones').val();
@@ -25,6 +26,7 @@ $(document).ready(function () {
             estudiantes_fecha_nacimiento:estudiantes_fecha_nacimiento,
             estudiantes_correo:estudiantes_correo,
             estudiantes_estado:estudiantes_estado,
+            estudiantes_direccion:estudiantes_direccion,
             estudiantes_genero:estudiantes_genero,
             estudiantes_telefono: estudiantes_telefono,
             estudiantes_observaciones:estudiantes_observaciones
@@ -33,12 +35,13 @@ $(document).ready(function () {
         cache:false,
         success:function (data){
             if(data){
-                alert("Registro exitoso: " + {data});
-
+                alert("Registro exitoso: ");
+                //Vaciar campos del formulario
+                document.querySelector('#formRegistrarEstudiante').reset();
             }
         },
         error: function(xhr, status, error) {
-            alert("Hubo un error al procesar la solicitud. Intenta de nuevo.");
+            alert("Error al registrar el estudiante");
         }
 
 

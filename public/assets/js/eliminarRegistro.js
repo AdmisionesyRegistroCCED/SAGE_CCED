@@ -28,10 +28,10 @@ $('#myTable').on('click','#btnEliminar', async function (f) {
     // f.stopPropagation();
     
     
+    
     let fila = $(this).closest('tr');
     let borrarDato = tabla.row(fila).data();
 
-    
     console.log(fila);
     console.log({borrarDato});
     if (confirm("¿Esta seguro que desea Inhabilitar este registro?")) {

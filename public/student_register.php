@@ -79,6 +79,10 @@ if (substr($binperms, 9, 1) == 2) {
                                 <input type="text" id="estudiantes_telefono" name="phone" required>
                             </div>
                             <div>
+                                <label for="estudiantes_direccion">Dirección</label>
+                                <input type="text" id="estudiantes_direccion" required>
+                            </div>
+                            <div>
                                 <label for="estudiantes_correo">Correo electronico</label>
                                 <input type="email" id="estudiantes_correo" name="email" required>
                             </div>
