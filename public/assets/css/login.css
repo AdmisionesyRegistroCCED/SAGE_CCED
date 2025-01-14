@@ -132,3 +132,41 @@ form input[type="submit"]:hover{
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
+
+/* Estilo para la alerta flotante */
+.session-alert {
+    position: fixed;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+    animation: slideDown 0.5s forwards;
+}
+
+/* Animación de deslizamiento hacia abajo */
+@keyframes slideDown {
+    to {
+        top: 20px;
+    }
+}
+
+.session-alert button {
+    margin-top: 10px;
+    background-color: white;
+    color: #f44336;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.session-alert button:hover {
+    background-color: #ddd;
+}
