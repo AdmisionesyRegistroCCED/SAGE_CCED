@@ -1,8 +1,3 @@
-//import 'toggleMenu.js';
-
-
-
-
 $(document).ready(function () {
 
     let tabla = $('#myTable').DataTable({
