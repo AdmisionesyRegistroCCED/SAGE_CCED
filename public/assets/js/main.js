@@ -54,6 +54,20 @@ $(document).ready(function () {
         e.preventDefault();
         e.stopPropagation();
 
+        
+        const inputBtn = document.querySelector('#submitModal');
+        const textTitle = document.querySelector('#modal-title');
+        
+        if(inputBtn.style === 'none'){
+            inputBtn.style.display = 'block';
+        }else{
+            textTitle.innerHTML='Editar estudiante';
+            inputBtn.style.display = 'flex';
+            $('.modal').css('display','flex');
+        }
+
+        console.log(textTitle);
+
         let boton = $(this).closest('tr');
 
         //Obtener datos de la fila seleccionada.
@@ -72,13 +86,14 @@ $(document).ready(function () {
         $('#estudiantes_observaciones').val(rowData.observaciones);
 
         // Muestra el modal
-        $('#edit-modal').css('display', 'flex');
+        //$('#edit-modal').css('display', 'flex');
     });
 
 
     // Actualizar datos
     $('#edit-form').submit(function (e) {
         e.preventDefault();
+
 
         // Captura de datos
         const estudiantes_tipo_documento = $('#estudiantes_tipo_documento').val();
@@ -180,16 +195,38 @@ $(document).ready(function () {
 
     });
 
+
+    
+    const inputBtn = document.querySelector('#submitModal');
+    const textTitle = document.querySelector('#modal-title');
     //Ver detalle
     $('#myTable').on('click','#btnDetalle',function (g){
-        const inputBtn = document.querySelector('#submitModal');
-        const textTitle = document.querySelector('#modal-title');
+
+        let btnDetalle = $(this).closest('tr');
+
+        //Obtener datos de la fila seleccionada.
+        let rowDataDetalle = tabla.row(btnDetalle).data();
+
+        
+        // Llenar el formulario del modal
+        $('#estudiantes_tipo_documento').val(rowDataDetalle.sigla);
+        $('#estudiantes_no_documento').val(rowDataDetalle.nroDocumento);
+        $('#estudiantes_nombre').val(rowDataDetalle.nombre);
+        $('#estudiantes_apellidos').val(rowDataDetalle.apellido);
+        $('#estudiantes_fecha_nacimiento').val(rowDataDetalle.fechaNacimiento);
+        $('#estudiantes_correo').val(rowDataDetalle.correo);
+        $('#estudiantes_genero').val(rowDataDetalle.genero);
+        $('#estudiantes_telefono').val(rowDataDetalle.telefono);
+        $('#estudiantes_estado').val(rowDataDetalle.estado);
+        $('#estudiantes_observaciones').val(rowDataDetalle.observaciones);
+
         if(inputBtn.style === 'none'){
             inputBtn.style.display = 'block';
         }else{
             textTitle.innerHTML = 'Detalle del estudiante';
             inputBtn.style.display = 'none';
+            $('.modal').css('display','flex');
         }
-        $('#edit-modal').css('display','flex');
+
     });
 });

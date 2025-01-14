@@ -7,7 +7,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
     $valorTipo;
     $estudiantes_no_documento = $_POST['estudiantes_no_documento'];
     $estudiantes_tipo_documento = $_POST['estudiantes_tipo_documento'];
@@ -30,6 +29,15 @@ if ($conn->connect_error) {
     }else{
         $valorTipo = NULL;
     }
+
+    $vali = $conn->prepare("SELECT estudiantes_no_documento AS 'Cedula' FROM estudiantes WHERE estudiantes_no_documento = '$estudiantes_no_documento'");
+
+    $vali->execute();
+
+    //Obtengo el resultado del
+    $comparacion = $vali->get_result();
+
+    
 
     $sql = "INSERT INTO estudiantes 
     (estudiantes_no_documento,
