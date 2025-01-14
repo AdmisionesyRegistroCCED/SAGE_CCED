@@ -126,6 +126,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
     <!-- Segundo datatable -->
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
     <!-- Tercero script main.js -->
+    <script src="assets/js/toggleMenu.js"></script>
     <script src="assets/js/main.js"></script>
     
     

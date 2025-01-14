@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-01-2025 a las 17:45:06
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 14-01-2025 a las 14:14:39
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `sage_ccedspanish`
+-- Base de datos: `sage_cced`
 --
 
 -- --------------------------------------------------------
@@ -33,14 +33,7 @@ CREATE TABLE `adjuntos` (
   `adjunto_cedula` mediumblob NOT NULL,
   `adjunto_eps` mediumblob NOT NULL,
   `adjunto_foto` mediumblob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `adjuntos`
---
-
-INSERT INTO `adjuntos` (`adjuntos_id`, `adjuntos_numero_documento`, `adjunto_cedula`, `adjunto_eps`, `adjunto_foto`) VALUES
-(1, 66765384, '', '', '');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -51,7 +44,7 @@ INSERT INTO `adjuntos` (`adjuntos_id`, `adjuntos_numero_documento`, `adjunto_ced
 CREATE TABLE `aulas` (
   `aula_codigo` int(11) NOT NULL,
   `aula_capacidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -68,7 +61,7 @@ CREATE TABLE `calendarios` (
   `calendario_grupo_estudiantes_id` int(11) NOT NULL,
   `calendarios_franjas_id` int(11) NOT NULL,
   `calendarios_descripcion` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -81,7 +74,7 @@ CREATE TABLE `doble_titulacion` (
   `doble_titulacion_estudiantes_no_documento` int(11) NOT NULL,
   `doble_titulacion_programas_codigo_principal` int(11) NOT NULL,
   `doble_titulacion_programas_codigo_secundario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -95,7 +88,7 @@ CREATE TABLE `docentes` (
   `docentes_tipo_documento` enum('cc','ce') NOT NULL,
   `docentes_telefono` varchar(255) NOT NULL,
   `docentes_correo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -112,44 +105,20 @@ CREATE TABLE `estudiantes` (
   `estudiantes_genero` enum('Masculino','Femenino','Nulo') NOT NULL,
   `estudiantes_telefono` varchar(15) NOT NULL,
   `estudiantes_correo` varchar(100) NOT NULL,
-  `estudiantes_estado` enum('Activo','Inactivo','Egresado') NOT NULL DEFAULT 'Activo',
+  `estudiantes_estado` enum('Activo','Inactivo','Egresado','Inhabilitado') NOT NULL DEFAULT 'Activo',
   `estudiantes_direccion` varchar(255) NOT NULL,
-  `estudiantes_adjunto_id` int(11) NOT NULL,
+  `estudiantes_adjunto_id` int(11) DEFAULT NULL,
   `estudiantes_observaciones` varchar(255) NOT NULL,
   `estudiantes_doble_titulacion` enum('Si','No','Nulo') NOT NULL,
-  `estudiantes_doble_titulacion_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `estudiantes_doble_titulacion_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `estudiantes`
 --
 
 INSERT INTO `estudiantes` (`estudiantes_no_documento`, `estudiantes_tipo_documento`, `estudiantes_nombre`, `estudiantes_apellidos`, `estudiantes_fecha_nacimiento`, `estudiantes_genero`, `estudiantes_telefono`, `estudiantes_correo`, `estudiantes_estado`, `estudiantes_direccion`, `estudiantes_adjunto_id`, `estudiantes_observaciones`, `estudiantes_doble_titulacion`, `estudiantes_doble_titulacion_id`) VALUES
-('1005892997', 1, 'Maria De Los Angeles', 'Garcia Aguirre', '2000-01-07', 'Femenino', '3052329512', 'mariagarciaguirre1011@gmail.com', 'Egresado', 'Calle 3', 0, 'Sin Observación', 'No', 7),
-('1006035083', 1, 'Maira Alejandra', 'Aguilar Lozano', '2000-01-16', 'Nulo', '3165096986', 'AGUILARLOZANOMAYRA2002@GMAIL.COM', 'Egresado', 'Nulo', 0, 'Nulo', 'Nulo', 16),
-('1006198442', 1, 'Daniel Mauricio', 'Daniel Mauricio', '2000-01-02', 'Nulo', '3188187897', 'DANIEL-MAURICIO@HOTMAIL.ES', 'Egresado', 'Nulo', 0, 'Nulo', 'Nulo', 2),
-('1059988889', 1, 'Monica Dayana', 'Oyola Correa', '2000-01-11', 'Nulo', '3166739632', 'MONICAOYOLA@CCED.EDU.CO', 'Egresado', 'Nulo', 0, 'Nulo', 'Nulo', 11),
-('1107523701', 1, 'Tatiana Lizeth', 'Gutierrez Lopez', '2000-01-08', 'Nulo', '3172503482', 'TATIANALOPEZ416@GMAIL.COM', 'Egresado', 'Nulo', 0, 'DOBLE TITULACION ADMON', 'Nulo', 8),
-('1111815213', 1, 'Yerson Erasmo', 'Alomia Vivas', '2000-01-17', 'Nulo', '3166767864', 'e.alomia@misena.edu.co', 'Inactivo', 'Nulo', 0, 'Nulo', 'Nulo', 17),
-('1112229638', 1, 'Jessica', 'Uribe Cayapu', '2000-01-14', 'Nulo', '3185093894', 'jessik.melisa04@hotmail.com', 'Egresado', 'Nulo', 0, 'Nulo', 'Nulo', 14),
-('1130610031', 1, 'Alan', 'Echeverry Gomez', '2000-01-05', 'Nulo', '3163160445', 'alan1912@outlook.com', 'Inactivo', 'Nulo', 0, 'DEBE DERECHOS DE GRADOS', 'Nulo', 5),
-('1130629410', 1, 'Edith Julieth', 'Alvarez Gil', '2000-01-18', 'Nulo', '3188201473', 'alvaresedith@gmail.com', 'Inactivo', 'Nulo', 0, 'Nulo', 'Nulo', 18),
-('1130635660', 1, 'Natalia Cristina', 'Rios Muñeton', '2000-01-12', 'Nulo', '3102859640', 'nata887@hotmail.com', 'Egresado', 'Nulo', 0, 'DOBLE TITULACION ADMON', 'Nulo', 12),
-('1143847659', 1, 'Angelica Alejandra', 'Hernandez Parra', '2000-01-23', 'Nulo', '3183447346', 'NAHLEJA93@GMAIL.COM', 'Egresado', 'Nulo', 0, 'Nulo', 'Nulo', 23),
-('1143857405', 1, 'Marlyn Jiseth', 'Mina Casanova', '2000-01-25', 'Nulo', '3176173419', 'marcita03@hotmail.es', 'Egresado', 'Nulo', 0, 'DOBLE TITULACION', 'Nulo', 25),
-('1143865042', 1, 'Jose Andres', 'Ibarra Mamian', '2000-01-24', 'Nulo', '3133263212', 'JEFE023MAESTRO@GMAIL.COM', 'Inactivo', 'Nulo', 0, 'Nulo', 'Nulo', 24),
-('1143866014', 1, 'Briyeth Jakeline', 'Eraso Llalles', '2000-01-22', 'Nulo', '3187391908', 'brillierazo@gmail.com', 'Egresado', 'Nulo', 0, 'Nulo', 'Nulo', 22),
-('1143868813', 1, 'Anlly Paola', 'Arce Restrepo', '2000-01-19', 'Nulo', '3145926481', 'angieteamo_1026@hotmail.com', 'Inactivo', 'Nulo', 0, 'DEBE DERECHOS DE GRADOS', 'Nulo', 19),
-('1143877249', 1, 'Luana Milagros', 'Epia Sanchez', '2000-01-06', 'Nulo', '3206302970', 'lumiepsa2199@hotmail.com', 'Egresado', 'Nulo', 0, 'DOBLE TITULACION', 'Nulo', 6),
-('1143972711', 1, 'Lilley Tatiana', 'Alcalde Mosquera', '2000-01-01', 'Nulo', '3106369720', 'tatix_0428@hotmail.com', 'Egresado', 'Nulo', 0, 'Nulo', 'Nulo', 1),
-('1144072312', 1, 'Jorge Humberto', 'Huertas Rodriguez', '2000-01-10', 'Nulo', '3218560503', 'jorgehhrodriguez@gmail.com', 'Egresado', 'Nulo', 0, 'DOBLE TITULACION', 'Nulo', 10),
-('1151960255', 1, 'Ange Dahiana', 'Buitrago Mendoza', '2000-01-20', 'Nulo', '3128945992', 'ange.buitrago.10@gmail.com', 'Egresado', 'Nulo', 0, 'DOBLE TITULACION', 'Nulo', 20),
-('16379338', 1, 'Hugo Armando', 'Alzate Gomez', '2000-01-03', 'Nulo', '3045858640', 'gohu@hotmail.es', 'Egresado', 'Nulo', 0, 'Nulo', 'Nulo', 3),
-('29109108', 1, 'Mary Luz', 'Velez Duran', '2000-01-15', 'Nulo', '3177216059', 'maryvelez2870@gmail.com', 'Egresado', 'Nulo', 0, 'Nulo', 'Nulo', 15),
-('29741610', 1, 'Dolly', 'Bedoya', '2000-01-04', 'Nulo', '3103026702', 'dollybe0526@ghotmial.com', 'Egresado', 'Nulo', 0, 'DOBLE TITULACION ADMON', 'Nulo', 4),
-('38556048', 1, 'Lorena', 'Diaz Vargas', '2000-01-21', 'Nulo', '3165314886', 'lorenadiaz81@gmail.com', 'Inactivo', 'Nulo', 0, 'Nulo', 'Nulo', 21),
-('38563482', 1, 'Marina', 'Rodriguez Luz', '2000-01-13', 'Nulo', '3103474554', 'MARINARODRIGUEZ1307@GMAIL.COM', 'Egresado', 'Nulo', 0, 'Nulo', 'Nulo', 13),
-('66765384', 1, 'Claudia Patricia', 'Hernandez Motato', '2000-01-09', 'Nulo', '3146909289', 'claudiahdez40@hotmail.com', 'Egresado', 'Nulo', 0, 'DOBLE TITULACION ADMON', 'Nulo', 9);
+('1061739099', 1, 'Merlly Dayana ', 'Moreno Valdes', '1991-06-19', 'Femenino', '3127446834', 'admisionesyregistrocced@gmail.com', 'Activo', 'Cra 36 # 6-37', NULL, '', 'Si', NULL);
 
 -- --------------------------------------------------------
 
@@ -161,7 +130,7 @@ CREATE TABLE `estudiantes_modulos` (
   `estudiantes_modulos_id` int(11) NOT NULL,
   `estudiantes_modulos_estudiantes_no_documento` int(11) NOT NULL,
   `estudiantes_modulos_modulos_codigo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -172,7 +141,7 @@ CREATE TABLE `estudiantes_modulos` (
 CREATE TABLE `grupos_estudiantes` (
   `grupos_id` int(11) NOT NULL,
   `grupos_estudiantes_estudiantes_no_documento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -184,7 +153,7 @@ CREATE TABLE `jornadas` (
   `jornadas_codigo` int(11) NOT NULL,
   `jornadas_periodo` enum('Diurna','Nocturna','Sabatina') NOT NULL,
   `jornadas_horarios` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `jornadas`
@@ -211,7 +180,7 @@ CREATE TABLE `matricula` (
   `matricula_recibo_pago` mediumblob NOT NULL,
   `matricula_acta` mediumblob NOT NULL,
   `matricula_diploma` mediumblob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -224,7 +193,7 @@ CREATE TABLE `modulos` (
   `modulos_nombre` varchar(255) NOT NULL,
   `modulos_descripcion` text NOT NULL,
   `modulos_duracion` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -236,7 +205,7 @@ CREATE TABLE `permisos` (
   `permisos_id` int(11) NOT NULL,
   `permisos_nombre` varchar(255) NOT NULL,
   `permisos_numero_codigo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -250,7 +219,7 @@ CREATE TABLE `programas` (
   `programas_descripcion` varchar(255) NOT NULL,
   `programas_precio` varchar(255) NOT NULL,
   `programas_duracion` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `programas`
@@ -269,7 +238,7 @@ CREATE TABLE `programas_modulos` (
   `programas_modulos_id` int(11) NOT NULL,
   `programas_modulos_programas_codigo` int(11) NOT NULL,
   `programas_modulos_modulos_codigo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -281,7 +250,7 @@ CREATE TABLE `roles` (
   `roles_id` int(11) NOT NULL,
   `roles_nombre` varchar(255) NOT NULL,
   `roles_codigo_permisos` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `roles`
@@ -289,8 +258,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`roles_id`, `roles_nombre`, `roles_codigo_permisos`) VALUES
 (1, 'supadmin', '222222222222'),
-(2, 'admin', '122111111111'),
-(3, 'academico', '000111122222\n'),
+(2, 'admin', '222222222222'),
+(3, 'academico', '000000000222\n'),
 (4, 'comercial', '000110100100\n'),
 (5, 'docente', '000110010110'),
 (6, 'estudiante', '000110001011');
@@ -305,7 +274,7 @@ CREATE TABLE `tipo_documento` (
   `tipo_documento_id` int(11) NOT NULL,
   `tipo_documento_sigla` varchar(10) NOT NULL,
   `tipo_documento_nombre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tipo_documento`
@@ -325,7 +294,7 @@ INSERT INTO `tipo_documento` (`tipo_documento_id`, `tipo_documento_sigla`, `tipo
 CREATE TABLE `tipo_estudio` (
   `tipo_estudio_id` int(11) NOT NULL,
   `tipo_estudio_nombre` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tipo_estudio`
@@ -347,9 +316,9 @@ CREATE TABLE `usuarios` (
   `usuarios_nombre` varchar(100) NOT NULL,
   `usuarios_contrasena` varchar(255) NOT NULL,
   `usuarios_correo` varchar(100) DEFAULT NULL,
-  `usuarios_rol_id` int(11) NOT NULL,
+  `usuarios_rol_id` int(11) DEFAULT NULL,
   `usuarios_fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -357,7 +326,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`usuarios_id`, `usuarios_nombre`, `usuarios_contrasena`, `usuarios_correo`, `usuarios_rol_id`, `usuarios_fecha_creacion`) VALUES
 (1, 'Marlon Reina', '$2y$10$HzzM3ZInHT.SD8dcESdeBO5Td29/A39qpIVJZZdZHw4LaKiiQcaoS', 'marlon@gmail.com', 2, '2024-10-16 12:46:18'),
-(2, 'Alejandro Ceron', '$2y$10$pZZY2oeku6WOh5CVRF34Wun2e22SOO4aO266IMG12inwlHKnsUF2G', 'lalejandrocd@gmail.com', 3, '2024-12-27 21:19:15');
+(2, 'Alejandro Ceron', '$2y$10$pZZY2oeku6WOh5CVRF34Wun2e22SOO4aO266IMG12inwlHKnsUF2G', 'lalejandrocd@gmail.com', 2, '2024-12-27 21:19:15'),
+(5, 'Dayana Moreno', '$2y$10$5nu8tuxLmDPXrK8xcROsAerWlfzH/aXN1iBJX17a8tMbT53JtLSEW', 'admisionesyregistrocced@gmail.com', 3, '2025-01-13 22:10:58');
 
 --
 -- Índices para tablas volcadas
@@ -489,7 +459,7 @@ ALTER TABLE `tipo_estudio`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`usuarios_id`),
-  ADD UNIQUE KEY `role` (`usuarios_rol_id`);
+  ADD KEY `usuarios_rol_id` (`usuarios_rol_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -499,7 +469,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `adjuntos`
 --
 ALTER TABLE `adjuntos`
-  MODIFY `adjuntos_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `adjuntos_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `calendarios`
@@ -553,7 +523,7 @@ ALTER TABLE `tipo_documento`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuarios_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `usuarios_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -607,7 +577,7 @@ ALTER TABLE `programas_modulos`
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`usuarios_rol_id`) REFERENCES `roles` (`roles_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`usuarios_rol_id`) REFERENCES `roles` (`roles_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
