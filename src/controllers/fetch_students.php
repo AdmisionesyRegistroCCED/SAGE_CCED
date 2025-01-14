@@ -20,7 +20,7 @@ $result = $conn->query($sql);
 
 $subData = array();
 if ($result->num_rows > 0) {
-    while ($data = $result -> fetch_assoc()) {
+    while ($data = $result->fetch_assoc()) {
         $estudiantes_sigla = $data['sigla'];
         $estudiantes_no_documento = $data['nroDocumento'];
         $estudiantes_nombre = $data['nombre'];
@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
 
         $subData[]  = array(
             "sigla" => $estudiantes_sigla,
-            "nroDocumento"=>$estudiantes_no_documento,
+            "nroDocumento" => $estudiantes_no_documento,
             "nombre" => $estudiantes_nombre,
             "apellido" => $estudiantes_apellidos,
             "telefono" => $estudiantes_telefono,
@@ -45,16 +45,13 @@ if ($result->num_rows > 0) {
             "genero" => $estudiantes_genero,
             "estado" => $estudiantes_estado,
             "observaciones" => $estudiantes_observaciones
-            );
+        );
     }
-    echo json_encode(value: $subData);
-}else{
+    echo json_encode($subData);
+} else {
     $subData = [];
-    echo json_encode(['Error'=>"No hay registros", 'data'=> $subData]);
+    echo json_encode(['Error' => "No hay registros", 'data' => $subData]);
 }
 
 $result->close();
 $conn->close(); // Cerrar la conexión
-
-?>
-
