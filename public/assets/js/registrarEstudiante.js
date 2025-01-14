@@ -35,9 +35,12 @@ $(document).ready(function () {
             cache: false,
             success: function (data) {
                 if (data) {
+                    alert(data);
+                }else{
                     alert("Estudiante agregado con exito");
                     //Vaciar campos del formulario
                     document.querySelector('#formRegistrarEstudiante').reset();
+                
                 }
             },
             error: function (xhr, status, error) {
@@ -46,4 +49,5 @@ $(document).ready(function () {
             }
         });
     });
+
 });

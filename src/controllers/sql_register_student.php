@@ -30,42 +30,50 @@ if ($conn->connect_error) {
         $valorTipo = NULL;
     }
 
-    $vali = $conn->prepare("SELECT estudiantes_no_documento AS 'Cedula' FROM estudiantes WHERE estudiantes_no_documento = '$estudiantes_no_documento'");
+    $vali = "SELECT estudiantes_no_documento FROM estudiantes WHERE estudiantes_no_documento = ?";
+    $exe = $conn->prepare($vali);
+    $exe->bind_param('i',$estudiantes_no_documento);
+    $exe->execute();
 
-    $vali->execute();
+    //Obtengo el resultado de la consulta
+    $comparacion = $exe->get_result();
 
-    //Obtengo el resultado del
-    $comparacion = $vali->get_result();
+    if($fila = $comparacion->fetch_assoc()){
+        $documentoDB = $fila['estudiantes_no_documento'];   
+    }
 
-    
-
-    $sql = "INSERT INTO estudiantes 
-    (estudiantes_no_documento,
-    estudiantes_tipo_documento,
-    estudiantes_nombre, 
-    estudiantes_apellidos, 
-    estudiantes_fecha_nacimiento,
-    estudiantes_genero, 
-    estudiantes_telefono, 
-    estudiantes_correo, 
-    estudiantes_estado,
-    estudiantes_direccion,
-    estudiantes_observaciones) 
-            VALUES ('$estudiantes_no_documento', '$valorTipo', '$estudiantes_nombre', '$estudiantes_apellidos', '$estudiantes_fecha_nacimiento', '$estudiantes_genero', '$estudiantes_telefono', '$estudiantes_correo', '$estudiantes_estado','$estudiantes_direccion','$estudiantes_observaciones')";
-
-    $registrarEstudiante = $conn -> prepare($sql);
-    $registrarEstudiante->execute();
-    if($registrarEstudiante){
-
-        $data = ["estudiantes_no_documento" => $estudiantes_no_documento, "estudiantes_nombre" => $estudiantes_nombre,"estudiantes_tipo_documento" => $estudiantes_tipo_documento ];
-        //echo $result;
+    if($documentoDB == $estudiantes_no_documento){
+        $data = 'Error, Número de documento ya existente en la base de datos';
         echo json_encode($data);
+    }else{
+        $sql = "INSERT INTO estudiantes 
+        (estudiantes_no_documento,
+        estudiantes_tipo_documento,
+        estudiantes_nombre, 
+        estudiantes_apellidos, 
+        estudiantes_fecha_nacimiento,
+        estudiantes_genero, 
+        estudiantes_telefono, 
+        estudiantes_correo, 
+        estudiantes_estado,
+        estudiantes_direccion,
+        estudiantes_observaciones) 
+                VALUES ('$estudiantes_no_documento', '$valorTipo', '$estudiantes_nombre', '$estudiantes_apellidos', '$estudiantes_fecha_nacimiento', '$estudiantes_genero', '$estudiantes_telefono', '$estudiantes_correo', '$estudiantes_estado','$estudiantes_direccion','$estudiantes_observaciones')";
+    
+        $registrarEstudiante = $conn -> prepare($sql);
+        $registrarEstudiante->execute();
+        if($registrarEstudiante){
+    
+            $data = ["estudiantes_no_documento" => $estudiantes_no_documento, "estudiantes_nombre" => $estudiantes_nombre,"estudiantes_tipo_documento" => $estudiantes_tipo_documento ];
+            //echo $result;
+            echo json_encode($data);
+        }
+    
     
     }
 
 
-
-
-
+$exe->close();
+$registrarEstudiante->close();
 $conn->close();
 ?>
