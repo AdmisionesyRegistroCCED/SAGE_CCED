@@ -33,14 +33,13 @@ $(document).ready(function () {
             },
             datatype: "json",
             cache: false,
-            success: function (data) {
-                if (data) {
-                    alert(data);
-                }else{
-                    alert("Estudiante agregado con exito");
-                    //Vaciar campos del formulario
-                    document.querySelector('#formRegistrarEstudiante').reset();
-                
+            success: function (response) {
+                if (response[0] === 'Valor duplicado') {
+                    alert(response[0]); 
+                } else {
+                    alert("Estudiante agregado con éxito");
+                    console.log(response);
+                    $('#formRegistrarEstudiante')[0].reset();
                 }
             },
             error: function (xhr, status, error) {
