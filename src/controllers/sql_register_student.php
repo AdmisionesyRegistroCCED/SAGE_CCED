@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../../config/db.php';
+header('Content-Type: application/json');
 
 // Verificar conexión
 if ($conn->connect_error) {
@@ -32,7 +33,7 @@ if ($conn->connect_error) {
 
     $vali = "SELECT estudiantes_no_documento FROM estudiantes WHERE estudiantes_no_documento = ?";
     $exe = $conn->prepare($vali);
-    $exe->bind_param('i',$estudiantes_no_documento);
+    $exe->bind_param('s',$estudiantes_no_documento);
     $exe->execute();
 
     //Obtengo el resultado de la consulta
@@ -43,7 +44,8 @@ if ($conn->connect_error) {
     }
 
     if($documentoDB == $estudiantes_no_documento){
-        $data = 'Error, Número de documento ya existente en la base de datos';
+        $data=['Valor duplicado'];
+        ob_clean();
         echo json_encode($data);
     }else{
         $sql = "INSERT INTO estudiantes 
@@ -63,17 +65,13 @@ if ($conn->connect_error) {
         $registrarEstudiante = $conn -> prepare($sql);
         $registrarEstudiante->execute();
         if($registrarEstudiante){
-    
-            $data = ["estudiantes_no_documento" => $estudiantes_no_documento, "estudiantes_nombre" => $estudiantes_nombre,"estudiantes_tipo_documento" => $estudiantes_tipo_documento ];
-            //echo $result;
+            $data=['Registro exitoso'];
+            ob_clean();
             echo json_encode($data);
         }
-    
+        $exe->close();
+        $registrarEstudiante->close();
+        $conn->close();
     
     }
-
-
-$exe->close();
-$registrarEstudiante->close();
-$conn->close();
 ?>
