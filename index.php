@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<script src="src/controllers/new_fingerprint.js"></script>
+<!-- <script src="src/controllers/new_fingerprint.js"></script> -->
 
 </body>
 
