@@ -35,7 +35,7 @@ $(document).ready(function () {
             cache: false,
             success: function (response) {
                 if (response[0] === 'Valor duplicado') {
-                    alert(response[0]); 
+                    alert("El número de documento ingresado ya está registrado en la base de datos"); 
                 } else {
                     alert("Estudiante agregado con éxito");
                     console.log(response);

@@ -1,12 +1,19 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-include('../../config/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/SAGE_CCED/config/db.php');
+require "session_start.php";
+
+$user_folder = 'uploads/' . $correo;
+if (!is_dir($user_folder)) {
+    mkdir($user_folder, 0777, true);  // Crear la carpeta si no existe.
+}
 
 $hasDuplicates = false;
 $errorCount = 0;
-$jsonFile = 'estudiantes.json';
+$jsonFile = $user_folder . '/estudiantes.json';  // Guardar el archivo JSON en la carpeta del usuario.
 $ids = [];
+
 // Verificar si el archivo JSON existe
 $data = file_exists($jsonFile) ? json_decode(file_get_contents($jsonFile), true) : [];
 
@@ -58,18 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 file_put_contents('warnings.log', implode("\n", $warnings), FILE_APPEND);
             }
 
-            // Generar la salida JSON sin interferencias
-            // header('Content-Type: application/json; charset=utf-8');
-            // echo json_encode(['data' => $data, 'warnings' => $warnings], JSON_PRETTY_PRINT);
-            // exit;
-
-
             fclose($handle);
 
             // Verificar si se cargaron datos
             if (empty($data)) {
                 // echo "No se encontraron datos válidos en el archivo CSV.";
             } else {
+                // Guardar los datos como JSON en la carpeta del usuario
                 $jsonData = json_encode($data, JSON_PRETTY_PRINT);
 
                 // Verificar si hubo un error con json_encode
@@ -78,17 +80,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     // echo "Datos convertidos a JSON correctamente.";
                 }
-                file_put_contents($jsonFile, $jsonData);
+                file_put_contents($jsonFile, $jsonData);  // Guardar el archivo JSON único para este usuario
             }
         } else {
             // echo "No se pudo abrir el archivo CSV.";
         }
     }
 
+
+
     if (isset($_POST['deletejson'])) {
         if (isset($_POST['fileName'])) {
-            $fileName = $_POST['fileName'];
-            $filePath = $fileName;
+            $user_folder = 'uploads/' . $correo;
+            $fileName = basename($_POST['fileName']); // Evita la manipulación de la ruta
+            $filePath = $user_folder . '/' . $fileName; // Define la ruta donde se encuentran los archivos
 
             // Verifica si el archivo existe
             if (file_exists($filePath)) {
@@ -108,22 +113,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
+
+
     if (isset($_POST['delete_no_documento'])) {
         $deleteId = $_POST['delete_no_documento']; // Usar 'delete_no_documento'
 
+        // Suponiendo que $user_folder es la ruta donde se almacenan los archivos del usuario
+        $user_folder = 'uploads/' . $correo; // Ejemplo de cómo se genera la carpeta del usuario
+
+        // Ruta del archivo JSON para el usuario actual
+        $jsonFile = $user_folder . '/estudiantes.json';
+
+        // Verifica si el archivo JSON existe
         if (file_exists($jsonFile)) {
+            // Leer el contenido del archivo JSON
             $data = json_decode(file_get_contents($jsonFile), true);
+
+            // Filtrar los datos para eliminar el registro con el 'NoDocumento' que coincida con el ID
             $data = array_filter($data, fn($row) => $row['NoDocumento'] != $deleteId); // Filtrar usando 'NoDocumento'
 
+            // Escribir los datos filtrados nuevamente en el archivo JSON
             file_put_contents($jsonFile, json_encode($data, JSON_PRETTY_PRINT));
+
+            echo json_encode(['status' => 'success', 'message' => 'Registro eliminado correctamente.']);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'El archivo JSON no existe.']);
         }
     }
 
 
-    if (isset($_POST['edit_no_documento'])) { // Cambiar clave para coincidir con JS
+
+
+    if (isset($_POST['edit_no_documento'])) {
         $editId = $_POST['edit_no_documento'];
         $field = $_POST['field'];
         $value = $_POST['value'];
+
+        // Ruta del archivo JSON del usuario
+        $user_folder = 'uploads/' . $correo; // Asume que la carpeta del usuario es $correo
+        $jsonFile = $user_folder . '/estudiantes.json'; // Ruta del archivo JSON
 
         if (file_exists($jsonFile)) {
             $data = json_decode(file_get_contents($jsonFile), true);
@@ -147,36 +175,81 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo json_encode(['error' => 'Archivo JSON no encontrado']);
         }
-    } else {
-        // echo json_encode(['error' => 'Datos incompletos']);
     }
 
     if (isset($_POST['upload_db'])) {
-        $jsonFile = 'estudiantes.json';
-
+        // Ruta del archivo JSON del usuario
+        $user_folder = 'uploads/' . $correo; // Asume que la carpeta del usuario es $correo
+        $jsonFile = $user_folder . '/estudiantes.json'; // Ruta del archivo JSON
+    
         if (!file_exists($jsonFile)) {
             echo json_encode(['error' => 'Archivo JSON no encontrado']);
             exit;
         }
+    
         ob_clean();
         $data = json_decode(file_get_contents($jsonFile), true);
         if (empty($data)) {
             echo json_encode(['error' => 'El archivo JSON está vacío']);
             exit;
         }
-
+    
         try {
             // Obtener IDs existentes en la base de datos
             $stmt = $pdo->query("SELECT estudiantes_no_documento FROM estudiantes");
             $idsInDatabase = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
-
+    
             if ($idsInDatabase === false) {
                 $idsInDatabase = [];
             }
-
+    
+            // Definir mapeo de tipo de documento
+            $tipoDocumentoMap = [
+                'cc' => 1,
+                'ti' => 2,
+                'ce' => 3
+            ];
+    
             $duplicados = [];
-            $stmt = $pdo->prepare("
-                INSERT INTO estudiantes (
+            $insertValues = []; // Array para almacenar los valores a insertar
+            $params = []; // Array de parámetros para preparar el INSERT
+    
+            foreach ($data as $row) {
+                // Verificar duplicados
+                if (in_array($row['NoDocumento'], $idsInDatabase)) {
+                    $duplicados[] = $row['NoDocumento'];
+                } else {
+                    // Mapear el tipo de documento
+                    $tipoDocumento = isset($tipoDocumentoMap[$row['TipoDocumento']]) ? $tipoDocumentoMap[$row['TipoDocumento']] : null;
+    
+                    if ($tipoDocumento === null) {
+                        // Si no se encuentra en el mapeo, ignoramos el registro
+                        continue;
+                    }
+    
+                    // Preparar los valores para la inserción
+                    $insertValues[] = "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    $params = array_merge($params, [
+                        $row['NoDocumento'],
+                        $tipoDocumento,  // Se usa el valor mapeado
+                        $row['Nombre'],
+                        $row['Apellidos'],
+                        $row['FechaNacimiento'],
+                        $row['Genero'],
+                        $row['Telefono'],
+                        $row['Correo'],
+                        $row['Estado'],
+                        $row['Direccion'],
+                        $row['AdjuntosID'],
+                        $row['Observaciones'],
+                        $row['DobleTitulacion'],
+                        $row['DobleTitulacionID']
+                    ]);
+                }
+            }
+    
+            if (!empty($insertValues)) {
+                $insertQuery = "INSERT INTO estudiantes (
                     estudiantes_no_documento, 
                     estudiantes_tipo_documento, 
                     estudiantes_nombre, 
@@ -191,47 +264,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     estudiantes_observaciones, 
                     estudiantes_doble_titulacion, 
                     estudiantes_doble_titulacion_id
-                ) VALUES (
-                    :no_documento, 
-                    :tipo_documento, 
-                    :nombre, 
-                    :apellidos, 
-                    :fecha_nacimiento, 
-                    :genero, 
-                    :telefono, 
-                    :correo, 
-                    :estado, 
-                    :direccion, 
-                    :adjunto_id,   
-                    :observaciones, 
-                    :doble_titulacion, 
-                    :doble_titulacion_id
-                )
-            ");
-
-            foreach ($data as $row) {
-                if (in_array($row['NoDocumento'], $idsInDatabase)) {
-                    $duplicados[] = $row['NoDocumento'];
-                } else {
-                    $stmt->execute([
-                        ':no_documento' => $row['NoDocumento'],
-                        ':tipo_documento' => $row['TipoDocumento'],
-                        ':nombre' => $row['Nombre'],
-                        ':apellidos' => $row['Apellidos'],
-                        ':fecha_nacimiento' => $row['FechaNacimiento'],
-                        ':genero' => $row['Genero'],
-                        ':telefono' => $row['Telefono'],
-                        ':correo' => $row['Correo'],
-                        ':estado' => $row['Estado'],
-                        ':direccion' => $row['Direccion'],
-                        ':adjunto_id' => $row['AdjuntosID'],
-                        ':observaciones' => $row['Observaciones'],
-                        ':doble_titulacion' => $row['DobleTitulacion'],
-                        ':doble_titulacion_id' => $row['DobleTitulacionID']
-                    ]);
+                ) VALUES ";
+    
+                $insertQuery .= implode(", ", $insertValues);
+    
+                try {
+                    $stmtInsert = $pdo->prepare($insertQuery);
+                    $stmtInsert->execute($params); // Ejecutar una sola consulta con todos los valores
+                    echo json_encode(['success' => true]);
+                } catch (PDOException $e) {
+                    echo json_encode(['error' => 'Error al subir los datos', 'message' => $e->getMessage()]);
                 }
             }
-
+            
+            $user_folder = 'uploads/' . $correo;
+            $fileName = basename($_POST['fileName']); // Evita la manipulación de la ruta
+            $filePath = $user_folder . '/' . $fileName; // Define la ruta donde se encuentran los archivos
+            unlink($filePath);
+            
             if (!empty($duplicados)) {
                 echo json_encode(['error' => 'Se encontraron duplicados en la base de datos', 'duplicados' => $duplicados]);
             } else {
@@ -241,13 +291,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode(['error' => 'Error al subir los datos: ' . $e->getMessage()]);
         }
     }
+    
+    
 }
 
 
-$jsonFile = 'estudiantes.json';
+// Ruta de la carpeta del usuario
+$user_folder = 'uploads/' . $correo; // Asegúrate de que $correo esté definido y seguro
+$jsonFile = $user_folder . '/estudiantes.json'; // Ruta completa al archivo JSON del usuario
+
+// Verificar si el archivo existe
 $data = file_exists($jsonFile) ? json_decode(file_get_contents($jsonFile), true) : [];
+
 if (!empty($data)) {
-    $ids = array_column($data, 'NoDocumento'); // Usamos NoDocumento en lugar de ID
+    $ids = array_column($data, 'NoDocumento'); // Extraemos todos los valores de 'NoDocumento'
     $hasDuplicates = false;
 
     foreach ($data as $row) {
@@ -534,13 +591,110 @@ if (!empty($data)) {
             // Filtrar en tiempo real
             $('#filter').on('input', function() {
                 let filterValue = $(this).val().toLowerCase();
+                let currentUrl = new URL(window.location.href);
 
-                $('#data-table tbody tr').each(function() {
+                // Si hay un filtro, actualizamos la URL
+                if (filterValue) {
+                    currentUrl.searchParams.set('filter', filterValue);
+                } else {
+                    currentUrl.searchParams.delete('filter'); // Eliminar filtro si está vacío
+                }
+
+                window.history.replaceState({}, '', currentUrl); // Cambiar la URL sin recargar la página
+
+                // Aplicar el filtro a todas las filas
+                let rows = $('#data-table tbody tr');
+                rows.each(function() {
                     let row = $(this);
                     let textContent = row.data('no-documento') + ' ' + row.data('nombre') + ' ' + row.data('telefono') + ' ' + row.data('correo');
                     row.toggle(textContent.toLowerCase().includes(filterValue));
                 });
+
+                // Ajustar la paginación después del filtro
+                adjustPagination();
             });
+
+            // Función para ajustar la visibilidad de la paginación
+            function adjustPagination() {
+                let rows = $('#data-table tbody tr:visible'); // Solo filas visibles
+                let rowsPerPage = parseInt($('#registros').val()); // Obtener el valor de registros por página desde el input
+                let totalRows = rows.length;
+                let totalPages = Math.ceil(totalRows / rowsPerPage); // Número de páginas
+
+                // Si no hay filas visibles, vaciar la paginación
+                if (totalRows === 0) {
+                    $('.paginacion').empty(); // Vaciar la paginación
+                    return;
+                }
+
+                let currentPage = getCurrentPageFromUrl();
+
+                // Calcular las filas que deben ser visibles en la página actual
+                let start = (currentPage - 1) * rowsPerPage;
+                let end = start + rowsPerPage;
+
+                // Ocultar todas las filas
+                rows.hide();
+
+                // Mostrar solo las filas correspondientes a la página actual
+                rows.slice(start, end).show();
+
+                // Actualizar los controles de paginación
+                updatePagination(totalPages, currentPage);
+            }
+
+            // Función para obtener la página actual desde la URL
+            function getCurrentPageFromUrl() {
+                let urlParams = new URLSearchParams(window.location.search);
+                return parseInt(urlParams.get('page')) || 1; // Si no se encuentra la página, por defecto es 1
+            }
+
+            // Función para actualizar la paginación
+            function updatePagination(totalPages, currentPage) {
+                let paginationContainer = $('.paginacion');
+                paginationContainer.empty(); // Limpiar los enlaces de paginación actuales
+
+                // Mostrar enlaces de paginación
+                if (currentPage > 1) {
+                    paginationContainer.append(`<a href="?page=1&registros=${$('#registros').val()}&filter=${getUrlParameter('filter')}" class="prev">&lt;&lt;</a>`);
+                    paginationContainer.append(`<a href="?page=${currentPage - 1}&registros=${$('#registros').val()}&filter=${getUrlParameter('filter')}" class="prev">&lt;</a>`);
+                }
+
+                // Mostrar páginas numéricas
+                for (let i = 1; i <= totalPages; i++) {
+                    let pageLink = `<a href="?page=${i}&registros=${$('#registros').val()}&filter=${getUrlParameter('filter')}" class="${i === currentPage ? 'active' : ''}">${i}</a>`;
+                    paginationContainer.append(pageLink);
+                }
+
+                // Mostrar enlaces de paginación para la siguiente página
+                if (currentPage < totalPages) {
+                    paginationContainer.append(`<a href="?page=${currentPage + 1}&registros=${$('#registros').val()}&filter=${getUrlParameter('filter')}" class="next">&gt;</a>`);
+                    paginationContainer.append(`<a href="?page=${totalPages}&registros=${$('#registros').val()}&filter=${getUrlParameter('filter')}" class="next">&gt;&gt;</a>`);
+                }
+            }
+
+            // Función para obtener un parámetro de la URL
+            function getUrlParameter(name) {
+                let urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name) || ''; // Si no existe, devolver un valor vacío
+            }
+
+            // Ejecutar ajuste de paginación al cargar la página
+            $(document).ready(function() {
+                // Rellenar el campo de filtro con el valor almacenado en la URL si existe
+                let urlParams = new URLSearchParams(window.location.search);
+                let filterValue = urlParams.get('filter');
+                if (filterValue) {
+                    $('#filter').val(filterValue); // Establecer el valor del filtro en el input
+                }
+
+                adjustPagination(); // Ajustar la paginación de acuerdo con los registros visibles
+            });
+
+
+
+
+
 
             // Hacer que todas las celdas sean editables
             $('td[contenteditable="true"]').on('blur', function() {
@@ -557,7 +711,7 @@ if (!empty($data)) {
                 }
 
 
-                
+
 
                 // Verificar duplicados antes de enviar
                 checkDuplicates(row, newNoDocumento);
@@ -663,25 +817,31 @@ if (!empty($data)) {
                         upload_db: true
                     })
                     .done(function(response) {
-                        location.reload();
-                        // Eliminar el archivo JSON después de que los datos fueron subidos
-                        $.post('uploadcsv.php', {
-                                deletejson: true,
-                                fileName: 'estudiantes.json'
-                            })
-                            .done(function() {
-                                // alert('Datos subidos exitosamente y tabla de datos limpiada.');
-                            })
-                            .fail(function() {
-                                window.location.replace("../../public/student_register.php?status=error");
-                            });
-                        window.location.replace("../../public/student_register.php?status=success");
+                        // Analizar la respuesta del servidor
+                        let jsonResponse = JSON.parse(response);
+                        if (jsonResponse.success) {
+                            location.reload();
+                            // Eliminar el archivo JSON después de que los datos fueron subidos
+                            $.post('uploadcsv.php', {
+                                    deletejson: true,
+                                    fileName: 'estudiantes.json'
+                                })
+                                .done(function() {
+                                    // alert('Datos subidos exitosamente y tabla de datos limpiada.');
+                                })
+                                .fail(function() {
+                                    alert('Hubo un error al eliminar el archivo JSON.');
+                                });
+                        } else {
+                            alert('Error al subir los datos: ' + (jsonResponse.message || 'Desconocido'));
+                        }
                     })
-                    .fail(function() {
-                        alert('Hubo un error al subir los datos.');
+                    .fail(function(jqXHR, textStatus, errorThrown) {
+                        alert('Hubo un error al subir los datos. Detalles: ' + textStatus + ', ' + errorThrown);
                     });
             }
         }
+
 
 
         function truncatejson() {

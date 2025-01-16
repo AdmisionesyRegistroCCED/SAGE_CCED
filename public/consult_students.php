@@ -2,15 +2,17 @@
 require "../src/controllers/session_start.php";
 if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
 ?>
-<html>
-<head>
-    <title>SAGE - Consulta de estudiantes</title>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <!-- Datables links -->
-    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/r-3.0.3/datatables.min.css" rel="stylesheet">
-    <!-- <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="assets/css/datatable/datatables.min.css"> -->
+    <html>
+
+    <head>
+        <title>SAGE - Consulta de estudiantes</title>
+        <link rel="stylesheet" href="assets/css/main.css">
+        <!-- Datables links -->
+        <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/r-3.0.3/datatables.min.css" rel="stylesheet">
+        <!-- <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet"> -->
+        <!-- <link rel="stylesheet" href="assets/css/datatable/datatables.min.css"> -->
     </head>
+
     <body>
         <header>
             <?php require_once "../src/models/header.php" ?>
@@ -113,25 +115,26 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         </div>
                         <br>
                         <div class="inputs">
-                          <button type="submit" class="submit-btn" id="submitModal">Guardar Cambios</button>
+                            <button type="submit" class="submit-btn" id="submitModal">Guardar Cambios</button>
                         </div>
                     </form>
                 </div>
             </div>
-    </main>
-    
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <!-- Primero jquery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <!-- Segundo datatable -->
-    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
-    <!-- Tercero script main.js -->
-    <script src="assets/js/toggleMenu.js"></script>
-    <script src="assets/js/main.js"></script>
-    
-    
-</body>
-</html>
+        </main>
+
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+        <!-- Primero jquery -->
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <!-- Segundo datatable -->
+        <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
+        <!-- Tercero script main.js -->
+        <script src="assets/js/toggleMenu.js"></script>
+        <script src="assets/js/main.js"></script>
+
+
+    </body>
+
+    </html>
 <?php
 } else {
     header("location: dashboard.php");
