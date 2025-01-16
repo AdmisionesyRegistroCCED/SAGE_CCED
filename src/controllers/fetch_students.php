@@ -1,12 +1,13 @@
 <?php
 session_start();
+require_once "../../config/db.php";
+header('Content-Type: application/json');
 if (!isset($_SESSION['userdata?'])) {
     header("Location: ../src/views/login.php");
     exit();
 }
 $correo = $_SESSION['userdata?'];
 
-require_once "../../config/db.php";
 
 // Verificar conexión
 if ($conn->connect_error) {

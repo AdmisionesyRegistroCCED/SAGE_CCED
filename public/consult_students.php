@@ -69,6 +69,9 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         <div class="inputs">
                             <label for="lname">Nro documento</label>
                             <input type="text" id="estudiantes_no_documento" name="lname" required>
+                            <input type="hidden" id="estudiantes_no_documento_hidden" name="idHidden" required>
+
+
                         </div>
 
                         <div class="inputs">
