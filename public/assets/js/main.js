@@ -84,6 +84,8 @@ $(document).ready(function () {
         $('#estudiantes_telefono').val(rowData.telefono);
         $('#estudiantes_estado').val(rowData.estado);
         $('#estudiantes_observaciones').val(rowData.observaciones);
+        $('#estudiantes_no_documento_hidden').val(rowData.nroDocumento);
+        
 
         // Muestra el modal
         //$('#edit-modal').css('display', 'flex');
@@ -98,6 +100,7 @@ $(document).ready(function () {
         // Captura de datos
         const estudiantes_tipo_documento = $('#estudiantes_tipo_documento').val();
         const estudiantes_no_documento = $('#estudiantes_no_documento').val();
+        const estudiantes_no_documento_hidden = $('#estudiantes_no_documento_hidden').val();
         const estudiantes_nombre = $('#estudiantes_nombre').val();
         const estudiantes_apellidos = $('#estudiantes_apellidos').val();
         const estudiantes_fecha_nacimiento = $('#estudiantes_fecha_nacimiento').val();
@@ -114,6 +117,7 @@ $(document).ready(function () {
             data: {
                 estudiantes_tipo_documento: estudiantes_tipo_documento,
                 estudiantes_no_documento: estudiantes_no_documento,
+                estudiantes_no_documento_hidden:estudiantes_no_documento_hidden,
                 estudiantes_nombre: estudiantes_nombre,
                 estudiantes_apellidos: estudiantes_apellidos,
                 estudiantes_fecha_nacimiento: estudiantes_fecha_nacimiento,
@@ -131,6 +135,7 @@ $(document).ready(function () {
                 return true;
             },
             error: function (xhr, status, error) {
+                console.log(error);
                 alert("Error al actualizar los datos. Intenta de nuevo.");
                 return false;
             }
