@@ -66,8 +66,6 @@ $(document).ready(function () {
             $('.modal').css('display','flex');
         }
 
-        console.log(textTitle);
-
         let boton = $(this).closest('tr');
 
         //Obtener datos de la fila seleccionada.
@@ -110,6 +108,14 @@ $(document).ready(function () {
         const estudiantes_estado = $('#estudiantes_estado').val();
         const estudiantes_observaciones = $('#estudiantes_observaciones').val();
 
+        boton = $(this).closest('tr');
+        //Obtener datos de la fila seleccionada.
+        rowData = tabla.row(boton).data();
+
+        console.log("data Capturado",{boton});
+
+
+
         // Enviar los datos al servidor usando AJAX
         $.ajax({
             url: '../src/controllers/update_students.php',
@@ -129,7 +135,13 @@ $(document).ready(function () {
             },
             success: function (response) {
                 alert("Registro actualizado correctamente."); // Muestra un mensaje de éxito
-                tabla.ajax.reload(); // Actualiza la tabla
+                console.log(response);
+                //tabla.ajax.reload(); // Actualiza la tabla
+
+                
+
+
+
                 $('#edit-modal').css('display', 'none'); // Cierra el 
 
                 return true;
