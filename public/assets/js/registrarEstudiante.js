@@ -14,6 +14,11 @@ $(document).ready(function () {
         let estudiantes_genero = $('#estudiantes_genero').val();
         let estudiantes_telefono = $('#estudiantes_telefono').val();
         let estudiantes_observaciones = $('#estudiantes_observaciones').val();
+        let estudiantes_ciudad_exp = $('#estudiantes_ciudad_exp').val();
+        let estudiantes_depto_exp = $('#estudiantes_depto_exp').val();
+
+        console.log(estudiantes_telefono);
+
 
         $.ajax({
             url: '../src/controllers/sql_register_student.php',
@@ -24,11 +29,13 @@ $(document).ready(function () {
                 estudiantes_tipo_documento: estudiantes_tipo_documento,
                 estudiantes_no_documento: estudiantes_no_documento,
                 estudiantes_fecha_nacimiento: estudiantes_fecha_nacimiento,
-                estudiantes_correo: estudiantes_correo,
+                estudiantes_ciudad_exp:estudiantes_ciudad_exp,
+                estudiantes_depto_exp:estudiantes_depto_exp,
                 estudiantes_estado: estudiantes_estado,
                 estudiantes_direccion: estudiantes_direccion,
                 estudiantes_genero: estudiantes_genero,
                 estudiantes_telefono: estudiantes_telefono,
+                estudiantes_correo: estudiantes_correo,
                 estudiantes_observaciones: estudiantes_observaciones
             },
             datatype: "json",

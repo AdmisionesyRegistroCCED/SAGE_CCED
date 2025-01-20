@@ -24,6 +24,9 @@ $estudiantes_telefono = $conn->real_escape_string($_POST['estudiantes_telefono']
 $estudiantes_correo = $conn->real_escape_string($_POST['estudiantes_correo']);
 $estudiantes_estado = $conn->real_escape_string($_POST['estudiantes_estado']);
 $estudiantes_observaciones = $conn->real_escape_string($_POST['estudiantes_observaciones']);
+$estudiantes_depto_exp = $conn->real_escape_string($_POST['estudiantes_depto_exp']);
+$estudiantes_ciudad_exp	= $conn->real_escape_string($_POST['estudiantes_ciudad_exp']);
+
 
 if($estudiantes_tipo_documento == "cc"){
     $tipoDocumento = 1;
@@ -35,7 +38,7 @@ if($estudiantes_tipo_documento == "cc"){
 
 
 
-$sql = "UPDATE estudiantes SET estudiantes_tipo_documento='$tipoDocumento', estudiantes_no_documento = '$estudiantes_no_documento', estudiantes_nombre='$estudiantes_nombre', estudiantes_apellidos='$estudiantes_apellidos', estudiantes_fecha_nacimiento='$estudiantes_fecha_nacimiento', estudiantes_genero='$estudiantes_genero', estudiantes_telefono='$estudiantes_telefono', estudiantes_correo='$estudiantes_correo', estudiantes_estado='$estudiantes_estado', estudiantes_observaciones = '$estudiantes_observaciones' WHERE estudiantes_no_documento='$estudiantes_no_documento_hidden'";
+$sql = "UPDATE estudiantes SET estudiantes_tipo_documento='$tipoDocumento', estudiantes_no_documento = '$estudiantes_no_documento', estudiantes_nombre='$estudiantes_nombre', estudiantes_apellidos='$estudiantes_apellidos', estudiantes_fecha_nacimiento='$estudiantes_fecha_nacimiento', estudiantes_ciudad_exp='$estudiantes_ciudad_exp', estudiantes_depto_exp='$estudiantes_depto_exp' , estudiantes_genero='$estudiantes_genero', estudiantes_telefono='$estudiantes_telefono', estudiantes_correo='$estudiantes_correo', estudiantes_estado='$estudiantes_estado', estudiantes_observaciones = '$estudiantes_observaciones' WHERE estudiantes_no_documento='$estudiantes_no_documento_hidden'";
 
 $prepare = $conn->prepare($sql);
 $prepare->execute();
