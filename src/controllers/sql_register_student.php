@@ -15,11 +15,13 @@ if ($conn->connect_error) {
     $estudiantes_apellidos = $conn->real_escape_string($_POST['estudiantes_apellidos']) ;
     $estudiantes_fecha_nacimiento = $_POST['estudiantes_fecha_nacimiento'];
     $estudiantes_genero = $conn->real_escape_string($_POST['estudiantes_genero']);
-    $estudiantes_telefono = $_POST['estudiantes_telefono'];
+    $estudiantes_telefono = $conn->real_escape_string($_POST['estudiantes_telefono']);
     $estudiantes_direccion = $conn->real_escape_string($_POST['estudiantes_direccion']);
     $estudiantes_correo = $conn->real_escape_string($_POST['estudiantes_correo']);
     $estudiantes_estado = $conn->real_escape_string($_POST['estudiantes_estado']);
     $estudiantes_observaciones = $conn->real_escape_string($_POST['estudiantes_observaciones']);
+    $estudiantes_depto_exp = $conn->real_escape_string($_POST['estudiantes_depto_exp']);
+    $estudiantes_ciudad_exp	= $conn->real_escape_string($_POST['estudiantes_ciudad_exp']);
 
     if($estudiantes_tipo_documento == "cc"){
         $valorTipo = 1;
@@ -54,18 +56,20 @@ if ($conn->connect_error) {
         estudiantes_nombre, 
         estudiantes_apellidos, 
         estudiantes_fecha_nacimiento,
-        estudiantes_genero, 
-        estudiantes_telefono, 
-        estudiantes_correo, 
+        estudiantes_ciudad_exp,
+        estudiantes_depto_exp,
+        estudiantes_genero,
+        estudiantes_telefono,
+        estudiantes_correo,
         estudiantes_estado,
         estudiantes_direccion,
         estudiantes_observaciones) 
-                VALUES ('$estudiantes_no_documento', '$valorTipo', '$estudiantes_nombre', '$estudiantes_apellidos', '$estudiantes_fecha_nacimiento', '$estudiantes_genero', '$estudiantes_telefono', '$estudiantes_correo', '$estudiantes_estado','$estudiantes_direccion','$estudiantes_observaciones')";
+                VALUES ('$estudiantes_no_documento', '$valorTipo', '$estudiantes_nombre', '$estudiantes_apellidos', '$estudiantes_fecha_nacimiento', '$estudiantes_ciudad_exp', '$estudiantes_depto_exp' ,'$estudiantes_genero', '$estudiantes_telefono', '$estudiantes_correo', '$estudiantes_estado','$estudiantes_direccion','$estudiantes_observaciones')";
     
         $registrarEstudiante = $conn -> prepare($sql);
         $registrarEstudiante->execute();
         if($registrarEstudiante){
-            $data=['Registro exitoso'];
+            $data=['Registro exitoso',$estudiantes_ciudad_exp,$estudiantes_telefono];
             ob_clean();
             echo json_encode($data);
         }

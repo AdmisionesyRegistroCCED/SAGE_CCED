@@ -66,8 +66,6 @@ $(document).ready(function () {
             $('.modal').css('display','flex');
         }
 
-        console.log(textTitle);
-
         let boton = $(this).closest('tr');
 
         //Obtener datos de la fila seleccionada.
@@ -85,8 +83,9 @@ $(document).ready(function () {
         $('#estudiantes_estado').val(rowData.estado);
         $('#estudiantes_observaciones').val(rowData.observaciones);
         $('#estudiantes_no_documento_hidden').val(rowData.nroDocumento);
-        
-
+        $('#estudiantes_ciudad_exp').val(rowData.ciudadExpedicion);
+        $('#estudiantes_depto_exp').val(rowData.departamentoExpedicion);
+    
         // Muestra el modal
         //$('#edit-modal').css('display', 'flex');
     });
@@ -109,6 +108,20 @@ $(document).ready(function () {
         const estudiantes_correo = $('#estudiantes_correo').val();
         const estudiantes_estado = $('#estudiantes_estado').val();
         const estudiantes_observaciones = $('#estudiantes_observaciones').val();
+        const estudiantes_depto_exp = $('#estudiantes_depto_exp').val();
+        const estudiantes_ciudad_exp = $('#estudiantes_ciudad_exp').val();
+
+        boton = $(this).closest('tr');
+        //Obtener datos de la fila seleccionada.
+        rowData = tabla.row(boton).data();
+
+        console.log("data Capturado",{boton});
+
+        let index = tabla.row(function(estudiantes_no_documento,rowData,node){
+            return rowData[1]== estudiantes_no_documento;
+        }).index();
+
+        console.log({"index":index});
 
         // Enviar los datos al servidor usando AJAX
         $.ajax({
@@ -121,6 +134,8 @@ $(document).ready(function () {
                 estudiantes_nombre: estudiantes_nombre,
                 estudiantes_apellidos: estudiantes_apellidos,
                 estudiantes_fecha_nacimiento: estudiantes_fecha_nacimiento,
+                estudiantes_ciudad_exp:estudiantes_ciudad_exp,
+                estudiantes_depto_exp:estudiantes_depto_exp,
                 estudiantes_genero: estudiantes_genero,
                 estudiantes_telefono: estudiantes_telefono,
                 estudiantes_correo: estudiantes_correo,
@@ -129,7 +144,23 @@ $(document).ready(function () {
             },
             success: function (response) {
                 alert("Registro actualizado correctamente."); // Muestra un mensaje de éxito
-                tabla.ajax.reload(); // Actualiza la tabla
+                console.log(response);
+                //tabla.ajax.reload(); // Actualiza la tabla
+                //console.log(response);
+                // tabla.row(response).data([
+                //     response.sigla
+                // ]).draw();
+
+                // tabla
+                //   .row(boton)
+                //   .data([
+                //     response.sigla,
+                //     response.nroDocumento,
+                //     response.nombre,
+                //     response.apellido,
+                //     response.telefono,
+                //     response.estado
+                //   ]).draw();
                 $('#edit-modal').css('display', 'none'); // Cierra el 
 
                 return true;
@@ -224,6 +255,11 @@ $(document).ready(function () {
         $('#estudiantes_telefono').val(rowDataDetalle.telefono);
         $('#estudiantes_estado').val(rowDataDetalle.estado);
         $('#estudiantes_observaciones').val(rowDataDetalle.observaciones);
+        $('#estudiantes_ciudad_exp').val(rowDataDetalle.ciudadExpedicion);
+        $('#estudiantes_depto_exp').val(rowDataDetalle.departamentoExpedicion);
+
+
+        console.log({rowDataDetalle});
 
         if(inputBtn.style === 'none'){
             inputBtn.style.display = 'block';
