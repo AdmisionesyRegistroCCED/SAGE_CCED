@@ -1,25 +1,7 @@
-document.getElementById('menuToggle').addEventListener('click', function () {
-    var leftMenu = document.getElementById('lftmenu');
-    var mainContent = document.querySelector('.main');
-    var footer = document.getElementById('footer');
-    var formatDiv = document.getElementById('format');
-
-    leftMenu.classList.toggle('collapsed');
-    mainContent.classList.toggle('expanded');
-    footer.classList.toggle('expanded');
-    formatDiv.classList.toggle('expanded');
-});
-
-
-document.getElementById('dropdownToggle').addEventListener('click', function () {
-    document.getElementById('dropdownMenu').classList.toggle('show');
-});
-
 $(document).ready(function () {
 
     let tabla = $('#myTable').DataTable({
         "autoWidth": true,
-        //data: null,
         "responsive": true,
         "processing": true,
         "serverSide": false,
@@ -41,7 +23,7 @@ $(document).ready(function () {
                 "data": "estado"
             },
             {
-                "defaultContent": "<div class='text-center'><div class='btn-group' role='group' aria-label='Button group'><button id='btnEditar' class='btn btn-primary editbtn' type='button' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'><path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/><path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg></button><button id='btnEliminar' class='btn btn-info eliminarbtn' type='button' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'><path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></button></div></div>",
+                "defaultContent": '<div class="text-center"><div class="btn-group" role="group" aria-label="Button group"><button id="btnDetalle" class="btn btn-info btnDetalle" type="button" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16"><path fill="white" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z" /></svg></button><button id="btnEditar" class="btn btn-primary editbtn" type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg></button><button id="btnEliminar" class="btn btn-info eliminarbtn" type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/></svg></button></div></div>',
                 //Quito las flechas de busqueda
                 sortable: false
             }
@@ -50,23 +32,17 @@ $(document).ready(function () {
             "type": "POST",
             "url": "../src/controllers/fetch_students.php",
             "datatype": 'json',
-            "dataSrc": function (subData) {
-                return subData || []; // Asegúrate de que 'data' existe en la respuesta JSON.
-
+            "dataSrc": function (data) {
+                if (data.lenght == 0) {
+                    return data || []
+                }else{
+                    return data || []; // Asegúrate de que 'data' existe en la respuesta JSON.
+                }
             },
             "error": function (xhr, status, error) {
                 console.error("Error en la solicitud AJAX: " + error);
             },
             "cache": false,
-            // "success": function(response) {
-            //     console.log(response);
-            //     return true;
-            // },
-            // error: function(xhr, status, error) {
-            //     console.log(error);
-            //     return false;
-            // }
-
         }
 
     });
@@ -77,6 +53,18 @@ $(document).ready(function () {
 
         e.preventDefault();
         e.stopPropagation();
+
+        
+        const inputBtn = document.querySelector('#submitModal');
+        const textTitle = document.querySelector('#modal-title');
+        
+        if(inputBtn.style === 'none'){
+            inputBtn.style.display = 'block';
+        }else{
+            textTitle.innerHTML='Editar estudiante';
+            inputBtn.style.display = 'flex';
+            $('.modal').css('display','flex');
+        }
 
         let boton = $(this).closest('tr');
 
@@ -94,11 +82,12 @@ $(document).ready(function () {
         $('#estudiantes_telefono').val(rowData.telefono);
         $('#estudiantes_estado').val(rowData.estado);
         $('#estudiantes_observaciones').val(rowData.observaciones);
-
-        console.log({rowData});
-
+        $('#estudiantes_no_documento_hidden').val(rowData.nroDocumento);
+        $('#estudiantes_ciudad_exp').val(rowData.ciudadExpedicion);
+        $('#estudiantes_depto_exp').val(rowData.departamentoExpedicion);
+    
         // Muestra el modal
-        $('#edit-modal').css('display', 'flex');
+        //$('#edit-modal').css('display', 'flex');
     });
 
 
@@ -106,9 +95,11 @@ $(document).ready(function () {
     $('#edit-form').submit(function (e) {
         e.preventDefault();
 
+
         // Captura de datos
         const estudiantes_tipo_documento = $('#estudiantes_tipo_documento').val();
         const estudiantes_no_documento = $('#estudiantes_no_documento').val();
+        const estudiantes_no_documento_hidden = $('#estudiantes_no_documento_hidden').val();
         const estudiantes_nombre = $('#estudiantes_nombre').val();
         const estudiantes_apellidos = $('#estudiantes_apellidos').val();
         const estudiantes_fecha_nacimiento = $('#estudiantes_fecha_nacimiento').val();
@@ -117,6 +108,20 @@ $(document).ready(function () {
         const estudiantes_correo = $('#estudiantes_correo').val();
         const estudiantes_estado = $('#estudiantes_estado').val();
         const estudiantes_observaciones = $('#estudiantes_observaciones').val();
+        const estudiantes_depto_exp = $('#estudiantes_depto_exp').val();
+        const estudiantes_ciudad_exp = $('#estudiantes_ciudad_exp').val();
+
+        boton = $(this).closest('tr');
+        //Obtener datos de la fila seleccionada.
+        rowData = tabla.row(boton).data();
+
+        console.log("data Capturado",{boton});
+
+        let index = tabla.row(function(estudiantes_no_documento,rowData,node){
+            return rowData[1]== estudiantes_no_documento;
+        }).index();
+
+        console.log({"index":index});
 
         // Enviar los datos al servidor usando AJAX
         $.ajax({
@@ -125,9 +130,12 @@ $(document).ready(function () {
             data: {
                 estudiantes_tipo_documento: estudiantes_tipo_documento,
                 estudiantes_no_documento: estudiantes_no_documento,
+                estudiantes_no_documento_hidden:estudiantes_no_documento_hidden,
                 estudiantes_nombre: estudiantes_nombre,
                 estudiantes_apellidos: estudiantes_apellidos,
                 estudiantes_fecha_nacimiento: estudiantes_fecha_nacimiento,
+                estudiantes_ciudad_exp:estudiantes_ciudad_exp,
+                estudiantes_depto_exp:estudiantes_depto_exp,
                 estudiantes_genero: estudiantes_genero,
                 estudiantes_telefono: estudiantes_telefono,
                 estudiantes_correo: estudiantes_correo,
@@ -136,13 +144,29 @@ $(document).ready(function () {
             },
             success: function (response) {
                 alert("Registro actualizado correctamente."); // Muestra un mensaje de éxito
-                tabla.ajax.reload(); // Actualiza la tabla
+                console.log(response);
+                //tabla.ajax.reload(); // Actualiza la tabla
+                //console.log(response);
+                // tabla.row(response).data([
+                //     response.sigla
+                // ]).draw();
+
+                // tabla
+                //   .row(boton)
+                //   .data([
+                //     response.sigla,
+                //     response.nroDocumento,
+                //     response.nombre,
+                //     response.apellido,
+                //     response.telefono,
+                //     response.estado
+                //   ]).draw();
                 $('#edit-modal').css('display', 'none'); // Cierra el 
 
                 return true;
             },
             error: function (xhr, status, error) {
-                console.error("Error en la actualización: ", error);
+                console.log(error);
                 alert("Error al actualizar los datos. Intenta de nuevo.");
                 return false;
             }
@@ -172,7 +196,7 @@ $(document).ready(function () {
             });
     
             if (response) {
-                alert("exitoso");
+                alert("Registro eliminado correctamente.");
                 tabla.ajax.reload();
                 return true;
             } else {
@@ -193,28 +217,56 @@ $(document).ready(function () {
         f.preventDefault();
         f.stopPropagation();
 
-        console.log('hello world');
-
-
         let fila = $(this).closest('tr');
         let borrarDato = tabla.row(fila).data();
-
-        
-
         let estudiantes_no_documento = borrarDato.nroDocumento;
         let estudiantes_estado = borrarDato.estado;
-        
-        console.log({estudiantes_estado,estudiantes_no_documento});
-
-
         if (confirm("¿Esta seguro que desea Inhabilitar este registro?")) {
             const exito = await eliminarRegistro(estudiantes_no_documento,estudiantes_estado);
-            console.log(exito);
-
             if (exito) {
                 tabla.row(fila).remove().draw();
             }
 
+        }
+
+    });
+
+
+    
+    const inputBtn = document.querySelector('#submitModal');
+    const textTitle = document.querySelector('#modal-title');
+    //Ver detalle
+    $('#myTable').on('click','#btnDetalle',function (g){
+
+        let btnDetalle = $(this).closest('tr');
+
+        //Obtener datos de la fila seleccionada.
+        let rowDataDetalle = tabla.row(btnDetalle).data();
+
+        
+        // Llenar el formulario del modal
+        $('#estudiantes_tipo_documento').val(rowDataDetalle.sigla);
+        $('#estudiantes_no_documento').val(rowDataDetalle.nroDocumento);
+        $('#estudiantes_nombre').val(rowDataDetalle.nombre);
+        $('#estudiantes_apellidos').val(rowDataDetalle.apellido);
+        $('#estudiantes_fecha_nacimiento').val(rowDataDetalle.fechaNacimiento);
+        $('#estudiantes_correo').val(rowDataDetalle.correo);
+        $('#estudiantes_genero').val(rowDataDetalle.genero);
+        $('#estudiantes_telefono').val(rowDataDetalle.telefono);
+        $('#estudiantes_estado').val(rowDataDetalle.estado);
+        $('#estudiantes_observaciones').val(rowDataDetalle.observaciones);
+        $('#estudiantes_ciudad_exp').val(rowDataDetalle.ciudadExpedicion);
+        $('#estudiantes_depto_exp').val(rowDataDetalle.departamentoExpedicion);
+
+
+        console.log({rowDataDetalle});
+
+        if(inputBtn.style === 'none'){
+            inputBtn.style.display = 'block';
+        }else{
+            textTitle.innerHTML = 'Detalle del estudiante';
+            inputBtn.style.display = 'none';
+            $('.modal').css('display','flex');
         }
 
     });

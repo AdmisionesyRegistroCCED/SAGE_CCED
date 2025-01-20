@@ -1,12 +1,12 @@
 <?php
 session_start();
 require_once '../../config/db.php';
+header('Content-Type: application/json');
 
 // Verificar conexión
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 
     $valorTipo;
     $estudiantes_no_documento = $_POST['estudiantes_no_documento'];
@@ -15,11 +15,13 @@ if ($conn->connect_error) {
     $estudiantes_apellidos = $conn->real_escape_string($_POST['estudiantes_apellidos']) ;
     $estudiantes_fecha_nacimiento = $_POST['estudiantes_fecha_nacimiento'];
     $estudiantes_genero = $conn->real_escape_string($_POST['estudiantes_genero']);
-    $estudiantes_telefono = $_POST['estudiantes_telefono'];
+    $estudiantes_telefono = $conn->real_escape_string($_POST['estudiantes_telefono']);
     $estudiantes_direccion = $conn->real_escape_string($_POST['estudiantes_direccion']);
     $estudiantes_correo = $conn->real_escape_string($_POST['estudiantes_correo']);
     $estudiantes_estado = $conn->real_escape_string($_POST['estudiantes_estado']);
     $estudiantes_observaciones = $conn->real_escape_string($_POST['estudiantes_observaciones']);
+    $estudiantes_depto_exp = $conn->real_escape_string($_POST['estudiantes_depto_exp']);
+    $estudiantes_ciudad_exp	= $conn->real_escape_string($_POST['estudiantes_ciudad_exp']);
 
     if($estudiantes_tipo_documento == "cc"){
         $valorTipo = 1;
@@ -31,33 +33,49 @@ if ($conn->connect_error) {
         $valorTipo = NULL;
     }
 
-    $sql = "INSERT INTO estudiantes 
-    (estudiantes_no_documento,
-    estudiantes_tipo_documento,
-    estudiantes_nombre, 
-    estudiantes_apellidos, 
-    estudiantes_fecha_nacimiento,
-    estudiantes_genero, 
-    estudiantes_telefono, 
-    estudiantes_correo, 
-    estudiantes_estado,
-    estudiantes_direccion,
-    estudiantes_observaciones) 
-            VALUES ('$estudiantes_no_documento', '$valorTipo', '$estudiantes_nombre', '$estudiantes_apellidos', '$estudiantes_fecha_nacimiento', '$estudiantes_genero', '$estudiantes_telefono', '$estudiantes_correo', '$estudiantes_estado','$estudiantes_direccion','$estudiantes_observaciones')";
+    $vali = "SELECT estudiantes_no_documento FROM estudiantes WHERE estudiantes_no_documento = ?";
+    $exe = $conn->prepare($vali);
+    $exe->bind_param('s',$estudiantes_no_documento);
+    $exe->execute();
 
-    $registrarEstudiante = $conn -> prepare($sql);
-    $registrarEstudiante->execute();
-    if($registrarEstudiante){
+    //Obtengo el resultado de la consulta
+    $comparacion = $exe->get_result();
 
-        $data = ["estudiantes_no_documento" => $estudiantes_no_documento, "estudiantes_nombre" => $estudiantes_nombre,"estudiantes_tipo_documento" => $estudiantes_tipo_documento ];
-        //echo $result;
-        echo json_encode($data);
-    
+    if($fila = $comparacion->fetch_assoc()){
+        $documentoDB = $fila['estudiantes_no_documento'];   
     }
 
-
-
-
-
-$conn->close();
+    if($documentoDB == $estudiantes_no_documento){
+        $data=['Valor duplicado'];
+        ob_clean();
+        echo json_encode($data);
+    }else{
+        $sql = "INSERT INTO estudiantes 
+        (estudiantes_no_documento,
+        estudiantes_tipo_documento,
+        estudiantes_nombre, 
+        estudiantes_apellidos, 
+        estudiantes_fecha_nacimiento,
+        estudiantes_ciudad_exp,
+        estudiantes_depto_exp,
+        estudiantes_genero,
+        estudiantes_telefono,
+        estudiantes_correo,
+        estudiantes_estado,
+        estudiantes_direccion,
+        estudiantes_observaciones) 
+                VALUES ('$estudiantes_no_documento', '$valorTipo', '$estudiantes_nombre', '$estudiantes_apellidos', '$estudiantes_fecha_nacimiento', '$estudiantes_ciudad_exp', '$estudiantes_depto_exp' ,'$estudiantes_genero', '$estudiantes_telefono', '$estudiantes_correo', '$estudiantes_estado','$estudiantes_direccion','$estudiantes_observaciones')";
+    
+        $registrarEstudiante = $conn -> prepare($sql);
+        $registrarEstudiante->execute();
+        if($registrarEstudiante){
+            $data=['Registro exitoso',$estudiantes_ciudad_exp,$estudiantes_telefono];
+            ob_clean();
+            echo json_encode($data);
+        }
+        $exe->close();
+        $registrarEstudiante->close();
+        $conn->close();
+    
+    }
 ?>

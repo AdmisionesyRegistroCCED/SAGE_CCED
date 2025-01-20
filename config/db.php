@@ -2,8 +2,7 @@
 $host = 'localhost';
 $user = 'root'; 
 $pass = '';
-$db = 'sage_ccedspanish'; 
-// $db = 'sage_cced'; 
+$db = 'sage_cced';
 
 $conn = new mysqli($host, $user, $pass, $db);
 
