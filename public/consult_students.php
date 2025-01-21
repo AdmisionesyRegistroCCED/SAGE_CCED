@@ -6,6 +6,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
 
     <head>
         <title>SAGE - Consulta de estudiantes</title>
+        <link rel="icon" type="image/x-icon" href="assets/imgs/favicon-CCED.png">
         <link rel="stylesheet" href="assets/css/main.css">
         <!-- Datables links -->
         <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/r-3.0.3/datatables.min.css" rel="stylesheet">

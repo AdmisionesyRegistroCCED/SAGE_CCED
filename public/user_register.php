@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>SAGE - Registro de usuarios</title>
+    <link rel="icon" type="image/x-icon" href="assets/imgs/favicon-CCED.png">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
