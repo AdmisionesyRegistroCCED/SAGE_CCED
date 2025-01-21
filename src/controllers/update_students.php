@@ -43,28 +43,62 @@ $sql = "UPDATE estudiantes SET estudiantes_tipo_documento='$tipoDocumento', estu
 $prepare = $conn->prepare($sql);
 $prepare->execute();
 
-$select = "SELECT tpd.tipo_documento_sigla AS 'sigla', est.estudiantes_no_documento AS 'nroDocumento', est.estudiantes_nombre AS 'nombre', est.estudiantes_apellidos AS 'apellido', est.estudiantes_telefono AS 'telefono', est.estudiantes_correo AS 'correo', est.estudiantes_direccion AS 'direccion', est.estudiantes_fecha_nacimiento AS 'fechaNacimiento', est.estudiantes_genero AS 'genero', est.estudiantes_estado AS 'estado', est.estudiantes_observaciones AS 'observaciones' FROM estudiantes est, tipo_documento tpd WHERE est.estudiantes_no_documento = '$estudiantes_no_documento' AND tpd.tipo_documento_id = '$tipoDocumento'";
+//$select = "SELECT tpd.tipo_documento_sigla AS 'sigla', est.estudiantes_no_documento AS 'nroDocumento', est.estudiantes_nombre AS 'nombre', est.estudiantes_apellidos AS 'apellido', est.estudiantes_telefono AS 'telefono', est.estudiantes_correo AS 'correo', est.estudiantes_direccion AS 'direccion', est.estudiantes_fecha_nacimiento AS 'fechaNacimiento', est.estudiantes_genero AS 'genero', est.estudiantes_estado AS 'estado', est.estudiantes_observaciones AS 'observaciones' FROM estudiantes est, tipo_documento tpd WHERE est.estudiantes_no_documento = '$estudiantes_no_documento' AND tpd.tipo_documento_id = '$tipoDocumento'";
 
+
+$select = "SELECT 
+    tpd.tipo_documento_sigla AS 'sigla', 
+    est.estudiantes_no_documento AS 'nroDocumento', 
+    est.estudiantes_nombre AS 'nombre', 
+    est.estudiantes_apellidos AS 'apellido', 
+    est.estudiantes_telefono AS 'telefono', 
+    est.estudiantes_correo AS 'correo', 
+    est.estudiantes_direccion AS 'direccion', 
+    est.estudiantes_fecha_nacimiento AS 'fechaNacimiento', 
+    est.estudiantes_genero AS 'genero', 
+    est.estudiantes_estado AS 'estado', 
+    est.estudiantes_observaciones AS 'observaciones' 
+FROM estudiantes est
+JOIN tipo_documento tpd ON est.estudiantes_tipo_documento  = tpd.tipo_documento_id
+WHERE tpd.tipo_documento_sigla = '$estudiantes_tipo_documento'
+AND est.estudiantes_no_documento = '$estudiantes_no_documento'";
 
 $exe = $conn->prepare($select);
 
 $exe->execute();
+$response = [];
 
 $result = $exe->get_result();
 
+
+
 if($result->num_rows>0){
-    $data = $result->fetch_assoc();
+
+    while($data = $result->fetch_assoc()){
+        
+        $response[] = array(
+            "sigla" => $data['sigla'],
+            "nroDocumento" => $data['nroDocumento'],
+            "nombre" => $data['nombre'],
+            "apellido" => $data['apellido'],
+            "telefono" => $data['telefono'],
+            "correo" => $data['correo'],
+            "direccion" => $data['direccion'],
+            "fechaNacimiento" => $data['fechaNacimiento'],
+            "genero" => $data['genero'],
+            "estado" => $data['estado'],
+            "observaciones" => $data['observaciones'],
+        );
+    }
+
+
+}else{
+    $response = ["Error" => "No hay datos"];
 }
 
-//echo $data;
 
-//$data = [$data];
 
-if (!$prepare) {
-    echo "Error al actualizar". $conn ->error;
-}
-//$data = [$estudiantes_no_documento,$estudiantes_no_documento_hidden];
-echo json_encode($data);
+echo json_encode($response);
 $prepare->close();
 $conn->close();
 ?>

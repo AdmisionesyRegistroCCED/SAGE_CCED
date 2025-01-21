@@ -68,8 +68,9 @@ if ($conn->connect_error) {
     
         $registrarEstudiante = $conn -> prepare($sql);
         $registrarEstudiante->execute();
+
         if($registrarEstudiante){
-            $data=['Registro exitoso',$estudiantes_ciudad_exp,$estudiantes_telefono];
+            $data=['Registro exitoso',$registrarEstudiante];
             ob_clean();
             echo json_encode($data);
         }
