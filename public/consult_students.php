@@ -89,6 +89,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         <div class="inputs">
                             <label for="estudiantes_correo">Correo electronico</label>
                             <input type="text" id="estudiantes_correo" name="estudiantes_correo">
+                            
                         </div>
                         <div class="inputs">
                             <label for="">Teléfono</label>
