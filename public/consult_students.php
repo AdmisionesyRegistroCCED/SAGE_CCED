@@ -115,7 +115,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         <div>
                             <label for="estudiantes_ciudad_exp">Ciudad Expedición</label>
                             <select class="" id="estudiantes_ciudad_exp">
-                                <option value=""></option>
+                                <option value="Sin Ciudad"></option>
                                 <option value="Arauca">Arauca</option>
                                 <option value="Armenia">Armenia</option>
                                 <option value="Barranquilla">Barranquilla</option>
@@ -153,7 +153,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         <div>
                             <label for="estudiantes_depto_exp">Departamento de expedición</label>
                             <select name="" id="estudiantes_depto_exp">
-                                <option value=""></option>
+                                <option value="Sin Departamento"></option>
                                 <option value="Amazonas">Amazonas</option>
                                 <option value="Antioquia">Antioquia</option>
                                 <option value="Arauca">Arauca</option>
