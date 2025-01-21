@@ -123,8 +123,6 @@ $(document).ready(function () {
 
         let index = tabla.row(boton).index();
 
-        console.log({"index":index});
-
         // Enviar los datos al servidor usando AJAX
         $.ajax({
             url: '../src/controllers/update_students.php',
@@ -145,22 +143,18 @@ $(document).ready(function () {
                 estudiantes_observaciones: estudiantes_observaciones
             },
             success: function (response) {
-                alert("Registro actualizado correctamente."); // Muestra un mensaje de éxito
                 console.log({"Respuesta":response});
+                
+                if (response.Error) {
+                    alert(response.error);
+                    
+                }else{
+                    tabla.row(index).draw();
+                    tabla.ajax.reload(null,false);
+                    alert("Registro actualizado correctamente."); // Mensaje de exito
 
-
-                tabla
-                  .row(index)
-                  .data([
-                    response.sigla,
-                    response.nroDocumento,
-                    response.nombre+" "+response.apellido,
-                    response.telefono,
-                    response.estado
-                  ]).invalidate();
-
-
-      
+                }
+           
 
                 $('#edit-modal').css('display', 'none'); // Cierra el 
 

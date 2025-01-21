@@ -63,25 +63,42 @@ JOIN tipo_documento tpd ON est.estudiantes_tipo_documento  = tpd.tipo_documento_
 WHERE tpd.tipo_documento_sigla = '$estudiantes_tipo_documento'
 AND est.estudiantes_no_documento = '$estudiantes_no_documento'";
 
-
-
 $exe = $conn->prepare($select);
 
 $exe->execute();
-
+$response = [];
 
 $result = $exe->get_result();
 
+
+
 if($result->num_rows>0){
-    $data = $result->fetch_assoc();
+
+    while($data = $result->fetch_assoc()){
+        
+        $response[] = array(
+            "sigla" => $data['sigla'],
+            "nroDocumento" => $data['nroDocumento'],
+            "nombre" => $data['nombre'],
+            "apellido" => $data['apellido'],
+            "telefono" => $data['telefono'],
+            "correo" => $data['correo'],
+            "direccion" => $data['direccion'],
+            "fechaNacimiento" => $data['fechaNacimiento'],
+            "genero" => $data['genero'],
+            "estado" => $data['estado'],
+            "observaciones" => $data['observaciones'],
+        );
+    }
+
+
+}else{
+    $response = ["Error" => "No hay datos"];
 }
 
 
-if (!$prepare) {
-    echo "Error al actualizar". $conn ->error;
-}
 
-echo json_encode($data);
+echo json_encode($response);
 $prepare->close();
 $conn->close();
 ?>
