@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "SELECT tpd.tipo_documento_sigla AS 'sigla', est.estudiantes_no_documento AS 'nroDocumento', est.estudiantes_nombre AS 'nombre', est.estudiantes_apellidos AS 'apellido', est.estudiantes_telefono AS 'telefono', est.estudiantes_correo AS 'correo', est.estudiantes_direccion AS 'direccion', est.estudiantes_fecha_nacimiento AS 'fechaNacimiento', est.estudiantes_genero AS 'genero', est.estudiantes_estado AS 'estado', est.estudiantes_observaciones AS 'observaciones' FROM estudiantes est INNER JOIN tipo_documento tpd ON tpd.tipo_documento_id = est.estudiantes_tipo_documento WHERE est.estudiantes_estado = 'Activo' OR est.estudiantes_estado = 'Inactivo' OR est.estudiantes_estado = 'Egresado'";
+$sql = "SELECT tpd.tipo_documento_sigla AS 'sigla', est.estudiantes_no_documento AS 'nroDocumento', est.estudiantes_nombre AS 'nombre', est.estudiantes_apellidos AS 'apellido', est.estudiantes_telefono AS 'telefono', est.estudiantes_correo AS 'correo', est.estudiantes_direccion AS 'direccion', est.estudiantes_fecha_nacimiento AS 'fechaNacimiento', est.estudiantes_ciudad_exp AS 'ciudadExpedicion', est.estudiantes_depto_exp AS 'departamentoExpedicion' , est.estudiantes_genero AS 'genero', est.estudiantes_estado AS 'estado', est.estudiantes_observaciones AS 'observaciones' FROM estudiantes est INNER JOIN tipo_documento tpd ON tpd.tipo_documento_id = est.estudiantes_tipo_documento WHERE est.estudiantes_estado = 'Activo' OR est.estudiantes_estado = 'Inactivo' OR est.estudiantes_estado = 'Egresado'";
 
 $result = $conn->query($sql);
 
@@ -30,6 +30,8 @@ if ($result->num_rows > 0) {
         $estudiantes_correo = $data['correo'];
         $estudiantes_direccion = $data['direccion'];
         $estudiantes_fecha_nacimiento = $data['fechaNacimiento'];
+        $estudiantes_ciudad_exp = $data['ciudadExpedicion'];
+        $estudiantes_depto_exp = $data['departamentoExpedicion'];
         $estudiantes_genero = $data['genero'];
         $estudiantes_estado = $data['estado'];
         $estudiantes_observaciones = $data['observaciones'];
@@ -43,6 +45,8 @@ if ($result->num_rows > 0) {
             "correo" => $estudiantes_correo,
             "direccion" => $estudiantes_direccion,
             "fechaNacimiento" => $estudiantes_fecha_nacimiento,
+            "ciudadExpedicion" => $estudiantes_ciudad_exp,
+            "departamentoExpedicion" => $estudiantes_depto_exp,
             "genero" => $estudiantes_genero,
             "estado" => $estudiantes_estado,
             "observaciones" => $estudiantes_observaciones
