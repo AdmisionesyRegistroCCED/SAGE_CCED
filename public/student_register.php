@@ -68,7 +68,7 @@ if (substr($binperms, 9, 1) == 2) {
 
                         <div id="genero">
                             <label for="estudiantes_genero">Genero</label>
-                            <select id="estudiantes_genero" name="gender" required>
+                            <select id="estudiantes_genero" name="gender">
                                 <option value="Nulo">Seleccione una opción</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
@@ -152,7 +152,7 @@ if (substr($binperms, 9, 1) == 2) {
                         </div>
                         <div>
                             <label for="estudiantes_direccion">Teléfono (Fijo/Celular)</label>
-                            <input type="text" id="estudiantes_telefono" name="address" required>
+                            <input type="text" id="estudiantes_telefono" name="address" >
                         </div>
                         <div>
                             <label for="estudiantes_direccion">Dirección</label>
@@ -160,7 +160,7 @@ if (substr($binperms, 9, 1) == 2) {
                         </div>
                         <div>
                             <label for="estudiantes_correo">Correo electronico *</label>
-                            <input type="email" id="estudiantes_correo" name="email" required>
+                            <input type="text" id="estudiantes_correo" name="email" >
                         </div>
                         <div>
                             <label for="estudiantes_estado">Estado</label>
