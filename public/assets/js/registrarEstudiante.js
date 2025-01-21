@@ -17,9 +17,6 @@ $(document).ready(function () {
         let estudiantes_ciudad_exp = $('#estudiantes_ciudad_exp').val();
         let estudiantes_depto_exp = $('#estudiantes_depto_exp').val();
 
-        console.log(estudiantes_telefono);
-
-
         $.ajax({
             url: '../src/controllers/sql_register_student.php',
             type: "POST",
