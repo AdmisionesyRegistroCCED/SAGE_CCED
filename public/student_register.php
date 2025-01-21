@@ -6,6 +6,7 @@ if (substr($binperms, 9, 1) == 2) {
 
     <head>
         <title>SAGE - Registro de estudiantes</title>
+        <link rel="icon" type="image/x-icon" href="assets/imgs/favicon-CCED.png">
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
 
