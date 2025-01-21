@@ -70,14 +70,13 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         <div class="inputs">
                             <label for="lname">Nro documento</label>
                             <input type="text" id="estudiantes_no_documento" name="lname" required>
-                            <input type="hidden" id="estudiantes_no_documento_hidden" name="idHidden" required>
+                            <input type="hidden" id="estudiantes_no_documento_hidden" name="idHidden">
 
 
                         </div>
-
                         <div class="inputs">
                             <label for="dni">Nombre</label>
-                            <input type="text" id="estudiantes_nombre" name="estudiantes_nombre" required>
+                            <input type="text" id="estudiantes_nombre" name="estudiantes_nombre">
                         </div>
                         <div class="inputs">
                             <label for="apellido">Apellidos</label>
@@ -85,12 +84,12 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         </div>
                         <div class="inputs">
                             <label for="estudiantes_fecha_nacimiento">Fecha de nacimiento</label>
-                            <input type="date" id="estudiantes_fecha_nacimiento" name="estudiantes_fecha_nacimiento" required>
+                            <input type="date" id="estudiantes_fecha_nacimiento" name="estudiantes_fecha_nacimiento">
                         </div>
 
                         <div class="inputs">
                             <label for="estudiantes_correo">Correo electronico</label>
-                            <input type="email" id="estudiantes_correo" name="estudiantes_correo" required>
+                            <input type="text" id="estudiantes_correo" name="estudiantes_correo">
                         </div>
                         <div class="inputs">
                             <label for="">Teléfono</label>
@@ -116,7 +115,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         <div>
                             <label for="estudiantes_ciudad_exp">Ciudad Expedición</label>
                             <select class="" id="estudiantes_ciudad_exp">
-                                <option value=""></option>
+                                <option value="Sin Ciudad"></option>
                                 <option value="Arauca">Arauca</option>
                                 <option value="Armenia">Armenia</option>
                                 <option value="Barranquilla">Barranquilla</option>
@@ -154,7 +153,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         <div>
                             <label for="estudiantes_depto_exp">Departamento de expedición</label>
                             <select name="" id="estudiantes_depto_exp">
-                                <option value=""></option>
+                                <option value="Sin Departamento"></option>
                                 <option value="Amazonas">Amazonas</option>
                                 <option value="Antioquia">Antioquia</option>
                                 <option value="Arauca">Arauca</option>
