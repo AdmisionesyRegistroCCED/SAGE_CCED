@@ -121,7 +121,7 @@ $(document).ready(function () {
 
 
         let estudiantes_fecha_nacimiento = ($('#estudiantes_fecha_nacimiento').val() != '' ? $('#estudiantes_fecha_nacimiento').val() : "0001-01-01");
-        let estudiantes_correo = ($('#estudiantes_correo').val() != '' ? $('#estudiantes_fecha_nacimiento').val() : "Sin correo"); 
+        let estudiantes_correo = ($('#estudiantes_correo').val() != '' ? $('#estudiantes_correo').val() : "Sin correo"); 
         let estudiantes_direccion = ($('#estudiantes_direccion').val() != '' ? $('#estudiantes_direccion').val() : "Sin dirección");
         let estudiantes_telefono = ($('#estudiantes_telefono').val() != '' ? $('#estudiantes_telefono').val() : "Sin teléfono");
 
@@ -254,7 +254,10 @@ $(document).ready(function () {
         $('#estudiantes_telefono').val(rowDataDetalle.telefono);
         $('#estudiantes_estado').val(rowDataDetalle.estado);
         $('#estudiantes_observaciones').val(rowDataDetalle.observaciones);
-
+        $('#estudiantes_direccion').val(rowDataDetalle.direccion);
+        
+        console.log({rowDataDetalle});
+        
         //Implementa el valor del teléfono como place holder así sea un campo de tipo numerico
         document.getElementsByName('telefonoInput')[0].placeholder=rowDataDetalle.telefono;
 

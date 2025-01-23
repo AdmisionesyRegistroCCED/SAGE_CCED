@@ -81,9 +81,9 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         </div>
                         <div class="inputs">
                             <label for="estudiantes_fecha_nacimiento">Fecha de nacimiento</label>
-                            <input type="date" id="estudiantes_fecha_nacimiento" name="estudiantes_fecha_nacimiento">
+                            <input type="date" id="estudiantes_fecha_nacimiento">
                         </div>
-
+                        
                         <div class="inputs">
                             <label for="estudiantes_correo">Correo electronico</label>
                             <input type="text" id="estudiantes_correo" name="estudiantes_correo">

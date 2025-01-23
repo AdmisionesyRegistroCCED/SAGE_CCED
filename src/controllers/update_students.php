@@ -76,12 +76,12 @@ if($result->num_rows>0){
             "nroDocumento" => $data['nroDocumento'],
             "nombre" => $data['nombre'],
             "apellido" => $data['apellido'],
-            "telefono" => $data['telefono'],
-            "correo" => $data['correo'],
-            "direccion" => $data['direccion'],
             "fechaNacimiento" => $data['fechaNacimiento'],
             "genero" => $data['genero'],
+            "telefono" => $data['telefono'],
+            "correo" => $data['correo'],
             "estado" => $data['estado'],
+            "direccion" => $data['direccion'],
             "observaciones" => $data['observaciones'],
         );
     }
