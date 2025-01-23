@@ -71,8 +71,6 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                             <label for="lname">Nro documento</label>
                             <input type="text" id="estudiantes_no_documento" name="lname" required>
                             <input type="hidden" id="estudiantes_no_documento_hidden" name="idHidden">
-
-
                         </div>
                         <div class="inputs">
                             <label for="dni">Nombre</label>
@@ -94,7 +92,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         </div>
                         <div class="inputs">
                             <label for="">Teléfono</label>
-                            <input type="number" name="estudiantes_telefono" id="estudiantes_telefono">
+                            <input type="number" name="telefonoInput" id="estudiantes_telefono" placeholder="">
                         </div>
                         <div class="inputs">
                             <label for="estudiantes_genero">Genero</label>
@@ -113,6 +111,11 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                                 <option value="Inhabilitado">Inhabilitado</option>
                             </select>
                         </div>
+
+                        <div  class="inputs">
+                            <label for="estudiantes_direccion">Dirección:</label>
+                            <input type="text" name="" id="estudiantes_direccion">
+                        </div>
                         
                         
                         <div class="inputs">
@@ -120,7 +123,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                             <textarea name="" id="estudiantes_observaciones" rows="10" cols="50"></textarea>
                         </div>
                         <br>
-                        <div class="inputs">
+                        <div class="">
                             <button type="submit" class="submit-btn" id="submitModal">Guardar Cambios</button>
                         </div>
                     </form>
