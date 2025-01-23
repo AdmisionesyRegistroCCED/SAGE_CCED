@@ -254,7 +254,6 @@ $(document).ready(function () {
         $('#estudiantes_telefono').val(rowDataDetalle.telefono);
         $('#estudiantes_estado').val(rowDataDetalle.estado);
         $('#estudiantes_observaciones').val(rowDataDetalle.observaciones);
-        $('#estudiantes_direccion').val(rowDataDetalle.direccion);
 
         //Implementa el valor del teléfono como place holder así sea un campo de tipo numerico
         document.getElementsByName('telefonoInput')[0].placeholder=rowDataDetalle.telefono;
