@@ -36,14 +36,14 @@ if (substr($binperms, 9, 1) == 2) {
                     </div>
                     <hr><br>
                     <form id="formRegistrarEstudiante" class="container_register">
-
                         <div>
                             <label for="estudiantes_tipo_documento">Tipo de documento *</label>
-                            <select name="dni_type" id="estudiantes_tipo_documento" required>
-                                <option value="--">Seleccione una opción</option>
+                            <select required name="estudiantes_tipo_documento" id="estudiantes_tipo_documento" >
+                                <option value="">Seleccione una opción</option>
                                 <option value="ti">Tarjeta de identidad</option>
                                 <option value="cc">Cedula de ciudadania</option>
                                 <option value="ce">Cedula de extranjeria</option>
+                                <option value="co">Código</option>
                             </select>
                         </div>
                         <div>
