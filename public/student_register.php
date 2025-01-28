@@ -25,14 +25,14 @@ if (substr($binperms, 9, 1) == 2) {
                         <div class="notification <?php echo $_SESSION['msg_type']; ?>" id="notification">
                             <?php
                             echo $_SESSION['message'];
-                            unset($_SESSION['message']); // Limpiar el mensaje después de mostrarlo
-                            unset($_SESSION['msg_type']); // Limpiar el tipo de mensaje después de mostrarlo
+                            unset($_SESSION['message']);
+                            unset($_SESSION['msg_type']);
                             ?>
                         </div>
                     <?php endif; ?>
                     <div class="headerdataform">
                         <h1 class="mindata_username">Registro de estudiante</h1>
-                        <a class="auploadcsv" href="../src/controllers/uploadcsv.php">Cargar Csv</a>
+                        <!-- <a class="auploadcsv" href="../src/controllers/uploadcsv.php">Cargar Csv</a> -->
                     </div>
                     <hr><br>
                     <form id="formRegistrarEstudiante" class="container_register">
