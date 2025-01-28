@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    'use strict';
+
     var tabla = $('#myTable').DataTable({
         "autoWidth": true,
         "responsive": true,
@@ -81,6 +83,8 @@ $(document).ready(function () {
         //Obtener datos de la fila seleccionada.
         rowData = tabla.row(boton).data();
 
+        console.log(rowData);
+
         // Llenar el formulario del modal
         $('#estudiantes_tipo_documento').val(rowData.sigla);
         $('#estudiantes_no_documento').val(rowData.nroDocumento);
@@ -93,8 +97,7 @@ $(document).ready(function () {
         $('#estudiantes_estado').val(rowData.estado);
         $('#estudiantes_observaciones').val(rowData.observaciones);
         $('#estudiantes_no_documento_hidden').val(rowData.nroDocumento);
-        $('#estudiantes_ciudad_exp').val(rowData.ciudadExpedicion);
-        $('#estudiantes_depto_exp').val(rowData.departamentoExpedicion);
+        $('#estudiantes_direccion').val(rowData.direccion);
     
         // Muestra el modal
         //$('#edit-modal').css('display', 'flex');
@@ -107,19 +110,20 @@ $(document).ready(function () {
 
 
         // Captura de datos
-        const estudiantes_tipo_documento = $('#estudiantes_tipo_documento').val();
-        const estudiantes_no_documento = $('#estudiantes_no_documento').val();
-        const estudiantes_no_documento_hidden = $('#estudiantes_no_documento_hidden').val();
-        const estudiantes_nombre = $('#estudiantes_nombre').val();
-        const estudiantes_apellidos = $('#estudiantes_apellidos').val();
-        const estudiantes_fecha_nacimiento = $('#estudiantes_fecha_nacimiento').val();
-        const estudiantes_telefono = $('#estudiantes_telefono').val();
-        const estudiantes_genero = $('#estudiantes_genero').val();
-        const estudiantes_correo = $('#estudiantes_correo').val();
-        const estudiantes_estado = $('#estudiantes_estado').val();
-        const estudiantes_observaciones = $('#estudiantes_observaciones').val();
-        const estudiantes_depto_exp = $('#estudiantes_depto_exp').val();
-        const estudiantes_ciudad_exp = $('#estudiantes_ciudad_exp').val();
+        let estudiantes_tipo_documento = $('#estudiantes_tipo_documento').val();
+        let estudiantes_no_documento = $('#estudiantes_no_documento').val();
+        let estudiantes_no_documento_hidden = $('#estudiantes_no_documento_hidden').val();
+        let estudiantes_nombre = $('#estudiantes_nombre').val();
+        let estudiantes_apellidos = $('#estudiantes_apellidos').val();
+        let estudiantes_genero = $('#estudiantes_genero').val();
+        let estudiantes_estado = $('#estudiantes_estado').val();
+        let estudiantes_observaciones = $('#estudiantes_observaciones').val();
+
+
+        let estudiantes_fecha_nacimiento = ($('#estudiantes_fecha_nacimiento').val() != '' ? $('#estudiantes_fecha_nacimiento').val() : "0001-01-01");
+        let estudiantes_correo = ($('#estudiantes_correo').val() != '' ? $('#estudiantes_correo').val() : "Sin correo"); 
+        let estudiantes_direccion = ($('#estudiantes_direccion').val() != '' ? $('#estudiantes_direccion').val() : "Sin dirección");
+        let estudiantes_telefono = ($('#estudiantes_telefono').val() != '' ? $('#estudiantes_telefono').val() : "Sin teléfono");
 
         let index = tabla.row(boton).index();
 
@@ -134,8 +138,7 @@ $(document).ready(function () {
                 estudiantes_nombre: estudiantes_nombre,
                 estudiantes_apellidos: estudiantes_apellidos,
                 estudiantes_fecha_nacimiento: estudiantes_fecha_nacimiento,
-                estudiantes_ciudad_exp:estudiantes_ciudad_exp,
-                estudiantes_depto_exp:estudiantes_depto_exp,
+                estudiantes_direccion: estudiantes_direccion,
                 estudiantes_genero: estudiantes_genero,
                 estudiantes_telefono: estudiantes_telefono,
                 estudiantes_correo: estudiantes_correo,
@@ -154,15 +157,16 @@ $(document).ready(function () {
                     alert("Registro actualizado correctamente."); // Mensaje de exito
 
                 }
-           
 
-                $('#edit-modal').css('display', 'none'); // Cierra el 
 
+                $('#edit-modal').css('display', 'none'); // Cierra modal
+                
                 return true;
             },
             error: function (xhr, status, error) {
                 console.log(error);
                 alert("Error al actualizar los datos. Intenta de nuevo.");
+                $('#edit-modal').css('display', 'none'); // Cierra modal
                 return false;
             }
         });
@@ -250,11 +254,13 @@ $(document).ready(function () {
         $('#estudiantes_telefono').val(rowDataDetalle.telefono);
         $('#estudiantes_estado').val(rowDataDetalle.estado);
         $('#estudiantes_observaciones').val(rowDataDetalle.observaciones);
-        $('#estudiantes_ciudad_exp').val(rowDataDetalle.ciudadExpedicion);
-        $('#estudiantes_depto_exp').val(rowDataDetalle.departamentoExpedicion);
-
-
+        $('#estudiantes_direccion').val(rowDataDetalle.direccion);
+        
         console.log({rowDataDetalle});
+        
+        //Implementa el valor del teléfono como place holder así sea un campo de tipo numerico
+        document.getElementsByName('telefonoInput')[0].placeholder=rowDataDetalle.telefono;
+
 
         if(inputBtn.style === 'none'){
             inputBtn.style.display = 'block';
@@ -265,4 +271,11 @@ $(document).ready(function () {
         }
 
     });
+
+    $(document).on('keydown', function(event) {
+        if (event.key === 'Escape') {
+            $('#edit-modal').css('display', 'none');
+        }
+    });
+    
 });

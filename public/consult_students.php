@@ -71,8 +71,6 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                             <label for="lname">Nro documento</label>
                             <input type="text" id="estudiantes_no_documento" name="lname" required>
                             <input type="hidden" id="estudiantes_no_documento_hidden" name="idHidden">
-
-
                         </div>
                         <div class="inputs">
                             <label for="dni">Nombre</label>
@@ -84,16 +82,17 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         </div>
                         <div class="inputs">
                             <label for="estudiantes_fecha_nacimiento">Fecha de nacimiento</label>
-                            <input type="date" id="estudiantes_fecha_nacimiento" name="estudiantes_fecha_nacimiento">
+                            <input type="date" id="estudiantes_fecha_nacimiento">
                         </div>
-
+                        
                         <div class="inputs">
                             <label for="estudiantes_correo">Correo electronico</label>
                             <input type="text" id="estudiantes_correo" name="estudiantes_correo">
+                            
                         </div>
                         <div class="inputs">
                             <label for="">Teléfono</label>
-                            <input type="number" name="estudiantes_telefono" id="estudiantes_telefono">
+                            <input type="number" name="telefonoInput" id="estudiantes_telefono" placeholder="">
                         </div>
                         <div class="inputs">
                             <label for="estudiantes_genero">Genero</label>
@@ -112,88 +111,19 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                                 <option value="Inhabilitado">Inhabilitado</option>
                             </select>
                         </div>
-                        <div>
-                            <label for="estudiantes_ciudad_exp">Ciudad Expedición</label>
-                            <select class="" id="estudiantes_ciudad_exp">
-                                <option value="Sin Ciudad"></option>
-                                <option value="Arauca">Arauca</option>
-                                <option value="Armenia">Armenia</option>
-                                <option value="Barranquilla">Barranquilla</option>
-                                <option value="Bogotá">Bogotá</option>
-                                <option value="Bucaramanga">Bucaramanga</option>
-                                <option value="Cali">Cali</option>
-                                <option value="Cartagena">Cartagena</option>
-                                <option value="Cúcuta">Cúcuta</option>
-                                <option value="Florencia">Florencia</option>
-                                <option value="Ibagué">Ibagué</option>
-                                <option value="Leticia">Leticia</option>
-                                <option value="Manizales">Manizales</option>
-                                <option value="Medellín">Medellín</option>
-                                <option value="Mitú">Mitú</option>
-                                <option value="Mocoa">Mocoa</option>
-                                <option value="Montería">Montería</option>
-                                <option value="Neiva">Neiva</option>
-                                <option value="Pasto">Pasto</option>
-                                <option value="Pereira">Pereira</option>
-                                <option value="Popayán">Popayán</option>
-                                <option value="Puerto Carreño">Puerto Carreño</option>
-                                <option value="Puerto Inírida">Puerto Inírida</option>
-                                <option value="Quibdó">Quibdó</option>
-                                <option value="Riohacha">Riohacha</option>
-                                <option value="San Andrés">San Andrés</option>
-                                <option value="San José del Guaviare">San José del Guaviare</option>
-                                <option value="Santa Marta">Santa Marta</option>
-                                <option value="Sincelejo">Sincelejo</option>
-                                <option value="Tunja">Tunja</option>
-                                <option value="Valledupar">Valledupar</option>
-                                <option value="Villavicencio">Villavicencio</option>
-                                <option value="Yopal">Yopal</option>
-                            </select>
+
+                        <div  class="inputs">
+                            <label for="estudiantes_direccion">Dirección:</label>
+                            <input type="text" name="" id="estudiantes_direccion">
                         </div>
-                        <div>
-                            <label for="estudiantes_depto_exp">Departamento de expedición</label>
-                            <select name="" id="estudiantes_depto_exp">
-                                <option value="Sin Departamento"></option>
-                                <option value="Amazonas">Amazonas</option>
-                                <option value="Antioquia">Antioquia</option>
-                                <option value="Arauca">Arauca</option>
-                                <option value="Atlántico">Atlántico</option>
-                                <option value="Bolívar">Bolívar</option>
-                                <option value="Boyacá">Boyacá</option>
-                                <option value="Caldas">Caldas</option>
-                                <option value="Caquetá">Caquetá</option>
-                                <option value="Casanare">Casanare</option>
-                                <option value="Cauca">Cauca</option>
-                                <option value="Cesar">Cesar</option>
-                                <option value="Chocó">Chocó</option>
-                                <option value="Córdoba">Córdoba</option>
-                                <option value="Cundinamarca">Cundinamarca</option>
-                                <option value="Guainía">Guainía</option>
-                                <option value="Guaviare">Guaviare</option>
-                                <option value="Huila">Huila</option>
-                                <option value="La Guajira">La Guajira</option>
-                                <option value="Magdalena">Magdalena</option>
-                                <option value="Meta">Meta</option>
-                                <option value="Nariño">Nariño</option>
-                                <option value="Norte de Santander">Norte de Santander</option>
-                                <option value="Putumayo">Putumayo</option>
-                                <option value="Quindío">Quindío</option>
-                                <option value="Risaralda">Risaralda</option>
-                                <option value="San Andrés y Providencia">San Andrés y Providencia</option>
-                                <option value="Santander">Santander</option>
-                                <option value="Sucre">Sucre</option>
-                                <option value="Tolima">Tolima</option>
-                                <option value="Valle del Cauca">Valle del Cauca</option>
-                                <option value="Vaupés">Vaupés</option>
-                                <option value="Vichada">Vichada</option>
-                            </select>
-                        </div>
+                        
+                        
                         <div class="inputs">
                             <label for="estudiantes_observaciones">Observaciones:</label>
                             <textarea name="" id="estudiantes_observaciones" rows="10" cols="50"></textarea>
                         </div>
                         <br>
-                        <div class="inputs">
+                        <div class="">
                             <button type="submit" class="submit-btn" id="submitModal">Guardar Cambios</button>
                         </div>
                     </form>
