@@ -49,8 +49,6 @@ $(document).ready(function () {
             console.log({"VALOR FUERA ELEMENT":nombre_upperCase});
 
             estudiantes_nombre =  nombre_upperCase.join(" ");
-
-            console.log({"Estudiantes_nombre":estudiantes_nombre});
         }
 
 
@@ -77,13 +75,11 @@ $(document).ready(function () {
                     alert("El número de documento ingresado ya está registrado en la base de datos"); 
                 } else {
                     alert("Estudiante agregado con éxito");
-                    console.log(response);
                     $('#formRegistrarEstudiante')[0].reset();
                 }
             },
             error: function (xhr, status, error) {
-                alert("Error al registrar el estudiante");
-                console.log(error);
+                alert("Error al registrar el estudiante",error);
             }
         });
     });
