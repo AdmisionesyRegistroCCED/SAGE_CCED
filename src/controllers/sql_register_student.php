@@ -8,6 +8,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+    $patronTexto = '/[a-zA-Z]/';
     $valorTipo;
     $estudiantes_no_documento = $_POST['estudiantes_no_documento'];
     $estudiantes_tipo_documento = $_POST['estudiantes_tipo_documento'];
@@ -27,6 +28,8 @@ if ($conn->connect_error) {
         $valorTipo = 2;
     }elseif($estudiantes_tipo_documento == "ce"){
         $valorTipo = 3;
+    }elseif($estudiantes_tipo_documento == "co"){
+        $valorTipo = 4;
     }else{
         $valorTipo = NULL;
     }
@@ -61,9 +64,22 @@ if ($conn->connect_error) {
         estudiantes_direccion,
         estudiantes_observaciones) 
                 VALUES ('$estudiantes_no_documento', '$valorTipo', '$estudiantes_nombre', '$estudiantes_apellidos', '$estudiantes_fecha_nacimiento','$estudiantes_genero', '$estudiantes_telefono', '$estudiantes_correo', '$estudiantes_estado','$estudiantes_direccion','$estudiantes_observaciones')";
+
     
         $registrarEstudiante = $conn -> prepare($sql);
         $registrarEstudiante->execute();
+
+        if(preg_match($patronTexto,$estudiantes_no_documento)){
+
+            
+            $matricula = "INSERT INTO matricula (matricula_id, matricula_estudiante_numero_documento ) VALUES ('$estudiantes_no_documento', '$estudiantes_no_documento')";
+            $matriculaQuery = $conn -> prepare($matricula);
+            $matriculaQuery->execute();
+            $mensaje = array(
+                "Error" => "Dato digitado incorrectamente");
+            ob_clean();
+            echo json_encode($mensajes);
+        }
 
         if($registrarEstudiante){
             $data=['Registro exitoso',$registrarEstudiante];
