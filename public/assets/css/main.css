@@ -294,17 +294,23 @@ main {
 /* CSS PARA STUDENT_REGISTER.PHP */
 
 .container_register {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 100%;
-    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(1,1fr);
+    gap: 10px 50px;
+    /* grid-row-gap: 20px;
+    grid-column-gap: 20px; */
+
 }
 
-.container_register div {
+/* .container_register div {
     flex: 0 0 48%;
     margin-bottom: 15px;
-}
+ 
+} */
+
+
 
 label {
     display: block;

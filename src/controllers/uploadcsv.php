@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['deletejson'])) {
         if (isset($_POST['fileName'])) {
             $user_folder = 'uploads/' . $correo;
-            $fileName = basename($_POST['fileName']); // Evita la manipulación de la ruta
+            $fileName = 'estudiantes.json'; // Evita la manipulación de la ruta
             $filePath = $user_folder . '/' . $fileName; // Define la ruta donde se encuentran los archivos
 
             // Verifica si el archivo existe
@@ -223,7 +223,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $tipoDocumento = isset($tipoDocumentoMap[$row['TipoDocumento']]) ? $tipoDocumentoMap[$row['TipoDocumento']] : null;
     
                     if ($tipoDocumento === null) {
-                        // Si no se encuentra en el mapeo, ignoramos el registro
+                        // Si no se encuentra en el mapeo, ignoramos el registro    
                         continue;
                     }
     
@@ -231,7 +231,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $insertValues[] = "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     $params = array_merge($params, [
                         $row['NoDocumento'],
-                        $tipoDocumento,  // Se usa el valor mapeado
+                        $tipoDocumento,
                         $row['Nombre'],
                         $row['Apellidos'],
                         $row['FechaNacimiento'],
@@ -278,7 +278,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             
             $user_folder = 'uploads/' . $correo;
-            $fileName = basename($_POST['fileName']); // Evita la manipulación de la ruta
+            $fileName = 'estudiantes.json'; // Evita la manipulación de la ruta
             $filePath = $user_folder . '/' . $fileName; // Define la ruta donde se encuentran los archivos
             unlink($filePath);
             

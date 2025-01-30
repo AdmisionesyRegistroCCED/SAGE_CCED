@@ -6,6 +6,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
 
     <head>
         <title>SAGE - Consulta de estudiantes</title>
+        <link rel="icon" type="image/x-icon" href="assets/imgs/favicon-CCED.png">
         <link rel="stylesheet" href="assets/css/main.css">
         <!-- Datables links -->
         <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/r-3.0.3/datatables.min.css" rel="stylesheet">
@@ -69,14 +70,11 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         <div class="inputs">
                             <label for="lname">Nro documento</label>
                             <input type="text" id="estudiantes_no_documento" name="lname" required>
-                            <input type="hidden" id="estudiantes_no_documento_hidden" name="idHidden" required>
-
-
+                            <input type="hidden" id="estudiantes_no_documento_hidden" name="idHidden">
                         </div>
-
                         <div class="inputs">
                             <label for="dni">Nombre</label>
-                            <input type="text" id="estudiantes_nombre" name="estudiantes_nombre" required>
+                            <input type="text" id="estudiantes_nombre" name="estudiantes_nombre">
                         </div>
                         <div class="inputs">
                             <label for="apellido">Apellidos</label>
@@ -84,16 +82,17 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                         </div>
                         <div class="inputs">
                             <label for="estudiantes_fecha_nacimiento">Fecha de nacimiento</label>
-                            <input type="date" id="estudiantes_fecha_nacimiento" name="estudiantes_fecha_nacimiento" required>
+                            <input type="date" id="estudiantes_fecha_nacimiento">
                         </div>
-
+                        
                         <div class="inputs">
                             <label for="estudiantes_correo">Correo electronico</label>
-                            <input type="email" id="estudiantes_correo" name="estudiantes_correo" required>
+                            <input type="text" id="estudiantes_correo" name="estudiantes_correo">
+                            
                         </div>
                         <div class="inputs">
                             <label for="">Teléfono</label>
-                            <input type="number" name="estudiantes_telefono" id="estudiantes_telefono">
+                            <input type="number" name="telefonoInput" id="estudiantes_telefono" placeholder="">
                         </div>
                         <div class="inputs">
                             <label for="estudiantes_genero">Genero</label>
@@ -112,12 +111,19 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                                 <option value="Inhabilitado">Inhabilitado</option>
                             </select>
                         </div>
+
+                        <div  class="inputs">
+                            <label for="estudiantes_direccion">Dirección:</label>
+                            <input type="text" name="" id="estudiantes_direccion">
+                        </div>
+                        
+                        
                         <div class="inputs">
                             <label for="estudiantes_observaciones">Observaciones:</label>
                             <textarea name="" id="estudiantes_observaciones" rows="10" cols="50"></textarea>
                         </div>
                         <br>
-                        <div class="inputs">
+                        <div class="">
                             <button type="submit" class="submit-btn" id="submitModal">Guardar Cambios</button>
                         </div>
                     </form>
