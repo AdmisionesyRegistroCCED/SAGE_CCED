@@ -1,8 +1,6 @@
-
 $(document).ready(function () {
     
     'use strict';
-
     
     //Cambiar tipo de documento en base al option select
     document.getElementById("estudiantes_tipo_documento").addEventListener("change", function() {
@@ -31,27 +29,38 @@ $(document).ready(function () {
         let estudiantes_direccion = ($('#estudiantes_direccion').val() != '' ? $('#estudiantes_direccion').val() : "Sin dirección");
         let estudiantes_telefono = ($('#estudiantes_telefono').val() != '' ? $('#estudiantes_telefono').val() : "Sin teléfono");
 
+        
+        let nombre_upperCase = [];
         let arregloNombre = estudiantes_nombre.split(/\s+/);
 
-        let nombre_upperCase = [];
-
+        //campo Nombre
         if(arregloNombre.length === 1){
-            arregloNombre[0].charAt(0).toUpperCase();
-
+            arregloNombre[0] = arregloNombre[0].charAt(0).toUpperCase() + arregloNombre[0].slice(1).toLowerCase();
+            estudiantes_nombre = arregloNombre[0];
         }else{
-
             for (let index = 0; index <= arregloNombre.length - 1; index++) {
                 const element = arregloNombre[index];
                 let elementUpperCase = element.charAt(0).toUpperCase() + element.slice(1).toLowerCase();
                 nombre_upperCase.push(elementUpperCase);
-                console.log(elementUpperCase);
             }
-            console.log({"VALOR FUERA ELEMENT":nombre_upperCase});
-
             estudiantes_nombre =  nombre_upperCase.join(" ");
         }
-
-
+        //Campo apellido
+        let apellido_upperCase = [];
+        let arregloApellidos = estudiantes_apellidos.split(/\s+/);
+        if(arregloApellidos.length === 1){
+            arregloApellidos[0] = arregloApellidos[0].charAt(0).toUpperCase() + arregloApellidos[0].slice(1).toLowerCase();
+            estudiantes_apellidos = arregloApellidos[0];
+        }else{
+            for (let index = 0; index <= arregloApellidos.length - 1; index++) {
+                const element = arregloApellidos[index];
+                let elementUpperCaseApellido = element.charAt(0).toUpperCase() + element.slice(1).toLowerCase();
+                apellido_upperCase.push(elementUpperCaseApellido);
+            }
+            estudiantes_apellidos =  apellido_upperCase.join(" ");
+        }
+        
+    
         $.ajax({
             url: '../src/controllers/sql_register_student.php',
             type: "POST",

@@ -12,6 +12,9 @@ if (substr($binperms, 9, 1) == 2) {
 
     <body>
 
+    
+
+
         <header>
             <?php require_once "../src/models/header.php" ?>
         </header>
@@ -112,7 +115,7 @@ if (substr($binperms, 9, 1) == 2) {
 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="assets/js/registrarEstudiante.js"></script>
+        <script src="assets/js/registrarEstudiante.js" type="module"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script src="assets/js/toggleMenu.js"></script>
     </body>
