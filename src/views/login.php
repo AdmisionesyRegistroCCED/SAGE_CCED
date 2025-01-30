@@ -100,7 +100,7 @@
                             // Aquí puedes proceder con el envío del formulario o cualquier otra lógica.
                         } else {
                             // Redirigir si no coincide
-                            window.location.href = '403.php';
+                            // window.location.href = '403.php';
                         }
                     })
                     .catch(error => {
