@@ -32,6 +32,8 @@ if($estudiantes_tipo_documento == "cc"){
     $tipoDocumento = 2;
 }elseif($estudiantes_tipo_documento == "ce"){
     $tipoDocumento = 3;
+}elseif($estudiantes_tipo_documento == "co"){
+    $tipoDocumento = 4;
 }
 
 
