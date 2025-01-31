@@ -59,7 +59,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                                 <option value="ti">Tarjeta de identidad</option>
                                 <option value="cc">Cedula de ciudadania</option>
                                 <option value="ce">Cedula de extranjeria</option>
-                                <option value="co">Codigo</option>
+                                <option value="co">Código</option>
                             </select>
 
 
