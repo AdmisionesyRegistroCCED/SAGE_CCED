@@ -59,8 +59,6 @@ $(document).ready(function () {
             }
             estudiantes_apellidos =  apellido_upperCase.join(" ");
         }
-        
-    
         $.ajax({
             url: '../src/controllers/sql_register_student.php',
             type: "POST",
