@@ -19,11 +19,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
             <?php require_once "../src/models/header.php" ?>
         </header>
         <main>
-            <?php
-
-            require_once "../src/models/leftmenu.php";
-
-            ?>
+            <?php require_once "../src/models/leftmenu.php"; ?>
             <div class="structure">
                 <div id="tabla" class="main on">
                     <h1 class="mindata_username">Consulta de estudiantes</h1>
@@ -63,6 +59,7 @@ if (substr($binperms, 9, 1) == 1 || substr($binperms, 9, 1) == 2) {
                                 <option value="ti">Tarjeta de identidad</option>
                                 <option value="cc">Cedula de ciudadania</option>
                                 <option value="ce">Cedula de extranjeria</option>
+                                <option value="co">Código</option>
                             </select>
 
 
