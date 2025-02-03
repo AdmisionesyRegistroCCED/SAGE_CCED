@@ -1,26 +1,24 @@
 <?php
-require "../src/controllers/session_start.php";
+//require "/src/controllers/session_start.php";
+require "../../controllers/session_start.php";
 if (substr($binperms, 9, 1) == 2) {
 ?>
     <html>
 
     <head>
         <title>SAGE - Registro de estudiantes</title>
-        <link rel="icon" type="image/x-icon" href="assets/imgs/favicon-CCED.png">
-        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="icon" type="image/x-icon" href="../../../../assets/imgs/favicon-CCED.png">
+        <link rel="stylesheet" href="../../../public/assets/css/main.css">
     </head>
 
     <body>
 
-    
-
-
         <header>
-            <?php require_once "../src/models/header.php" ?>
+            <?php require_once "../../../src/models/header.php"; ?>
         </header>
         <main>
             <?php
-            require_once "../src/models/leftmenu.php";
+            require_once "../../../src/models/leftmenu.php";
             ?>
             <div class="structure">
                 <div id="main" class="main on">
@@ -106,7 +104,7 @@ if (substr($binperms, 9, 1) == 2) {
                     </form>
                 </div>
                 <footer class=".footer">
-                    <?php require_once "../src/models/footer.php" ?>
+                    <?php require_once "../../../src/models/footer.php" ?>
                 </footer>
             </div>
         </main>

@@ -138,7 +138,7 @@
                                 if(substr($binperms, 9, 1) == 2){
                             ?>
                             <li>
-                                <a href="student_register.php" class="objectsformom">
+                                <a href="../src/modules/students/student_register.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25"
                                             height="25">
