@@ -1,5 +1,5 @@
 <?php 
-    require "../src/controllers/session_start.php";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/controllers/session/session_start.php');
 ?>
 <html>
 
@@ -11,11 +11,11 @@
 
 <body>
     <header>
-        <?php require_once "../src/models/header.php" ?>
+        <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/header.php'); ?>
     </header>
     <main>
         <?php
-                require_once "../src/models/leftmenu.php";
+                require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/leftmenu.php');;
         ?>
         <div id="format" class="format">
         <div class="structure">

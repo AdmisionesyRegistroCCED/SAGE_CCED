@@ -1,21 +1,23 @@
 <?php 
-    require "../src/controllers/session_start.php";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/controllers/session/session_start.php');
     if(substr($binperms, 2, 1) == 2){
 ?>
 <html>
 <head>
     <title>SAGE - Registro de usuarios</title>
-    <link rel="icon" type="image/x-icon" href="assets/imgs/favicon-CCED.png">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="icon" type="image/x-icon" href="/public/assets/imgs/favicon-CCED.png">
+    <link rel="stylesheet" href="/public/assets/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="/public/assets/js/toggleMenu.js"></script>
+    <script src="/src/controllers/users/registrarUsuario.js"></script>
 </head>
 <body>
     <header>
-        <?php require_once "../src/models/header.php" ?>
+        <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/header.php'); ?>
     </header>
     <main>
-    <?php 
-        require_once "../src/models/leftmenu.php";
-    ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/leftmenu.php'); ?>
             <div class="structure">
                 <div id="main" class="main on">
                 <?php if (isset($_SESSION['message'])): ?>
@@ -32,7 +34,7 @@
                 </div>
                 <!-- <p class="infoinmain_topp">Esta es tu página de inicio</p> -->
                 <hr><br>
-                <form action="../src/controllers/sql_register_user.php" method="post" id="formRegistrarEstudiante">
+                <form method="post" id="formRegistrarEstudiante">
                 <div class="container_register">
                     <div>
                         <label for="fname">Nombre de usuario</label>
@@ -84,7 +86,7 @@
             </footer>
         </div>
     </main>
-    <script src="assets/js/main.js"></script>
+
 </body>
 </html>
 <?php

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/db.php'; // Conexión a la base de datos
+require_once($_SERVER['DOCUMENT_ROOT'] . '/config/db.php'); // Conexión a la base de datos
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
@@ -19,18 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($password, $user['usuarios_contrasena'])) {
             // Inicio de sesión exitoso, guardar usuario en sesión
             $_SESSION['userdata?'] = $user['usuarios_correo'];
-            header("Location: ../../public/dashboard.php");
+            header("Location: /public/dashboard.php");
             exit();
         } else {
             $_SESSION['message'] = "Correo o contraseña incorrecto, porfavor verifique la información diligenciada."; // Mensaje de error
             $_SESSION['msg_type'] = "error"; // Tipo de mensaje
-            header("Location: ../views/login.php"); // Redirigir al formulario
+            header("Location: /src/views/login.php"); // Redirigir al formulario
             exit();
             }
     } else {
         $_SESSION['message'] = "Correo o contraseña incorrecto, porfavor verifique la información diligenciada."; // Mensaje de error
             $_SESSION['msg_type'] = "error"; // Tipo de mensaje
-            header("Location: ../views/login.php"); // Redirigir al formulario
+            header("Location: /src/views/login.php"); // Redirigir al formulario
             exit();
         }
     }

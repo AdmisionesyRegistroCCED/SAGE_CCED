@@ -3,7 +3,7 @@
         <div class="mainobjectmenu">
             <ul class="full">
                 <li>
-                    <a href="dashboard.php" class="objectsformom">
+                    <a href="/public/dashboard.php" class="objectsformom">
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="25" height="25">
                                 <path fill="white"
@@ -35,7 +35,7 @@
                                 if(substr($binperms, 1, 1) == 2){
                             ?>
                             <li>
-                                <a href="../src/views/calendar.php" class="objectsformom">
+                                <a href="/public/roles/role_register.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="25" height="25">
                                             <path fill="white"
@@ -49,7 +49,7 @@
                                 }
                             ?>
                             <li>
-                                <a href="consult_students.php" class="objectsformom">
+                                <a href="/public/students/consult_roles.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="22"
                                             height="22">
@@ -86,7 +86,7 @@
                                 if(substr($binperms, 2, 1) == 2){                            
                             ?>
                             <li>
-                                <a href="user_register.php" class="objectsformom">
+                                <a href="/public/users/user_register.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25"
                                             height="25">
@@ -101,7 +101,7 @@
                             }
                             ?>
                             <li>
-                                <a href="consult_students.php" class="objectsformom">
+                                <a href="/public/users/consult_users.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="22"
                                             height="22">
@@ -138,7 +138,7 @@
                                 if(substr($binperms, 9, 1) == 2){
                             ?>
                             <li>
-                                <a href="student_register.php" class="objectsformom">
+                                <a href="/public/students/student_register.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25"
                                             height="25">
@@ -153,7 +153,7 @@
                             }
                             ?>
                             <li>
-                                <a href="consult_students.php" class="objectsformom">
+                                <a href="/public/students/consult_students.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="22"
                                             height="22">
@@ -167,8 +167,8 @@
                             <?php 
                                 if(substr($binperms, 9, 1) == 2){
                             ?>
-                            <!-- <li>
-                                <a href="consult_students.php" class="objectsformom">
+                            <li>
+                                <a href="/public/students/groups/studentsgroup_register.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25" height="25">
                                             <path fill="white"
@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="txt">Registrar grupo de estudiantes</div>
                                 </a>
-                            </li> -->
+                            </li>
                             <?php
                             }
                             ?>
@@ -207,7 +207,7 @@
                                 if(substr($binperms, 7, 1) == 2){
                             ?>
                             <li>
-                                <a href="../src/views/calendar.php" class="objectsformom">
+                                <a href="/public/teaching/register_teaching.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="25" height="25">
                                             <path fill="white"
@@ -221,7 +221,7 @@
                             }
                             ?>
                             <li>
-                                <a href="consult_students.php" class="objectsformom">
+                                <a href="/public/teaching/consult_teaching.php" class="objectsformom">
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="22"
                                             height="22">
@@ -422,7 +422,7 @@
             <div class="bottomoption">
                 <ul>
                     <li>
-                        <a href="../src/controllers/closesession.php" class="objectsformom">
+                        <a href="/src/controllers/session/closesession.php" class="objectsformom">
                             <div class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24">
                                     <path fill="white"

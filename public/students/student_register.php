@@ -1,13 +1,19 @@
 <?php
-require "../src/controllers/session_start.php";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/controllers/session/session_start.php');
 if (substr($binperms, 9, 1) == 2) {
 ?>
     <html>
 
     <head>
         <title>SAGE - Registro de estudiantes</title>
-        <link rel="icon" type="image/x-icon" href="assets/imgs/favicon-CCED.png">
-        <link rel="stylesheet" href="assets/css/main.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <link rel="icon" type="image/x-icon" href="/public/assets/imgs/favicon-CCED.png">
+        <link rel="stylesheet" href="/public/assets/css/main.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/public/assets/js/registrarEstudiante.js" type="module"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script src="/public/assets/js/toggleMenu.js"></script>
     </head>
 
     <body>
@@ -16,12 +22,10 @@ if (substr($binperms, 9, 1) == 2) {
 
 
         <header>
-            <?php require_once "../src/models/header.php" ?>
+            <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/header.php'); ?>
         </header>
         <main>
-            <?php
-            require_once "../src/models/leftmenu.php";
-            ?>
+            <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/leftmenu.php'); ?>
             <div class="structure">
                 <div id="main" class="main on">
                     <?php if (isset($_SESSION['message'])): ?>
@@ -113,11 +117,6 @@ if (substr($binperms, 9, 1) == 2) {
         <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
 
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="assets/js/registrarEstudiante.js" type="module"></script>
-        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-        <script src="assets/js/toggleMenu.js"></script>
     </body>
 
     </html>

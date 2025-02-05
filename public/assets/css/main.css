@@ -676,3 +676,10 @@ table.dataTable>tbody>tr:hover{
     background-color: var(--btn-primary);
     color: var(--light); 
 }
+
+#edit-modal{
+    display: none;
+}
+#edit-modal.show {
+    display: flex;  
+}

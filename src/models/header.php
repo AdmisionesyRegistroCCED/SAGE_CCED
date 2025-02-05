@@ -17,7 +17,7 @@
 </div>
 <div class="useractive">
     <div class="imguser">
-        <img src="assets/imgs/useractive.png" alt="" srcset="">
+        <img src="/public/assets/imgs/useractive.png" alt="" srcset="">
     </div>
     <div class="dropdwn">
         <a href="javascript:void(0);" id="dropdownToggle">
@@ -33,7 +33,7 @@
                     echo  '<li><a href="#">Administrar cuentas</a></li>';
                 }
             ?>
-            <li><a href="../src/controllers/closesession.php">Cerrar sesión</a></li>
+            <li><a href="/src/controllers/session/closesession.php">Cerrar sesión</a></li>
         </ul>
     </div>
 </div>

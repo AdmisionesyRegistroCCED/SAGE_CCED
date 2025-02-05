@@ -4,7 +4,7 @@ $(document).ready(function (){
 
     async function eliminarRegistro(estudiantes_no_documento) {
         const response = await $.ajax({
-            url: '../src/controllers/delete_students.php',  
+            url: '/src/controllers/students/delete_students.php',  
             type:'POST',
             data:{
                 estudiantes_no_documento:estudiantes_no_documento

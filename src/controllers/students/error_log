@@ -1,0 +1,77 @@
+[04-Feb-2025 20:51:09 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Out of range value for column 'matricula_id' at row 1 in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php:71
+Stack trace:
+#0 /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php(71): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 71
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_no_documento" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 17
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_tipo_documento" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 18
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_nombre" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 19
+[04-Feb-2025 23:12:09 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 19
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_apellidos" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 20
+[04-Feb-2025 23:12:09 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 20
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_fecha_nacimiento" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 21
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_genero" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 22
+[04-Feb-2025 23:12:09 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 22
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_telefono" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 23
+[04-Feb-2025 23:12:09 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 23
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_direccion" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 24
+[04-Feb-2025 23:12:09 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 24
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_correo" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 25
+[04-Feb-2025 23:12:09 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 25
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_estado" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 26
+[04-Feb-2025 23:12:09 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 26
+[04-Feb-2025 23:12:09 America/Bogota] PHP Warning:  Undefined array key "estudiantes_observaciones" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 27
+[04-Feb-2025 23:12:09 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 27
+[04-Feb-2025 23:12:09 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'estudiantes_no_documento' cannot be null in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php:64
+Stack trace:
+#0 /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php(64): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 64
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_no_documento" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 17
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_tipo_documento" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 18
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_nombre" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 19
+[04-Feb-2025 23:13:28 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 19
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_apellidos" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 20
+[04-Feb-2025 23:13:28 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 20
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_fecha_nacimiento" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 21
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_genero" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 22
+[04-Feb-2025 23:13:28 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 22
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_telefono" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 23
+[04-Feb-2025 23:13:28 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 23
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_direccion" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 24
+[04-Feb-2025 23:13:28 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 24
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_correo" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 25
+[04-Feb-2025 23:13:28 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 25
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_estado" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 26
+[04-Feb-2025 23:13:28 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 26
+[04-Feb-2025 23:13:28 America/Bogota] PHP Warning:  Undefined array key "estudiantes_observaciones" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 27
+[04-Feb-2025 23:13:28 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 27
+[04-Feb-2025 23:13:28 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'estudiantes_no_documento' cannot be null in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php:64
+Stack trace:
+#0 /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php(64): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 64
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_no_documento" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 17
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_tipo_documento" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 18
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_nombre" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 19
+[04-Feb-2025 23:35:41 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 19
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_apellidos" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 20
+[04-Feb-2025 23:35:41 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 20
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_fecha_nacimiento" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 21
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_genero" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 22
+[04-Feb-2025 23:35:41 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 22
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_telefono" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 23
+[04-Feb-2025 23:35:41 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 23
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_direccion" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 24
+[04-Feb-2025 23:35:41 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 24
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_correo" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 25
+[04-Feb-2025 23:35:41 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 25
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_estado" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 26
+[04-Feb-2025 23:35:41 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 26
+[04-Feb-2025 23:35:41 America/Bogota] PHP Warning:  Undefined array key "estudiantes_observaciones" in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 27
+[04-Feb-2025 23:35:41 America/Bogota] PHP Deprecated:  mysqli::real_escape_string(): Passing null to parameter #1 ($string) of type string is deprecated in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 27
+[04-Feb-2025 23:35:41 America/Bogota] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'estudiantes_no_documento' cannot be null in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php:64
+Stack trace:
+#0 /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php(64): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/src/controllers/students/sql_register_student.php on line 64

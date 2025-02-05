@@ -9,7 +9,7 @@ session_start();
 // }
 $correo = $_SESSION['userdata?'];
 
-require_once "../../config/db.php";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/config/db.php');
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

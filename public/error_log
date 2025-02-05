@@ -1,0 +1,87 @@
+[04-Feb-2025 17:25:10 America/Bogota] PHP Warning:  require(../src/controllers/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:10 America/Bogota] PHP Warning:  require(../src/controllers/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:10 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '../src/controllers/session_start.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:14 America/Bogota] PHP Warning:  require(../src/controllers/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:14 America/Bogota] PHP Warning:  require(../src/controllers/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:14 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '../src/controllers/session_start.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:15 America/Bogota] PHP Warning:  require(../src/controllers/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:15 America/Bogota] PHP Warning:  require(../src/controllers/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:15 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '../src/controllers/session_start.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:16 America/Bogota] PHP Warning:  require(../src/controllers/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:16 America/Bogota] PHP Warning:  require(../src/controllers/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:25:16 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '../src/controllers/session_start.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:26:10 America/Bogota] PHP Warning:  require(/src/controllers/session/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:26:10 America/Bogota] PHP Warning:  require(/src/controllers/session/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:26:10 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/src/controllers/session/session_start.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:26:15 America/Bogota] PHP Warning:  require(/src/controllers/session/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:26:15 America/Bogota] PHP Warning:  require(/src/controllers/session/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:26:15 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/src/controllers/session/session_start.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:08 America/Bogota] PHP Warning:  require(/src/controllers/session/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:08 America/Bogota] PHP Warning:  require(/src/controllers/session/session_start.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:08 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/src/controllers/session/session_start.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:42 America/Bogota] PHP Warning:  require_once(/home/ccedcomc/pruebasdevelopment.com/src/controllers/session/sessionstart.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:42 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ccedcomc/pruebasdevelopment.com/src/controllers/session/sessionstart.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:43 America/Bogota] PHP Warning:  require_once(/home/ccedcomc/pruebasdevelopment.com/src/controllers/session/sessionstart.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:43 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ccedcomc/pruebasdevelopment.com/src/controllers/session/sessionstart.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:44 America/Bogota] PHP Warning:  require_once(/home/ccedcomc/pruebasdevelopment.com/src/controllers/session/sessionstart.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:44 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ccedcomc/pruebasdevelopment.com/src/controllers/session/sessionstart.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:44 America/Bogota] PHP Warning:  require_once(/home/ccedcomc/pruebasdevelopment.com/src/controllers/session/sessionstart.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:44 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ccedcomc/pruebasdevelopment.com/src/controllers/session/sessionstart.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:44 America/Bogota] PHP Warning:  require_once(/home/ccedcomc/pruebasdevelopment.com/src/controllers/session/sessionstart.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:28:44 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ccedcomc/pruebasdevelopment.com/src/controllers/session/sessionstart.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 2
+[04-Feb-2025 17:29:07 America/Bogota] PHP Warning:  require_once(/src/models/header.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 14
+[04-Feb-2025 17:29:07 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/src/models/header.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 14
+[04-Feb-2025 17:29:17 America/Bogota] PHP Warning:  require_once(/src/models/header.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 14
+[04-Feb-2025 17:29:17 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/src/models/header.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 14
+[04-Feb-2025 17:30:03 America/Bogota] PHP Warning:  require_once(/home/ccedcomc/pruebasdevelopment.com/src/models/lftmenu.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 18
+[04-Feb-2025 17:30:03 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ccedcomc/pruebasdevelopment.com/src/models/lftmenu.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 18
+[04-Feb-2025 17:30:05 America/Bogota] PHP Warning:  require_once(/home/ccedcomc/pruebasdevelopment.com/src/models/lftmenu.php): Failed to open stream: No such file or directory in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 18
+[04-Feb-2025 17:30:05 America/Bogota] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ccedcomc/pruebasdevelopment.com/src/models/lftmenu.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/ccedcomc/pruebasdevelopment.com/public/dashboard.php on line 18

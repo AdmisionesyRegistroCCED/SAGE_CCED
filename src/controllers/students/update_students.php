@@ -1,12 +1,12 @@
 <?php
 session_start();
 if (!isset($_SESSION['userdata?'])) {
-    header("Location: ../views/login.php");
+    header("Location: /src/views/login.php");
     exit();
 }
 
 header('Content-Type: application/json');
-require_once "../../config/db.php";
+require_once($_SERVER['DOCUMENT_ROOT'] . '/config/db.php');
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

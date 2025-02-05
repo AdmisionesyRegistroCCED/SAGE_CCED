@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['userdata?'])) {
-    header("location: ../src/views/login.php");
+    header("location: /src/views/login.php");
     exit();
 }
 $correo = $_SESSION['userdata?'];
-require_once($_SERVER['DOCUMENT_ROOT'] . '/SAGE_CCED/config/db.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/config/db.php');
 // Conexión a la base de datos
 try {
     $stmt = $pdo->prepare("SELECT u.usuarios_id, u.usuarios_nombre, u.usuarios_correo, r.roles_nombre, r.roles_id, r.roles_codigo_permisos

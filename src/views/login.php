@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start();
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/config/db.php');
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +22,7 @@
             <?php if (isset($_SESSION['userdata?'])): ?>
                 <div id="sessionAlert" class="session-alert">
                     <p>Parece que ya tienes una sesión iniciada.</p>
-                    <a href="../../public/dashboard.php"><button>Ir al dashboard</button></a>
+                    <a href="/public/dashboard.php"><button>Ir al dashboard</button></a>
             </div>
             <?php endif; ?>
                 <img src="../../public/assets/imgs/LogoCCED.png" alt="" srcset="">
@@ -34,7 +38,7 @@
                         </div>
                     <?php endif; ?>
 
-                    <form id="loginForm" action="../controllers/loginController.php" method="POST">
+                    <form id="loginForm" action="/src/controllers/session/loginController.php" method="POST">
                         <div class="formatform">
                             <h2>Inicio de sesión</h2>
                             <div class="middleinfo">

@@ -23,12 +23,11 @@ $(document).ready(function () {
         let estudiantes_no_documento = $('#estudiantes_no_documento').val();
         let estudiantes_estado = $('#estudiantes_estado').val();
         let estudiantes_genero = $('#estudiantes_genero').val();
-        let estudiantes_observaciones = $('#estudiantes_observaciones').val();
+        let estudiantes_observaciones = ($('#estudiantes_observaciones').val() != '' ? $('#estudiantes_observaciones').val() : "Sin observación");
         let estudiantes_fecha_nacimiento = ($('#estudiantes_fecha_nacimiento').val() != '' ? $('#estudiantes_fecha_nacimiento').val() : "0001-01-01");
         let estudiantes_correo = ($('#estudiantes_correo').val() != '' ? $('#estudiantes_fecha_nacimiento').val() : "Sin correo"); 
         let estudiantes_direccion = ($('#estudiantes_direccion').val() != '' ? $('#estudiantes_direccion').val() : "Sin dirección");
         let estudiantes_telefono = ($('#estudiantes_telefono').val() != '' ? $('#estudiantes_telefono').val() : "Sin teléfono");
-
         
         let nombre_upperCase = [];
         let arregloNombre = estudiantes_nombre.split(/\s+/);
@@ -60,7 +59,7 @@ $(document).ready(function () {
             estudiantes_apellidos =  apellido_upperCase.join(" ");
         }
         $.ajax({
-            url: '../src/controllers/sql_register_student.php',
+            url: '/src/controllers/students/sql_register_student.php',
             type: "POST",
             data: {
                 estudiantes_nombre: estudiantes_nombre,
@@ -78,17 +77,32 @@ $(document).ready(function () {
             datatype: "json",
             cache: false,
             success: function (response) {
-                if (response[0] === 'Valor duplicado') {
-                    alert("El número de documento ingresado ya está registrado en la base de datos"); 
-                } else {
-                    alert("Estudiante agregado con éxito");
-                    $('#formRegistrarEstudiante')[0].reset();
+                if (response.Success === 'Registro exitoso') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: 'Estudiante agregado con exito.',
+                        showConfirmButton: true
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.Error,
+                        showConfirmButton: true
+                    });
                 }
             },
             error: function (xhr, status, error) {
-                alert("Error al registrar el estudiante",error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al registrar el estudiante. Por favor, intente de nuevo.',
+                    showConfirmButton: true
+                });
             }
         });
+        
     });
 
 });
