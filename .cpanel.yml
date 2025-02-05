@@ -1,0 +1,12 @@
+# cpanel.yml 
+server:
+  host: "cced.com.co"
+  user: "testdev@pruebasdevelopment.com.co"
+  port: 22 
+
+deployment:
+  method: "ftp" 
+  remote_path: "/ccecomc/pruebasdevelopment.com/"
+  exclude:
+    - ".git"
+    - "storage/logs"
